@@ -1,6 +1,6 @@
 {
   "jordan": {
-    "label": "Demo buyer 1 - jeans at regular fit, clean 31 with high-ish confidence",
+    "label": "Demo buyer 1 - jeans at regular fit, clean 31 with medium confidence",
     "fit_pref": "regular",
     "measurements": {
       "chest": 96,

@@ -1,2 +1,2 @@
 # Dev/test tooling only - the engine itself (core/) is pure standard library.
-pytest>=9.1
+pytest>=8.0

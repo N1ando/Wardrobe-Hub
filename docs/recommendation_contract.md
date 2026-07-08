@@ -17,6 +17,8 @@ result = recommend_size(
 
 The result is a plain dict, fully JSON-serializable — FastAPI can return it as-is.
 
+> **Backend warning:** `review_analysis` must be passed explicitly as the 4th argument. `recommend_size` does **not** read `product["review_analysis"]` — the seed products carry that key for convenience, but if you forget to extract and pass it, the review signal silently disappears (`review_signal` comes back null and no bias is applied).
+
 **Error contract:** `ValueError` is the ONLY exception raised for bad input (non-dict product/body, unsupported category, missing/empty/malformed `size_chart`). Backend maps it to one HTTP 422 handler. A malformed `review_analysis` never raises — it degrades to "no review data".
 
 ## Response fields
@@ -44,7 +46,7 @@ The result is a plain dict, fully JSON-serializable — FastAPI can return it as
 
 - `verdict`: `"ideal"` | `"tight"` | `"loose"` | `"missing_data"` (verdict reflects *raw* fit even when stretch softened the penalty).
 - `raw_ease` = garment − body. `effective_ease` adds the stretch credit. `scoring_ease` is what was actually scored (stretch only ever excuses tightness, never looseness).
-- When `verdict` is `"missing_data"`, every numeric field except `weight` and `ideal_band` is null.
+- When `verdict` is `"missing_data"`, the ease and score fields (`raw_ease`, `effective_ease`, `scoring_ease`, `score`) are null; `garment`/`body` are null only when that side is missing (e.g. a chart row without `sleeve` still reports the shopper's `body` value).
 - Dimensions per category — pants: waist/hips/inseam · tops: chest/waist/sleeve · dress: bust/waist/hips (body `chest` and `bust` are interchangeable fallbacks).
 
 ## For the explanation generator (`/api/explain`)

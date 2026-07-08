@@ -17,6 +17,7 @@ from dataclasses import dataclass
 import numpy as np
 
 from app.config import Settings
+from app.errors import NoPersonDetectedError
 from app.services.landmarks import BodyFractions
 from app.utils.imaging import (
     single_leg_width_px,
@@ -36,9 +37,15 @@ class ImageScale:
         return self.top + self.height_px
 
 
-def image_scale(mask: np.ndarray, height_units: float) -> ImageScale:
+def image_scale(
+    mask: np.ndarray, height_units: float, min_height_px: int = 1
+) -> ImageScale:
     top, bottom = vertical_extent(mask)
     height_px = bottom - top
+    if height_px < max(min_height_px, 1):
+        # Guards both the degenerate height_px == 0 (division by zero) and a
+        # subject too small in the frame to measure reliably.
+        raise NoPersonDetectedError("Subject too small in frame to measure.")
     return ImageScale(ratio=height_units / height_px, top=top, height_px=height_px)
 
 
@@ -62,8 +69,8 @@ def measure(
     settings: Settings,
 ) -> dict:
     """Return circumferences (in the height's unit) plus diagnostics."""
-    front = image_scale(front_mask, height_units)
-    side = image_scale(side_mask, height_units)
+    front = image_scale(front_mask, height_units, settings.min_person_height_px)
+    side = image_scale(side_mask, height_units, settings.min_person_height_px)
 
     # Waist & lower hip: solid torso -> full row width on both views.
     waist_rows = (_row_at(front, fractions.waist), _row_at(side, fractions.waist))

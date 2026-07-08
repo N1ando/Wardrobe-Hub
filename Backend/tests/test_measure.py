@@ -3,7 +3,9 @@
 import math
 
 import numpy as np
+import pytest
 
+from app.errors import NoPersonDetectedError
 from app.services.measure import circumference, image_scale
 from app.utils.imaging import single_leg_width_px, torso_width_px
 
@@ -15,6 +17,21 @@ def test_image_scale_ratio():
     assert scale.top == 10
     assert scale.height_px == 99
     assert math.isclose(scale.ratio, 100.0 / 99.0, rel_tol=1e-9)
+
+
+def test_image_scale_rejects_degenerate_mask():
+    # Single foreground row -> height_px == 0. Must not divide by zero.
+    mask = np.zeros((100, 50), dtype=np.uint8)
+    mask[10] = 255
+    with pytest.raises(NoPersonDetectedError):
+        image_scale(mask, height_units=70.0)
+
+
+def test_image_scale_rejects_too_small_subject():
+    mask = np.zeros((100, 50), dtype=np.uint8)
+    mask[10:25, 20:30] = 255  # 15 px tall < min_height_px
+    with pytest.raises(NoPersonDetectedError):
+        image_scale(mask, height_units=70.0, min_height_px=50)
 
 
 def test_circumference_matches_paper_formula():

@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+.DS_Store
+# Trained model weights (produced by app/models/train.py)
+*.pt
+*.pth
+*.onnx
+*.h5
+weights/

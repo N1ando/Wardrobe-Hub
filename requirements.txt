@@ -1,0 +1,19 @@
+# Web framework
+fastapi>=0.110
+uvicorn[standard]>=0.29
+pydantic>=2.6
+pydantic-settings>=2.2
+python-multipart>=0.0.9
+
+# Image processing
+opencv-python-headless>=4.9
+numpy>=1.26
+pillow>=10.2
+
+# NOTE: No pretrained-AI dependency. The default "threshold" backend is classical
+# Otsu (no ML). To use the "custom" backend, add your own training/inference
+# framework (e.g. torch or tensorflow) here once you build app/models/.
+
+# Tests
+pytest>=8.0
+httpx>=0.27

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { getRecommendation } from '../api'
+import { saveFitProfile } from '../fitProfile'
 
 export default function FitModal({ product, onClose }) {
   const [measurements, setMeasurements] = useState({
@@ -20,7 +21,7 @@ export default function FitModal({ product, onClose }) {
     e.preventDefault()
     setStatus('loading')
     try {
-      const data = await getRecommendation({
+      const payload = {
         product_id: product.id,
         fit_pref: fitPref,
         measurements: {
@@ -29,7 +30,9 @@ export default function FitModal({ product, onClose }) {
           hips: Number(measurements.hips),
           height: Number(measurements.height),
         },
-      })
+      }
+      const data = await getRecommendation(payload)
+      saveFitProfile({ measurements: payload.measurements, fitPref: payload.fit_pref })
       setResult(data)
       setStatus('done')
     } catch (err) {
@@ -106,10 +109,11 @@ function Field({ label, value, onChange }) {
 function ResultCard({ result, onReset }) {
   return (
     <div className="space-y-4">
-      <div className="text-center">
-        <div className="text-4xl font-bold">{result.recommended_size}</div>
-        <div className="text-gray-500">{result.confidence}% confidence</div>
-      </div>
+        <div className="text-center">
+            <ConfidenceRing confidence={result.confidence} />
+            <div className="text-4xl font-bold mt-2">{result.recommended_size}</div>
+            <div className="text-gray-500 text-sm">Recommended Size</div>
+        </div>
 
       <div className="space-y-2">
         {result.fit_breakdown.map((dim) => (
@@ -135,6 +139,31 @@ function ResultCard({ result, onReset }) {
       <button onClick={onReset} className="w-full border rounded py-2 font-semibold">
         Try Again
       </button>
+    </div>
+  )
+}
+
+function ConfidenceRing({ confidence }) {
+  const radius = 40
+  const circumference = 2 * Math.PI * radius
+  const offset = circumference - (confidence / 100) * circumference
+
+  return (
+    <div className="relative w-24 h-24 mx-auto">
+      <svg className="w-24 h-24 -rotate-90">
+        <circle cx="48" cy="48" r={radius} stroke="#E5E5E0" strokeWidth="6" fill="none" />
+        <circle
+          cx="48" cy="48" r={radius}
+          stroke="#2F5233" strokeWidth="6" fill="none"
+          strokeDasharray={circumference}
+          strokeDashoffset={offset}
+          strokeLinecap="round"
+          className="transition-all duration-700 ease-out"
+        />
+      </svg>
+      <div className="absolute inset-0 flex items-center justify-center font-display font-bold text-lg">
+        {confidence}%
+      </div>
     </div>
   )
 }

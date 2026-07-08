@@ -1,0 +1,37 @@
+{
+  "_comment": "Mock for GET /api/seller/products/1/risk (Classic White Shirt - MEDIUM risk: size chart is missing the sleeve column, which is also a top complaint area).",
+  "id": 1,
+  "name": "Classic White Shirt",
+  "risk_level": "medium",
+  "risk_score": 55,
+  "review_count": 51,
+  "complaint_count": 12,
+  "chart_completeness": 0.67,
+  "fit_distribution": { "pct_small": 0.06, "pct_tts": 0.76, "pct_large": 0.18 },
+  "complaint_areas": [
+    { "area": "waist", "pct": 0.4 },
+    { "area": "sleeve", "pct": 0.25 },
+    { "area": "chest", "pct": 0.2 },
+    { "area": "length", "pct": 0.15 }
+  ],
+  "required_fields": ["chest", "waist", "sleeve"],
+  "missing_fields": ["sleeve"],
+  "field_impact": {
+    "sleeve": "25% of fit complaints mention sleeve length - and the chart has no sleeve data for buyers to check"
+  },
+  "suggestions": [
+    "Add sleeve length per size to the chart - it is the only missing field and the #2 complaint area.",
+    "Describe the cut as \"relaxed through the body\" so slim-fit buyers size down or pick another style; 'boxy waist' is the #1 complaint.",
+    "18% of reviewers say it runs large - add a \"true to size, roomy fit\" guidance note to reduce returns."
+  ],
+  "quotes": [
+    { "text": "Sleeves came up short on me and there was no sleeve info in the chart to check", "verdict": "small", "size_bought": "L" },
+    { "text": "Fits like a tent around the waist, very boxy cut", "verdict": "large", "size_bought": "M" },
+    { "text": "Classic oxford, chest fits exactly like the chart says", "verdict": "tts", "size_bought": "M" }
+  ],
+  "analysis_meta": {
+    "reviews_processed": 175,
+    "seconds": null,
+    "backend": "Gemma on AMD MI300X (vLLM + ROCm)"
+  }
+}

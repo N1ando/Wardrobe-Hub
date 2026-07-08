@@ -1,0 +1,34 @@
+{
+  "_comment": "Mock for GET /api/seller/products/2/risk (Slim Fit Jeans - LOW risk benchmark product: complete chart, 82% true-to-size, only length grumbles).",
+  "id": 2,
+  "name": "Slim Fit Jeans",
+  "risk_level": "low",
+  "risk_score": 28,
+  "review_count": 64,
+  "complaint_count": 12,
+  "chart_completeness": 1.0,
+  "fit_distribution": { "pct_small": 0.1, "pct_tts": 0.82, "pct_large": 0.08 },
+  "complaint_areas": [
+    { "area": "inseam", "pct": 0.5 },
+    { "area": "waist", "pct": 0.3 },
+    { "area": "hips", "pct": 0.2 }
+  ],
+  "required_fields": ["waist", "hips", "inseam"],
+  "missing_fields": [],
+  "field_impact": {},
+  "suggestions": [
+    "Add a model-height / inseam guide - half of the (few) fit complaints reference leg length rather than size.",
+    "Keep the size chart as-is: 82% true-to-size with complete measurements is the store benchmark.",
+    "Add fabric stretch info to the listing - rigid denim surprises buyers who are used to stretch fits."
+  ],
+  "quotes": [
+    { "text": "Length is really long on me, had to cuff them twice", "verdict": "large", "size_bought": "30" },
+    { "text": "Waist is true to size, exactly what the chart said", "verdict": "tts", "size_bought": "31" },
+    { "text": "Great fit, took my usual size without thinking", "verdict": "tts", "size_bought": "32" }
+  ],
+  "analysis_meta": {
+    "reviews_processed": 175,
+    "seconds": null,
+    "backend": "Gemma on AMD MI300X (vLLM + ROCm)"
+  }
+}

@@ -37,3 +37,32 @@ export async function getRecommendation({ product_id, fit_pref, measurements }) 
 
   return MOCK_RESPONSE
 }
+
+// ---------------------------------------------------------------------------
+// Seller dashboard — mocks for GET /api/seller/overview and
+// GET /api/seller/products/:id/risk. Numbers trace back to the seeded
+// review_analysis data in the main repo (data/seed/products.json).
+// TODO: swap the bodies for real fetch() calls once backend is live;
+// the JSON shapes stay identical.
+// ---------------------------------------------------------------------------
+
+import sellerOverview from './mocks/seller_overview.json'
+import sellerRisk1 from './mocks/seller_risk_1.json'
+import sellerRisk2 from './mocks/seller_risk_2.json'
+import sellerRisk3 from './mocks/seller_risk_3.json'
+
+const RISK_MOCKS = { 1: sellerRisk1, 2: sellerRisk2, 3: sellerRisk3 }
+
+export async function getSellerOverview() {
+  await new Promise((resolve) => setTimeout(resolve, 600))
+  // Later: return (await fetch('http://localhost:8000/api/seller/overview')).json()
+  return sellerOverview
+}
+
+export async function getProductRisk(productId) {
+  await new Promise((resolve) => setTimeout(resolve, 600))
+  const risk = RISK_MOCKS[productId]
+  if (!risk) throw new Error(`No risk data for product ${productId}`)
+  // Later: return (await fetch(`http://localhost:8000/api/seller/products/${productId}/risk`)).json()
+  return risk
+}

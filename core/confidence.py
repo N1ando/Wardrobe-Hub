@@ -21,7 +21,8 @@ Only the Python standard library is used.
 from __future__ import annotations
 
 import math
-from typing import Any, Mapping
+from collections.abc import Mapping
+from typing import Any
 
 # Business floor/cap: never tell a shopper 0% or 100% certainty.
 CONFIDENCE_FLOOR = 35
@@ -58,9 +59,10 @@ def calculate_review_agreement(review_analysis: Mapping[str, Any] | None) -> flo
     Uses only the positive probabilities among pct_small/pct_tts/pct_large,
     normalizing them if they do not sum to 1. A single dominant opinion
     (e.g. pct_tts=1.0) gives agreement 1.0; a uniform three-way split gives
-    0.0. Missing or all-zero data returns the neutral 0.5.
+    0.0. Missing, malformed (non-mapping), or all-zero data returns the
+    neutral 0.5.
     """
-    if review_analysis is None:
+    if not isinstance(review_analysis, Mapping):
         return NEUTRAL_REVIEW_AGREEMENT
 
     probs = []

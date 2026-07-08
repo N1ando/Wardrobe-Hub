@@ -26,8 +26,9 @@ from __future__ import annotations
 
 import json
 import math
+from collections.abc import Mapping
 from dataclasses import dataclass
-from typing import Any, Literal, Mapping, TypedDict
+from typing import Any, Literal, TypedDict
 
 from core.confidence import (
     calculate_confidence,
@@ -319,10 +320,28 @@ def recommend_size(
 ) -> dict[str, Any]:
     """Recommend a size from the product's chart for the given body.
 
-    Deterministic: same inputs always give the same output. Raises
-    ValueError if the product has no size chart or an unsupported
-    category. The returned dict is fully JSON-serializable.
+    Deterministic: same inputs always give the same output. The returned
+    dict is fully JSON-serializable.
+
+    Error contract — ValueError is the ONLY exception raised for bad
+    input, so the backend can map it to a single HTTP error response:
+    * product or body_measurements is not a mapping
+    * unsupported/missing product category
+    * size_chart missing, empty, or containing non-object rows
+    review_analysis is optional enrichment: if it has the wrong shape it
+    is treated as absent (no review signal) rather than raising.
     """
+    if not isinstance(product, Mapping):
+        raise ValueError(
+            f"product must be a mapping, got {type(product).__name__}"
+        )
+    if not isinstance(body_measurements, Mapping):
+        raise ValueError(
+            f"body_measurements must be a mapping, got {type(body_measurements).__name__}"
+        )
+    if review_analysis is not None and not isinstance(review_analysis, Mapping):
+        review_analysis = None
+
     category = _normalize_category(product.get("category"))
     pref = _normalize_fit_pref(fit_pref)
 
@@ -347,6 +366,11 @@ def recommend_size(
     base_scores: list[float] = []
     breakdowns: list[list[DimensionResult]] = []
     for index, entry in enumerate(size_chart):
+        if not isinstance(entry, Mapping):
+            raise ValueError(
+                f"size_chart entry {index} for product {product.get('id')!r} "
+                f"is not an object: {entry!r}"
+            )
         labels.append(_size_label(entry, index))
         score, dims = _score_size(entry, body_measurements, category, pref, stretch_pct)
         base_scores.append(score)

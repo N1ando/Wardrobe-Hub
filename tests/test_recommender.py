@@ -244,9 +244,44 @@ def test_missing_size_chart_raises():
         recommend_size(no_chart, PANTS_BODY)
 
 
+# 13. Non-mapping product / body_measurements raise ValueError, not
+# AttributeError, so the backend's single ValueError handler catches them.
+def test_non_mapping_inputs_raise_value_error():
+    with pytest.raises(ValueError, match="product"):
+        recommend_size(None, PANTS_BODY)
+    with pytest.raises(ValueError, match="body_measurements"):
+        recommend_size(PANTS, None)
+
+
+# 14. Non-object rows inside size_chart raise ValueError with the row index.
+# This is the path the LLM size-chart parser feeds, so it must never leak
+# an AttributeError.
+def test_malformed_size_chart_rows_raise():
+    bad_charts = (
+        ["S", "M"],
+        [None],
+        [42],
+        [{"size_label": "30", "waist": 80}, "M"],  # one good row, one junk
+    )
+    for chart in bad_charts:
+        with pytest.raises(ValueError, match="size_chart"):
+            recommend_size(dict(PANTS, size_chart=chart), PANTS_BODY)
+
+
+# 15. review_analysis is optional enrichment: a malformed (non-mapping)
+# value degrades to "no review data" instead of failing the recommendation.
+def test_malformed_review_analysis_treated_as_absent():
+    baseline = recommend_size(PANTS, PANTS_BODY, "regular", None)
+    for junk in ([], "runs small", 0.4):
+        result = recommend_size(PANTS, PANTS_BODY, "regular", junk)
+        assert result == baseline
+        assert result["review_signal"] is None
+
+
 # Extra guards: review agreement math and invalid fit_pref defaulting.
 def test_review_agreement_neutral_and_unanimous():
     assert calculate_review_agreement(None) == 0.5
+    assert calculate_review_agreement(["not", "a", "mapping"]) == 0.5
     assert calculate_review_agreement({"pct_small": 0, "pct_large": 0, "pct_tts": 0}) == 0.5
     assert calculate_review_agreement({"pct_tts": 1.0}) == 1.0
     split = calculate_review_agreement(

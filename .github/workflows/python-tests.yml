@@ -52,3 +52,45 @@ jobs:
           python -m core.recommender > /tmp/recommender_demo.json
           python -m json.tool /tmp/recommender_demo.json > /dev/null
           echo "Recommender demo JSON check passed"
+
+  backend-test:
+    name: Backend API tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          # 3.12 on purpose: matches the python:3.12-slim base image in
+          # backend/Dockerfile, so CI tests the runtime that actually ships.
+          python-version: "3.12"
+
+      - name: Install backend dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Run backend test suite
+        run: python -m pytest -q
+
+      - name: Smoke - seeded API boots and serves the golden path
+        run: |
+          python -m scripts.seed
+          python -m scripts.ingest_analysis
+          uvicorn app.main:app --port 8000 &
+          for i in $(seq 1 30); do
+            curl -sf http://127.0.0.1:8000/health > /dev/null && break
+            sleep 1
+          done
+          curl -sf http://127.0.0.1:8000/api/products | python -m json.tool > /dev/null
+          curl -sf -X POST http://127.0.0.1:8000/api/recommend \
+            -H "Content-Type: application/json" \
+            -d '{"product_id": 2, "fit_pref": "regular", "measurements": {"waist": 80, "hips": 96, "inseam": 84}}' \
+            | python -m json.tool
+          echo "Backend golden-path smoke passed"

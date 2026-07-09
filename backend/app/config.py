@@ -11,7 +11,7 @@ from pathlib import Path
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-# Repo layout: <repo>/Backend/app/config.py  -> BACKEND_DIR = <repo>/Backend
+# Repo layout: <repo>/backend/app/config.py  -> BACKEND_DIR = <repo>/backend
 BACKEND_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BACKEND_DIR / "data"
 SEED_DIR = DATA_DIR / "seed"

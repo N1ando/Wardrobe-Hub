@@ -1,6 +1,6 @@
-"""Load seed products, size charts, and reviews into SQLite.
+﻿"""Load seed products, size charts, and reviews into SQLite.
 
-    python -m scripts.seed          # from the Backend/ directory
+    python -m scripts.seed          # from the backend/ directory
 
 Idempotent: drops and recreates FitOS tables, then loads data/seed/*.json.
 """
@@ -11,7 +11,7 @@ import json
 import sys
 from pathlib import Path
 
-# Allow running as a script from Backend/ without installing the package.
+# Allow running as a script from backend/ without installing the package.
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from app.config import get_settings  # noqa: E402

@@ -4,7 +4,7 @@
 # placeholder for the frontend team to fill in.
 services:
   api:
-    build: ./Backend
+    build: ./backend
     ports:
       - "8000:8000"
     env_file:

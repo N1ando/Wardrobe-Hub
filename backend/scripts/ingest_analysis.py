@@ -1,6 +1,6 @@
-"""Pre-run the Gemma review-mining batch and cache results in SQLite.
+﻿"""Pre-run the Gemma review-mining batch and cache results in SQLite.
 
-    python -m scripts.ingest_analysis        # from the Backend/ directory
+    python -m scripts.ingest_analysis        # from the backend/ directory
 
 Run this before the demo so the seller dashboard + review shift bias are warm
 without any live LLM calls. Uses the AMD vLLM / Fireworks / keyword fallback

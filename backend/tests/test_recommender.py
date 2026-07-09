@@ -116,3 +116,12 @@ def test_empty_chart_is_low_confidence():
     result = recommend(category="shirt", size_chart=[], measurements={"chest": 95})
     assert result["low_confidence"] is True
     assert result["confidence"] == 35
+
+
+def test_empty_measurements_flag_low_confidence():
+    # No usable body measurements: the engine still answers (floor confidence),
+    # but must self-identify as low confidence so the UI can render the
+    # "add your measurements" state instead of a normal result card.
+    result = recommend(category="jeans", size_chart=CHARTS[2], measurements={})
+    assert result["confidence"] <= 60
+    assert result["low_confidence"] is True

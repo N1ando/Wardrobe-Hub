@@ -205,5 +205,8 @@ def recommend(
         "review_signal": review_signal,
         "material_note": material_note,
         "missing_fields": missing,
-        "low_confidence": completeness < 0.5,
+        # Low both when the chart is too sparse AND when the overall confidence
+        # is weak (e.g. the shopper supplied no usable measurements): a floor-35
+        # answer must never render as a normal, trustworthy-looking result.
+        "low_confidence": completeness < 0.5 or confidence < 60,
     }

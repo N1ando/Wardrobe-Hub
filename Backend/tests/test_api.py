@@ -1,72 +1,99 @@
-"""End-to-end API tests using synthetic silhouettes + the threshold backend."""
+"""Endpoint contract tests against a seeded DB (plan Section 3)."""
 
-from tests.synthetic import front_array, side_array, to_png
-
-
-def _files():
-    return {
-        "front": ("front.png", to_png(front_array()), "image/png"),
-        "side": ("side.png", to_png(side_array()), "image/png"),
-    }
+from __future__ import annotations
 
 
 def test_health(client):
-    resp = client.get("/health")
-    assert resp.status_code == 200
-    assert resp.json() == {"status": "ok"}
+    r = client.get("/health")
+    assert r.status_code == 200
+    body = r.json()
+    assert body["status"] == "ok"
+    assert body["gemma_backend"] in ("amd-vllm", "fireworks", "cache", "template")
 
 
-def test_measurements_happy_path(client):
-    resp = client.post(
-        "/api/v1/measurements",
-        data={"height_value": "70", "height_unit": "in"},
-        files=_files(),
-    )
-    assert resp.status_code == 200, resp.text
-    body = resp.json()
-    assert body["unit"] == "in"
-    assert body["height"] == 70.0
-
-    m = body["measurements"]
-    # All three circumferences present, positive, and physically ordered
-    # (hip widest, thigh smallest) for this figure.
-    assert m["waist"] > 0 and m["low_hip"] > 0 and m["thigh"] > 0
-    assert m["low_hip"] > m["thigh"]
-    assert body["diagnostics"] is None
+def test_list_products(client):
+    r = client.get("/api/products")
+    assert r.status_code == 200
+    products = r.json()
+    assert len(products) == 3
+    assert {p["category"] for p in products} == {"shirt", "jeans", "dress"}
 
 
-def test_debug_returns_overlays(client):
-    resp = client.post(
-        "/api/v1/measurements",
-        data={"height_value": "70", "height_unit": "in", "debug": "true"},
-        files=_files(),
-    )
-    assert resp.status_code == 200, resp.text
-    diag = resp.json()["diagnostics"]
-    assert diag is not None
-    assert "overlays" in diag
-    assert diag["overlays"]["front"] and diag["overlays"]["side"]
-    # Front and side each get their own pixel-to-unit ratio.
-    assert diag["front"]["ratio"] > 0 and diag["side"]["ratio"] > 0
+def test_product_detail_has_chart_and_reviews(client):
+    r = client.get("/api/products/3")
+    assert r.status_code == 200
+    detail = r.json()
+    assert detail["name"] == "Floral Wrap Dress"
+    assert len(detail["size_chart"]) == 4
+    assert detail["review_summary"]["reviews_analyzed"] == 8
+    assert detail["review_summary"]["pct_small"] > 0.5  # planted runs-small cluster
 
 
-def test_rejects_implausible_height(client):
-    resp = client.post(
-        "/api/v1/measurements",
-        data={"height_value": "5", "height_unit": "in"},  # ~12.7 cm
-        files=_files(),
-    )
-    assert resp.status_code == 422
+def test_product_detail_404(client):
+    assert client.get("/api/products/999").status_code == 404
 
 
-def test_rejects_non_image_upload(client):
-    files = {
-        "front": ("front.txt", b"not an image", "text/plain"),
-        "side": ("side.png", to_png(side_array()), "image/png"),
-    }
-    resp = client.post(
-        "/api/v1/measurements",
-        data={"height_value": "70", "height_unit": "in"},
-        files=files,
-    )
-    assert resp.status_code == 422
+def test_recommend_jeans(client):
+    r = client.post("/api/recommend", json={
+        "product_id": 2, "fit_pref": "regular",
+        "measurements": {"waist": 80, "hips": 96, "inseam": 84},
+    })
+    assert r.status_code == 200
+    body = r.json()
+    assert body["recommended_size"] == "32"
+    assert 35 <= body["confidence"] <= 96
+    assert body["fit_breakdown"]
+
+
+def test_recommend_dress_applies_review_signal(client):
+    r = client.post("/api/recommend", json={
+        "product_id": 3, "fit_pref": "regular",
+        "measurements": {"bust": 90, "waist": 72},
+    })
+    body = r.json()
+    assert body["review_signal"]["pct_small"] > 0.5
+    assert "hips" in body["missing_fields"]
+
+
+def test_recommend_404(client):
+    r = client.post("/api/recommend", json={
+        "product_id": 999, "fit_pref": "regular", "measurements": {"chest": 95},
+    })
+    assert r.status_code == 404
+
+
+def test_explain_returns_text_and_source(client):
+    rec = client.post("/api/recommend", json={
+        "product_id": 1, "fit_pref": "regular",
+        "measurements": {"chest": 100, "waist": 90},
+    }).json()
+    r = client.post("/api/explain", json={"recommendation": rec, "product_name": "Classic Oxford Shirt"})
+    assert r.status_code == 200
+    body = r.json()
+    assert body["explanation"]
+    assert body["source"] in ("amd-vllm", "fireworks", "cache", "template")
+
+
+def test_seller_overview(client):
+    r = client.get("/api/seller/overview")
+    assert r.status_code == 200
+    rows = r.json()["products"]
+    assert len(rows) == 3
+    dress = next(p for p in rows if p["product_id"] == 3)
+    assert dress["risk_level"] in ("medium", "high")
+    assert "hips" in dress["missing_fields"]
+
+
+def test_seller_product_risk_has_suggestions(client):
+    r = client.get("/api/seller/products/3/risk")
+    assert r.status_code == 200
+    body = r.json()
+    assert body["suggestions"]
+    assert body["complaint_clusters"]
+
+
+def test_analyze_reviews_endpoint(client):
+    r = client.post("/api/ai/analyze-reviews", json={"product_id": 3})
+    assert r.status_code == 200
+    analyzed = r.json()["analyzed"]
+    assert analyzed[0]["reviews_analyzed"] == 8

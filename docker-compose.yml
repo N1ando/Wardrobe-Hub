@@ -1,0 +1,21 @@
+# FitOS stack. `cp .env.example .env && docker compose up` boots the backend
+# demo-ready: the image is built with a seeded SQLite DB + pre-mined reviews, so
+# the API serves real data on first request. The frontend service is a
+# placeholder for the frontend team to fill in.
+services:
+  api:
+    build: ./Backend
+    ports:
+      - "8000:8000"
+    env_file:
+      # Optional: works offline without an .env (falls back to keyword mining +
+      # template explanations). Provide keys to enable AMD vLLM / Fireworks.
+      - path: .env
+        required: false
+
+  # web:
+  #   build: ./frontend
+  #   ports:
+  #     - "5173:5173"
+  #   depends_on:
+  #     - api

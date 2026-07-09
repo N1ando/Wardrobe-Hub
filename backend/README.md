@@ -72,14 +72,17 @@ and `missing_fields`.
 
 ## Recommendation engine
 
-- `app/core/ease_bands.py` — per-garment ease bands + dimension weights.
-- `app/core/recommender.py` — ease → per-dimension score → weighted size score,
-  material/stretch adjustment, review shift bias (never more than one size).
-- `app/core/confidence.py` — confidence from best score, margin, data
-  completeness, and review agreement.
+The engine is the **repo-root `core/` package** — shared with the persona CLI
+and the root test suite, imported directly by the backend (single source of
+truth; see `app/routers/recommend.py` for the thin adapter). The served
+response is exactly `docs/recommendation_contract.md`.
 
-The engine is pure Python (no framework/DB deps) and is pinned by the persona
-suite in `tests/test_recommender.py`.
+- `app/core/fields.py` — the only backend-local piece: which DB chart columns
+  each garment category needs (drives seller completeness checks). Note dress
+  bust is stored in the `chest` column; the adapter maps it for the engine.
+
+The adapter + demo personas are pinned by `tests/test_recommender.py`; engine
+internals are covered by the root suite (`tests/` at the repo root).
 
 ## Tests
 
@@ -95,7 +98,7 @@ app/
   config.py            settings (DB, Gemma/AMD/Fireworks)
   db.py, models.py     SQLAlchemy engine + ORM (products, size_charts, reviews, ...)
   schemas.py           request/response contract
-  core/                recommender, confidence, ease_bands  (deterministic engine)
+  core/                fields.py only — the engine itself is repo-root core/
   ai/                  gemma_client (fallback ladder), prompts, batch_analysis
   routers/             products, recommend, explain, seller, ai
 data/seed/             products.json, size_charts.json, reviews.json

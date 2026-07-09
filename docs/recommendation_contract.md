@@ -2,6 +2,12 @@
 
 **This document + [recommend_response.example.json](recommend_response.example.json) are the frozen contract** for the recommendation payload. Frontend (P2/P3) builds against this, backend (P4) returns it verbatim from `POST /api/recommend`. If the shape must change, change it here first and tell everyone.
 
+> **Live since the engine-unification PR:** `POST /api/recommend` serves exactly this
+> shape. Request body: `{"product_id": <int>, "fit_pref": "slim|regular|relaxed",
+> "measurements": {"chest|bust|waist|hips|inseam|sleeve|height": <cm>}}`.
+> Unknown product → 404; invalid product data → 422. The backend imports the
+> repo-root `core` package directly — there is exactly one engine.
+
 ## Producing a recommendation
 
 ```python

@@ -70,21 +70,37 @@ class RecommendRequest(BaseModel):
     measurements: Measurements
 
 
+# The response shape below IS docs/recommendation_contract.md — the engine's
+# output passes through unchanged. Change the doc first if this must change.
+
+
 class FitBreakdownItem(BaseModel):
     dim: str
     garment: Optional[float] = None
     body: Optional[float] = None
-    ease: Optional[float] = None
+    raw_ease: Optional[float] = None        # garment - body
+    effective_ease: Optional[float] = None  # raw_ease + stretch credit
+    scoring_ease: Optional[float] = None    # what was actually scored
+    ideal_band: list[float] = Field(default_factory=list)  # [low, high] cm
     verdict: str  # ideal | tight | loose | missing_data
     score: Optional[float] = None
+    weight: float = 0.0
+
+
+class SizeScore(BaseModel):
+    size: str
+    base_score: float
+    review_bonus: float
+    adjusted_score: float
 
 
 class ReviewSignal(BaseModel):
-    pct_small: float = 0.0
-    pct_tts: float = 0.0
-    pct_large: float = 0.0
-    caveat: Optional[str] = None
+    pct_small: Optional[float] = None
+    pct_tts: Optional[float] = None
+    pct_large: Optional[float] = None
+    bias_direction: str = "none"  # up | down | none
     applied_shift_bias: bool = False
+    caveat: Optional[str] = None
 
 
 class RunnerUp(BaseModel):
@@ -94,13 +110,15 @@ class RunnerUp(BaseModel):
 
 class RecommendResponse(BaseModel):
     recommended_size: str
-    confidence: int
+    confidence: int  # 35-96 by design
+    confidence_level: str  # low | medium | high
     runner_up: Optional[RunnerUp] = None
+    size_scores: list[SizeScore] = Field(default_factory=list)
     fit_breakdown: list[FitBreakdownItem] = Field(default_factory=list)
     review_signal: Optional[ReviewSignal] = None
-    material_note: Optional[str] = None
+    material_note: str = ""
     missing_fields: list[str] = Field(default_factory=list)
-    low_confidence: bool = False
+    debug: dict = Field(default_factory=dict)
 
 
 # ---- Explain ----------------------------------------------------------------

@@ -6,7 +6,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
 from app.ai.batch_analysis import suggest_seller_fixes
-from app.core.ease_bands import chart_fields_for_category
+from app.core.fields import chart_fields_for_category
 from app.db import get_db
 from app.models import Product, Review, ReviewAnalysis
 from app.schemas import (

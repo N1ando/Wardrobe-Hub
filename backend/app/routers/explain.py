@@ -15,16 +15,16 @@ def _template_explanation(rec: dict) -> str:
     """Deterministic fallback so the demo never stalls without an LLM."""
     size = rec.get("recommended_size", "?")
     conf = rec.get("confidence", 0)
-    # Strongest reason = the highest-scoring ideal dimension.
+    # Strongest reason = the heaviest-weighted dimension that fits ideally.
     reason = ""
     ideal = [b for b in rec.get("fit_breakdown", []) if b.get("verdict") == "ideal"]
     if ideal:
-        top = ideal[0]
-        reason = f" Your {top['dim']} fits with about {top.get('ease')}cm of ease"
+        top = max(ideal, key=lambda b: b.get("weight") or 0.0)
+        reason = f" Your {top['dim']} fits with about {top.get('raw_ease')}cm of ease"
     caveat = ""
     sig = rec.get("review_signal") or {}
     if sig.get("caveat"):
-        caveat = f" Heads up: reviewers say it {sig['caveat']}."
+        caveat = f" Heads up: {sig['caveat']}"  # caveat is a full sentence
     return f"We recommend size {size} ({conf}% confidence).{reason}.{caveat}".replace("..", ".")
 
 

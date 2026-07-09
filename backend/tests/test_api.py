@@ -36,13 +36,17 @@ def test_product_detail_404(client):
 def test_recommend_jeans(client):
     r = client.post("/api/recommend", json={
         "product_id": 2, "fit_pref": "regular",
-        "measurements": {"waist": 80, "hips": 96, "inseam": 84},
+        "measurements": {"waist": 79, "hips": 92, "inseam": 85},
     })
     assert r.status_code == 200
     body = r.json()
     assert body["recommended_size"] == "32"
     assert 35 <= body["confidence"] <= 96
+    assert body["confidence_level"] in ("low", "medium", "high")
     assert body["fit_breakdown"]
+    # Contract shape: the breakdown speaks raw/effective/scoring ease.
+    dims = body["fit_breakdown"][0]
+    assert "raw_ease" in dims and "ideal_band" in dims and "weight" in dims
 
 
 def test_recommend_dress_applies_review_signal(client):

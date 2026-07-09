@@ -119,14 +119,36 @@ class ExplainResponse(BaseModel):
 # ---- Seller -----------------------------------------------------------------
 
 
+class FitDistribution(BaseModel):
+    """Share of mined review verdicts; drives the dashboard's stacked bar."""
+
+    pct_small: float = 0.0
+    pct_tts: float = 0.0
+    pct_large: float = 0.0
+
+
+class QuoteItem(BaseModel):
+    """A mined review quote — the proof that dashboard numbers come from
+    real review text, not invented percentages."""
+
+    text: str
+    verdict: str  # small | large | tts
+    size_bought: Optional[str] = None
+
+
 class SellerRiskRow(BaseModel):
     product_id: int
     name: str
     category: str
+    image_url: Optional[str] = None
     risk_level: str  # low | medium | high
     risk_score: int  # 0-100
     missing_fields: list[str] = Field(default_factory=list)
     fit_complaint_pct: float = 0.0
+    review_count: int = 0
+    complaint_count: int = 0
+    chart_completeness: float = 1.0
+    fit_distribution: FitDistribution = Field(default_factory=FitDistribution)
 
 
 class SellerOverview(BaseModel):
@@ -137,12 +159,18 @@ class SellerOverview(BaseModel):
 class SellerProductRisk(BaseModel):
     product_id: int
     name: str
+    image_url: Optional[str] = None
     risk_level: str
     risk_score: int
     missing_fields: list[str] = Field(default_factory=list)
     complaint_clusters: list[dict] = Field(default_factory=list)  # [{"area":..,"count":..}]
     review_summary: ReviewSummary
     suggestions: list[str] = Field(default_factory=list)
+    review_count: int = 0
+    complaint_count: int = 0
+    chart_completeness: float = 1.0
+    fit_distribution: FitDistribution = Field(default_factory=FitDistribution)
+    quotes: list[QuoteItem] = Field(default_factory=list)
 
 
 # ---- Health -----------------------------------------------------------------

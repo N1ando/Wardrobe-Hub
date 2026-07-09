@@ -1,6 +1,5 @@
 const MOCK_RESPONSES = {
   1: {
-    // Shirt
     recommended_size: "M",
     confidence: 82,
     runner_up: { size: "L", score: 0.68 },
@@ -15,12 +14,12 @@ const MOCK_RESPONSES = {
       pct_large: 0.13,
       caveat: "true to size overall",
       applied_shift_bias: false,
+      caveat_review_ids: [1],
     },
     material_note: "2% elastane — minimal stretch",
     missing_fields: ["sleeve"],
   },
   2: {
-    // Jeans
     recommended_size: "L",
     confidence: 87,
     runner_up: { size: "M", score: 0.71 },
@@ -33,14 +32,14 @@ const MOCK_RESPONSES = {
       pct_small: 0.30,
       pct_tts: 0.58,
       pct_large: 0.12,
-      caveat: "runs small in shoulders",
+      caveat: "runs small in the waist",
       applied_shift_bias: true,
+      caveat_review_ids: [2],
     },
     material_note: "3% elastane — slight stretch accommodates chest",
     missing_fields: ["sleeve"],
   },
   3: {
-    // Dress
     recommended_size: "S",
     confidence: 79,
     runner_up: { size: "M", score: 0.65 },
@@ -55,6 +54,7 @@ const MOCK_RESPONSES = {
       pct_large: 0.15,
       caveat: "runs small — consider sizing up",
       applied_shift_bias: true,
+      caveat_review_ids: [2],
     },
     material_note: "5% elastane — some stretch, but runs snug",
     missing_fields: [],

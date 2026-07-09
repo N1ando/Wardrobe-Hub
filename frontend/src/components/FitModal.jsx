@@ -2,15 +2,12 @@ import { useState } from 'react'
 import { getRecommendation } from '../api'
 import { saveFitProfile } from '../fitProfile'
 
-export default function FitModal({ product, onClose }) {
+export default function FitModal({ product, onClose, onViewReviews }) {
   const [measurements, setMeasurements] = useState({
-    chest: '',
-    waist: '',
-    hips: '',
-    height: '',
+    chest: '', waist: '', hips: '', height: '',
   })
   const [fitPref, setFitPref] = useState('regular')
-  const [status, setStatus] = useState('idle') // idle | loading | done | error
+  const [status, setStatus] = useState('idle')
   const [result, setResult] = useState(null)
 
   function handleChange(field, value) {
@@ -42,13 +39,11 @@ export default function FitModal({ product, onClose }) {
   }
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg max-w-md w-full p-6 max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 bg-ink/50 flex items-center justify-center z-50 p-4">
+      <div className="bg-surface rounded-xl max-w-md w-full p-6 max-h-[90vh] overflow-y-auto">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-bold">Find My Size</h2>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-700 text-2xl leading-none">
-            &times;
-          </button>
+          <h2 className="font-display text-xl font-bold text-ink">Find My Size</h2>
+          <button onClick={onClose} className="text-muted hover:text-ink text-2xl leading-none">&times;</button>
         </div>
 
         {status === 'idle' || status === 'loading' ? (
@@ -59,30 +54,28 @@ export default function FitModal({ product, onClose }) {
               <Field label="Hips (cm)" value={measurements.hips} onChange={(v) => handleChange('hips', v)} />
               <Field label="Height (cm)" value={measurements.height} onChange={(v) => handleChange('height', v)} />
             </div>
-
             <div>
-              <label className="block text-sm font-medium mb-1">Fit Preference</label>
+              <label className="block text-sm font-medium text-ink mb-1">Fit Preference</label>
               <select
                 value={fitPref}
                 onChange={(e) => setFitPref(e.target.value)}
-                className="w-full border rounded px-3 py-2"
+                className="w-full border border-ink/20 rounded-lg px-3 py-2"
               >
                 <option value="slim">Slim</option>
                 <option value="regular">Regular</option>
                 <option value="relaxed">Relaxed</option>
               </select>
             </div>
-
             <button
               type="submit"
               disabled={status === 'loading'}
-              className="w-full bg-black text-white rounded py-2 font-semibold disabled:opacity-50"
+              className="w-full bg-ink text-white rounded-lg py-2.5 font-medium disabled:opacity-50"
             >
               {status === 'loading' ? 'Analyzing...' : 'Get My Size'}
             </button>
           </form>
         ) : status === 'done' ? (
-          <ResultCard result={result} onReset={() => setStatus('idle')} />
+          <ResultCard result={result} onReset={() => setStatus('idle')} onViewReviews={onViewReviews} onClose={onClose} />
         ) : (
           <div className="text-red-600">Something went wrong. Please try again.</div>
         )}
@@ -94,51 +87,97 @@ export default function FitModal({ product, onClose }) {
 function Field({ label, value, onChange }) {
   return (
     <div>
-      <label className="block text-sm font-medium mb-1">{label}</label>
+      <label className="block text-sm font-medium text-ink mb-1">{label}</label>
       <input
         type="number"
         value={value}
         onChange={(e) => onChange(e.target.value)}
         required
-        className="w-full border rounded px-3 py-2"
+        className="w-full border border-ink/20 rounded-lg px-3 py-2"
       />
     </div>
   )
 }
 
-function ResultCard({ result, onReset }) {
+function ResultCard({ result, onReset, onViewReviews, onClose }) {
   return (
     <div className="space-y-4">
-        <div className="text-center">
-            <ConfidenceRing confidence={result.confidence} />
-            <div className="text-4xl font-bold mt-2">{result.recommended_size}</div>
-            <div className="text-gray-500 text-sm">Recommended Size</div>
-        </div>
+      <div className="text-center">
+        <ConfidenceRing confidence={result.confidence} />
+        <div className="font-display text-3xl font-bold text-ink mt-2">{result.recommended_size}</div>
+        <div className="text-muted text-sm">Recommended Size</div>
+      </div>
 
-      <div className="space-y-2">
+      <div className="space-y-3">
         {result.fit_breakdown.map((dim) => (
-          <div key={dim.dim} className="flex justify-between text-sm border-b pb-1">
-            <span className="capitalize">{dim.dim}</span>
-            <span className="text-gray-600">
-              {dim.verdict === 'missing_data' ? 'No data' : `${dim.verdict} (ease ${dim.ease}cm)`}
-            </span>
-          </div>
+          <FitBar key={dim.dim} dim={dim} />
         ))}
       </div>
 
       {result.review_signal?.caveat && (
-        <div className="bg-yellow-50 border border-yellow-200 rounded p-3 text-sm">
-          ⚠️ {result.review_signal.caveat} ({Math.round(result.review_signal.pct_small * 100)}% of reviewers)
-        </div>
+        <button
+          onClick={() => {
+            onClose()
+            onViewReviews?.(result.review_signal.caveat_review_ids || [])
+          }}
+          className="w-full text-left bg-caution/10 border border-caution/30 rounded-lg p-3 text-sm hover:bg-caution/15 transition-colors"
+        >
+          <span className="text-caution font-medium">⚠ {result.review_signal.caveat}</span>
+          <span className="text-muted"> — {Math.round(result.review_signal.pct_small * 100)}% of reviewers. Tap to see reviews →</span>
+        </button>
       )}
 
       {result.material_note && (
-        <div className="text-sm text-gray-500">{result.material_note}</div>
+        <div className="text-sm text-muted">{result.material_note}</div>
       )}
 
-      <button onClick={onReset} className="w-full border rounded py-2 font-semibold">
+      <button onClick={onReset} className="w-full border border-ink/20 rounded-lg py-2.5 font-medium text-ink">
         Try Again
       </button>
+    </div>
+  )
+}
+
+// Tight ↔ Loose visual bar per dimension
+function FitBar({ dim }) {
+  if (dim.verdict === 'missing_data') {
+    return (
+      <div>
+        <div className="flex justify-between text-sm mb-1">
+          <span className="capitalize text-ink">{dim.dim}</span>
+          <span className="text-muted">No data</span>
+        </div>
+        <div className="h-2 bg-ink/10 rounded-full" />
+      </div>
+    )
+  }
+
+  // Map ease (cm) to a 0-100 position on a tight <-> loose scale.
+  // Assume -6cm to +16cm is the visible range; clamp outside that.
+  const min = -6, max = 16
+  const clamped = Math.max(min, Math.min(max, dim.ease))
+  const position = ((clamped - min) / (max - min)) * 100
+
+  const verdictColor =
+    dim.verdict === 'ideal' ? 'bg-accent' :
+    dim.verdict === 'tight' ? 'bg-caution' : 'bg-ink/40'
+
+  return (
+    <div>
+      <div className="flex justify-between text-sm mb-1">
+        <span className="capitalize text-ink">{dim.dim}</span>
+        <span className="text-muted capitalize">{dim.verdict} · ease {dim.ease}cm</span>
+      </div>
+      <div className="relative h-2 bg-ink/10 rounded-full">
+        <div
+          className={`absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full ${verdictColor}`}
+          style={{ left: `calc(${position}% - 6px)` }}
+        />
+      </div>
+      <div className="flex justify-between text-[10px] text-muted/70 mt-0.5">
+        <span>Tight</span>
+        <span>Loose</span>
+      </div>
     </div>
   )
 }
@@ -161,7 +200,7 @@ function ConfidenceRing({ confidence }) {
           className="transition-all duration-700 ease-out"
         />
       </svg>
-      <div className="absolute inset-0 flex items-center justify-center font-display font-bold text-lg">
+      <div className="absolute inset-0 flex items-center justify-center font-display font-bold text-lg text-ink">
         {confidence}%
       </div>
     </div>

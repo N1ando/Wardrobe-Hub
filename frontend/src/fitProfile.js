@@ -1,4 +1,4 @@
-const STORAGE_KEY = "fitos_profile"
+const STORAGE_KEY = "wardrobehub_profile"
 
 export function saveFitProfile({ measurements, fitPref }) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify({ measurements, fitPref }))

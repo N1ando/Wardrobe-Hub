@@ -3,7 +3,7 @@
     "product_id": "jeans_001",
     "total_reviews": 3,
     "pct_small": 0.3333,
-    "pct_large": 0.3333,
+    "pct_large": 0.0,
     "pct_tts": 0.3333,
     "top_issues_json": [
       {
@@ -25,19 +25,21 @@
         ],
         "severity": 2,
         "quote": "The waist is a bit tight but the denim quality is good. I should have sized up.",
+        "backend": "local",
         "rating": 4,
         "size_bought": "31"
       },
       {
         "product_id": "jeans_001",
         "text": "Length runs long and the waist feels snug.",
-        "fit_verdict": "large",
+        "fit_verdict": "none",
         "areas": [
           "waist",
           "length"
         ],
-        "severity": 2,
+        "severity": 1,
         "quote": "Length runs long and the waist feels snug.",
+        "backend": "local",
         "rating": 3,
         "size_bought": "30"
       },
@@ -48,13 +50,13 @@
         "areas": [],
         "severity": 1,
         "quote": "Fits well and feels true to size.",
+        "backend": "local",
         "rating": 5,
         "size_bought": "32"
       }
     ],
     "analysis_mode": "local",
-    "updated_at": "2026-07-09T16:14:13.352812+00:00",
-    "notes": "Local deterministic placeholder. Replace classifier with AMD vLLM/Gemma when final model endpoint is available."
+    "updated_at": "2026-07-09T18:21:42.668338+00:00"
   },
   {
     "product_id": "shirt_001",
@@ -83,6 +85,7 @@
         ],
         "severity": 2,
         "quote": "Chest fits well but the shoulders are slightly tight.",
+        "backend": "local",
         "rating": 4,
         "size_bought": "M"
       },
@@ -93,13 +96,13 @@
         "areas": [],
         "severity": 1,
         "quote": "Perfect fit, true to size, comfortable material.",
+        "backend": "local",
         "rating": 5,
         "size_bought": "L"
       }
     ],
     "analysis_mode": "local",
-    "updated_at": "2026-07-09T16:14:13.352812+00:00",
-    "notes": "Local deterministic placeholder. Replace classifier with AMD vLLM/Gemma when final model endpoint is available."
+    "updated_at": "2026-07-09T18:21:42.668338+00:00"
   },
   {
     "product_id": "dress_001",
@@ -132,6 +135,7 @@
         ],
         "severity": 2,
         "quote": "Runs small around the bust and hips. Size up if you want a relaxed fit.",
+        "backend": "local",
         "rating": 3,
         "size_bought": "M"
       },
@@ -145,12 +149,22 @@
         ],
         "severity": 2,
         "quote": "Waist fits nicely but the bust is still a little tight.",
+        "backend": "local",
         "rating": 4,
         "size_bought": "L"
       }
     ],
     "analysis_mode": "local",
-    "updated_at": "2026-07-09T16:14:13.352812+00:00",
-    "notes": "Local deterministic placeholder. Replace classifier with AMD vLLM/Gemma when final model endpoint is available."
+    "updated_at": "2026-07-09T18:21:42.668338+00:00"
+  },
+  {
+    "product_id": "__benchmark__",
+    "analysis_mode": "local",
+    "total_reviews": 7,
+    "elapsed_seconds": 0.0001,
+    "reviews_per_second": 122807.0857,
+    "amd_llm_url": "",
+    "amd_llm_model": "",
+    "updated_at": "2026-07-09T18:21:42.668338+00:00"
   }
 ]

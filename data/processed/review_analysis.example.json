@@ -1,0 +1,156 @@
+[
+  {
+    "product_id": "jeans_001",
+    "total_reviews": 3,
+    "pct_small": 0.3333,
+    "pct_large": 0.3333,
+    "pct_tts": 0.3333,
+    "top_issues_json": [
+      {
+        "area": "waist",
+        "count": 2
+      },
+      {
+        "area": "length",
+        "count": 1
+      }
+    ],
+    "classified_reviews": [
+      {
+        "product_id": "jeans_001",
+        "text": "The waist is a bit tight but the denim quality is good. I should have sized up.",
+        "fit_verdict": "small",
+        "areas": [
+          "waist"
+        ],
+        "severity": 2,
+        "quote": "The waist is a bit tight but the denim quality is good. I should have sized up.",
+        "rating": 4,
+        "size_bought": "31"
+      },
+      {
+        "product_id": "jeans_001",
+        "text": "Length runs long and the waist feels snug.",
+        "fit_verdict": "large",
+        "areas": [
+          "waist",
+          "length"
+        ],
+        "severity": 2,
+        "quote": "Length runs long and the waist feels snug.",
+        "rating": 3,
+        "size_bought": "30"
+      },
+      {
+        "product_id": "jeans_001",
+        "text": "Fits well and feels true to size.",
+        "fit_verdict": "tts",
+        "areas": [],
+        "severity": 1,
+        "quote": "Fits well and feels true to size.",
+        "rating": 5,
+        "size_bought": "32"
+      }
+    ],
+    "analysis_mode": "local",
+    "updated_at": "2026-07-09T16:14:13.352812+00:00",
+    "notes": "Local deterministic placeholder. Replace classifier with AMD vLLM/Gemma when final model endpoint is available."
+  },
+  {
+    "product_id": "shirt_001",
+    "total_reviews": 2,
+    "pct_small": 0.5,
+    "pct_large": 0.0,
+    "pct_tts": 0.5,
+    "top_issues_json": [
+      {
+        "area": "chest",
+        "count": 1
+      },
+      {
+        "area": "shoulders",
+        "count": 1
+      }
+    ],
+    "classified_reviews": [
+      {
+        "product_id": "shirt_001",
+        "text": "Chest fits well but the shoulders are slightly tight.",
+        "fit_verdict": "small",
+        "areas": [
+          "chest",
+          "shoulders"
+        ],
+        "severity": 2,
+        "quote": "Chest fits well but the shoulders are slightly tight.",
+        "rating": 4,
+        "size_bought": "M"
+      },
+      {
+        "product_id": "shirt_001",
+        "text": "Perfect fit, true to size, comfortable material.",
+        "fit_verdict": "tts",
+        "areas": [],
+        "severity": 1,
+        "quote": "Perfect fit, true to size, comfortable material.",
+        "rating": 5,
+        "size_bought": "L"
+      }
+    ],
+    "analysis_mode": "local",
+    "updated_at": "2026-07-09T16:14:13.352812+00:00",
+    "notes": "Local deterministic placeholder. Replace classifier with AMD vLLM/Gemma when final model endpoint is available."
+  },
+  {
+    "product_id": "dress_001",
+    "total_reviews": 2,
+    "pct_small": 1.0,
+    "pct_large": 0.0,
+    "pct_tts": 0.0,
+    "top_issues_json": [
+      {
+        "area": "bust",
+        "count": 2
+      },
+      {
+        "area": "hips",
+        "count": 1
+      },
+      {
+        "area": "waist",
+        "count": 1
+      }
+    ],
+    "classified_reviews": [
+      {
+        "product_id": "dress_001",
+        "text": "Runs small around the bust and hips. Size up if you want a relaxed fit.",
+        "fit_verdict": "small",
+        "areas": [
+          "hips",
+          "bust"
+        ],
+        "severity": 2,
+        "quote": "Runs small around the bust and hips. Size up if you want a relaxed fit.",
+        "rating": 3,
+        "size_bought": "M"
+      },
+      {
+        "product_id": "dress_001",
+        "text": "Waist fits nicely but the bust is still a little tight.",
+        "fit_verdict": "small",
+        "areas": [
+          "waist",
+          "bust"
+        ],
+        "severity": 2,
+        "quote": "Waist fits nicely but the bust is still a little tight.",
+        "rating": 4,
+        "size_bought": "L"
+      }
+    ],
+    "analysis_mode": "local",
+    "updated_at": "2026-07-09T16:14:13.352812+00:00",
+    "notes": "Local deterministic placeholder. Replace classifier with AMD vLLM/Gemma when final model endpoint is available."
+  }
+]

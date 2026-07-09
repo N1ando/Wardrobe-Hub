@@ -1,0 +1,14 @@
+ Static hostname: 0
+       Icon name: computer-vm
+         Chassis: vm 🖴
+      Machine ID: 6207f58c94d23dd0ddbbf3af6a4fb354
+         Boot ID: 5b973ff5e2224933ad2f75b6b3dd6321
+  Virtualization: kvm
+Operating System: Ubuntu 24.04.4 LTS
+          Kernel: Linux 6.8.0-124-generic
+    Architecture: x86-64
+ Hardware Vendor: DigitalOcean
+  Hardware Model: Droplet
+Firmware Version: 20171212
+   Firmware Date: Tue 2017-12-12
+    Firmware Age: 8y 6month 3w 6d

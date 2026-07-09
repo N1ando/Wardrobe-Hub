@@ -1,0 +1,4 @@
+[WARN] Fireworks explanation failed: Model returned non-shopper-facing explanation
+
+Explanation OK:
+We recommend size L with 87% confidence based on your measurements, fit preference, and the garment size chart. Review signals show this item runs small in shoulders, so the recommendation accounts for that fit risk.

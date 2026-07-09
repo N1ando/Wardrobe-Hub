@@ -80,8 +80,23 @@ def test_seller_overview(client):
     rows = r.json()["products"]
     assert len(rows) == 3
     dress = next(p for p in rows if p["product_id"] == 3)
-    assert dress["risk_level"] in ("medium", "high")
+    # The seeded dress is the flagship risk product: the demo script shows it
+    # as HIGH (planted runs-small cluster + missing hips).
+    assert dress["risk_level"] == "high"
     assert "hips" in dress["missing_fields"]
+
+
+def test_seller_overview_rows_carry_dashboard_fields(client):
+    rows = client.get("/api/seller/overview").json()["products"]
+    for row in rows:
+        assert 0.0 <= row["chart_completeness"] <= 1.0
+        assert row["review_count"] >= row["complaint_count"] >= 0
+        dist = row["fit_distribution"]
+        assert set(dist) == {"pct_small", "pct_tts", "pct_large"}
+    dress = next(p for p in rows if p["product_id"] == 3)
+    assert dress["review_count"] == 8
+    assert dress["fit_distribution"]["pct_small"] > 0.5
+    assert dress["image_url"]
 
 
 def test_seller_product_risk_has_suggestions(client):
@@ -90,6 +105,16 @@ def test_seller_product_risk_has_suggestions(client):
     body = r.json()
     assert body["suggestions"]
     assert body["complaint_clusters"]
+
+
+def test_seller_risk_returns_stable_mined_quotes(client):
+    first = client.get("/api/seller/products/3/risk").json()["quotes"]
+    second = client.get("/api/seller/products/3/risk").json()["quotes"]
+    assert 1 <= len(first) <= 4
+    # Quotes are real mined reviews with verdicts; dominant complaint first.
+    assert all(q["text"] and q["verdict"] in ("small", "large", "tts") for q in first)
+    assert first[0]["verdict"] == "small"  # the dress's planted cluster
+    assert first == second  # deterministic ordering: the demo can't wobble
 
 
 def test_analyze_reviews_endpoint(client):

@@ -91,6 +91,28 @@ jobs:
           curl -sf http://127.0.0.1:8000/api/products | python -m json.tool > /dev/null
           curl -sf -X POST http://127.0.0.1:8000/api/recommend \
             -H "Content-Type: application/json" \
-            -d '{"product_id": 2, "fit_pref": "regular", "measurements": {"waist": 80, "hips": 96, "inseam": 84}}' \
+            -d '{"product_id": 2, "fit_pref": "regular", "measurements": {"waist": 79, "hips": 92, "inseam": 85}}' \
             | python -m json.tool
           echo "Backend golden-path smoke passed"
+
+  docker-build:
+    # The submission requires `docker compose up` to work on a clean machine;
+    # this proves the image builds (incl. build-time seeding) on every PR.
+    name: Docker image builds
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build the compose stack
+        run: docker compose build
+
+      - name: Boot and health-check the API container
+        run: |
+          docker compose up -d api
+          for i in $(seq 1 30); do
+            curl -sf http://127.0.0.1:8000/health > /dev/null && break
+            sleep 1
+          done
+          curl -sf http://127.0.0.1:8000/health | python3 -m json.tool
+          docker compose down

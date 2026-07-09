@@ -36,7 +36,15 @@ def _seeded_db():
     finally:
         db.close()
     yield
-    os.unlink(_TMP_DB.name)
+    # Windows can't delete a file with open handles: release the SQLAlchemy
+    # connection pool first, and tolerate a leftover temp file either way.
+    from app.db import engine
+
+    engine.dispose()
+    try:
+        os.unlink(_TMP_DB.name)
+    except OSError:
+        pass
 
 
 @pytest.fixture()

@@ -1,0 +1,7 @@
+Review analysis complete.
+Mode: amd-vllm
+Input reviews: 240
+Products analyzed: 3
+Elapsed seconds: 39.9668
+Reviews/sec: 6.0050
+Output written to: data/processed/review_analysis.amd.240.json

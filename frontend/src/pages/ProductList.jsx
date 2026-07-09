@@ -9,9 +9,6 @@ export default function ProductList() {
       <div className="relative max-w-6xl mx-auto px-6 py-8">
         {/* Header */}
         <div className="relative flex items-end justify-between gap-6 mb-8 pb-6 border-b border-ink/10">
-          <div
-            className="absolute -left-8 -top-6 w-32 h-32 rounded-full border border-accent/20 pointer-events-none hidden md:block"
-          />
           <div className="relative">
             <div className="text-[10px] font-semibold tracking-[0.2em] text-accent uppercase mb-1.5">
               Sizing Intelligence Layer

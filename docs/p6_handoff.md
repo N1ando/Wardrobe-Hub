@@ -1,4 +1,4 @@
-# P6 AI / AMD Handoff
+﻿# P6 AI / AMD Handoff
 
 ## Branch
 
@@ -45,11 +45,11 @@ FitOS uses a deterministic recommendation engine for the final size decision. Ge
 
 ## Main Files
 
-backend/ai/llm_client.py  
-backend/ai/batch_analysis.py  
-backend/ai/chart_parser.py  
-scripts/ingest_review_analysis.py  
-requirements-ai.txt  
+tools/amd_benchmark/llm_client.py  
+tools/amd_benchmark/batch_analysis.py  
+tools/amd_benchmark/chart_parser.py  
+tools/amd_benchmark/ingest_review_analysis.py  
+tools/amd_benchmark/requirements.txt  
 .env.example  
 
 data/sample/reviews.sample.json  
@@ -69,7 +69,7 @@ docs/amd_proof/
 
 Main file:
 
-backend/ai/llm_client.py
+tools/amd_benchmark/llm_client.py
 
 Purpose:
 
@@ -77,7 +77,7 @@ Takes recommendation JSON from the deterministic recommender and returns a clean
 
 Example usage:
 
-from backend.ai.llm_client import explain_recommendation
+from tools.amd_benchmark.llm_client import explain_recommendation
 
 explanation = explain_recommendation(recommendation_json)
 
@@ -95,7 +95,7 @@ This prevents the demo from breaking.
 
 Main file:
 
-backend/ai/batch_analysis.py
+tools/amd_benchmark/batch_analysis.py
 
 Purpose:
 
@@ -124,15 +124,15 @@ Aggregated output includes:
 
 Local fallback command:
 
-py -m backend.ai.batch_analysis --mode local
+python -m tools.amd_benchmark.batch_analysis --mode local
 
 AMD vLLM command:
 
-python -m backend.ai.batch_analysis --mode amd-vllm --input data/sample/reviews.sample.json --output data/processed/review_analysis.amd.json
+python -m tools.amd_benchmark.batch_analysis --mode amd-vllm --input data/sample/reviews.sample.json --output data/processed/review_analysis.amd.json
 
 240-review benchmark command:
 
-python -m backend.ai.batch_analysis --mode amd-vllm --input data/sample/reviews.benchmark.240.json --output data/processed/review_analysis.amd.240.json
+python -m tools.amd_benchmark.batch_analysis --mode amd-vllm --input data/sample/reviews.benchmark.240.json --output data/processed/review_analysis.amd.240.json
 
 Benchmark result:
 
@@ -150,7 +150,7 @@ Review analysis: 240 reviews / 39.97s on AMD MI300X (vLLM + ROCm)
 
 Main file:
 
-backend/ai/chart_parser.py
+tools/amd_benchmark/chart_parser.py
 
 Purpose:
 
@@ -167,11 +167,11 @@ data/processed/parsed_size_charts.amd.json
 
 Local fallback command:
 
-py -m backend.ai.chart_parser --mode local
+python -m tools.amd_benchmark.chart_parser --mode local
 
 AMD vLLM command:
 
-python -m backend.ai.chart_parser --mode amd-vllm --input data/sample/raw_size_charts.sample.json --output data/processed/parsed_size_charts.amd.json
+python -m tools.amd_benchmark.chart_parser --mode amd-vllm --input data/sample/raw_size_charts.sample.json --output data/processed/parsed_size_charts.amd.json
 
 Expected output shape:
 
@@ -196,7 +196,7 @@ Expected output shape:
 
 Main file:
 
-scripts/ingest_review_analysis.py
+tools/amd_benchmark/ingest_review_analysis.py
 
 Purpose:
 
@@ -317,7 +317,7 @@ These prove:
 
 P4 backend can use:
 
-from backend.ai.llm_client import explain_recommendation
+from tools.amd_benchmark.llm_client import explain_recommendation
 
 P3 seller dashboard can use:
 

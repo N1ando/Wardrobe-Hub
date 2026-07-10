@@ -1,77 +1,102 @@
+// Recommendation API — live backend with a mock fallback.
+// Set VITE_USE_MOCKS=1 to force mocks (demo insurance if the API is down).
+// Response contract: docs/recommendation_contract.md on main — note the
+// breakdown fields are raw_ease/effective_ease/scoring_ease (+ ideal_band,
+// weight) and the top level carries confidence_level and size_scores.
+// The mocks below mirror real responses from the seeded backend.
+
+const USE_MOCKS = import.meta.env.VITE_USE_MOCKS === '1'
+const API_BASE = import.meta.env.VITE_API_BASE ?? 'http://localhost:8000'
+
 const MOCK_RESPONSES = {
+  // Classic Oxford Shirt — clean M, sleeve column missing from the chart.
   1: {
     recommended_size: "M",
-    confidence: 82,
-    runner_up: { size: "L", score: 0.68 },
-    fit_breakdown: [
-      { dim: "chest", garment: 100, body: 96, ease: 4, verdict: "ideal", score: 1.0 },
-      { dim: "waist", garment: 88, body: 84, ease: 4, verdict: "tight", score: 0.7 },
-      { dim: "sleeve", garment: null, verdict: "missing_data" },
+    confidence: 77,
+    confidence_level: "medium",
+    runner_up: { size: "L", score: 0.62 },
+    size_scores: [
+      { size: "S", base_score: 0.41, review_bonus: 0, adjusted_score: 0.41 },
+      { size: "M", base_score: 1.0, review_bonus: 0, adjusted_score: 1.0 },
+      { size: "L", base_score: 0.62, review_bonus: 0, adjusted_score: 0.62 },
+      { size: "XL", base_score: 0.18, review_bonus: 0, adjusted_score: 0.18 },
     ],
-    review_signal: {
-      pct_small: 0.22,
-      pct_tts: 0.65,
-      pct_large: 0.13,
-      caveat: "true to size overall",
-      applied_shift_bias: false,
-      caveat_review_ids: [1],
-    },
-    material_note: "2% elastane — minimal stretch",
+    fit_breakdown: [
+      { dim: "chest", garment: 106, body: 96, raw_ease: 10, effective_ease: 10, scoring_ease: 10, ideal_band: [8, 12], verdict: "ideal", score: 1.0, weight: 0.55 },
+      { dim: "waist", garment: 96, body: 84, raw_ease: 12, effective_ease: 12, scoring_ease: 12, ideal_band: [8, 14], verdict: "ideal", score: 1.0, weight: 0.3 },
+      { dim: "sleeve", garment: null, body: null, raw_ease: null, effective_ease: null, scoring_ease: null, ideal_band: [-2, 2], verdict: "missing_data", score: null, weight: 0.15 },
+    ],
+    review_signal: { pct_small: 0.0, pct_tts: 1.0, pct_large: 0.0, bias_direction: "none", applied_shift_bias: false, caveat: null },
+    material_note: "Rigid fabric (no stretch); ease was scored as measured.",
     missing_fields: ["sleeve"],
+    debug: { category: "tops", fit_pref: "regular", data_completeness: 0.667, review_agreement: 1.0, margin: 0.38 },
   },
+  // Slim Tapered Jeans — decisive 32 (mirrors the live seeded response).
   2: {
-    recommended_size: "L",
-    confidence: 87,
-    runner_up: { size: "M", score: 0.71 },
-    fit_breakdown: [
-      { dim: "chest", garment: 106, body: 96, ease: 10, verdict: "ideal", score: 1.0 },
-      { dim: "waist", garment: 92, body: 84, ease: 8, verdict: "ideal", score: 0.95 },
-      { dim: "sleeve", garment: null, verdict: "missing_data" },
+    recommended_size: "32",
+    confidence: 82,
+    confidence_level: "high",
+    runner_up: { size: "31", score: 0.887 },
+    size_scores: [
+      { size: "30", base_score: 0.397, review_bonus: 0, adjusted_score: 0.397 },
+      { size: "31", base_score: 0.887, review_bonus: 0, adjusted_score: 0.887 },
+      { size: "32", base_score: 1.0, review_bonus: 0, adjusted_score: 1.0 },
+      { size: "33", base_score: 0.688, review_bonus: 0, adjusted_score: 0.688 },
+      { size: "34", base_score: 0.2, review_bonus: 0, adjusted_score: 0.2 },
     ],
-    review_signal: {
-      pct_small: 0.30,
-      pct_tts: 0.58,
-      pct_large: 0.12,
-      caveat: "runs small in the waist",
-      applied_shift_bias: true,
-      caveat_review_ids: [2],
-    },
-    material_note: "3% elastane — slight stretch accommodates chest",
-    missing_fields: ["sleeve"],
-  },
-  3: {
-    recommended_size: "S",
-    confidence: 79,
-    runner_up: { size: "M", score: 0.65 },
     fit_breakdown: [
-      { dim: "bust", garment: 92, body: 96, ease: -4, verdict: "tight", score: 0.6 },
-      { dim: "waist", garment: 80, body: 84, ease: -4, verdict: "tight", score: 0.55 },
-      { dim: "hips", garment: 98, body: 100, ease: -2, verdict: "tight", score: 0.65 },
+      { dim: "waist", garment: 82, body: 79, raw_ease: 3, effective_ease: 3.41, scoring_ease: 3, ideal_band: [2, 4], verdict: "ideal", score: 1.0, weight: 0.45 },
+      { dim: "hips", garment: 98, body: 92, raw_ease: 6, effective_ease: 6.49, scoring_ease: 6, ideal_band: [4, 8], verdict: "ideal", score: 1.0, weight: 0.35 },
+      { dim: "inseam", garment: 86, body: 85, raw_ease: 1, effective_ease: 1.43, scoring_ease: 1, ideal_band: [-2, 2], verdict: "ideal", score: 1.0, weight: 0.2 },
     ],
-    review_signal: {
-      pct_small: 0.45,
-      pct_tts: 0.40,
-      pct_large: 0.15,
-      caveat: "runs small — consider sizing up",
-      applied_shift_bias: true,
-      caveat_review_ids: [2],
-    },
-    material_note: "5% elastane — some stretch, but runs snug",
+    review_signal: { pct_small: 0.0, pct_tts: 1.0, pct_large: 0.0, bias_direction: "none", applied_shift_bias: false, caveat: null },
+    material_note: "Material: Denim, 1% elastane. 1% stretch detected (stretch fabric); stretch was only used to reduce tightness penalties, not looseness.",
     missing_fields: [],
+    debug: { category: "pants", fit_pref: "regular", data_completeness: 1.0, review_agreement: 1.0, margin: 0.113 },
+  },
+  // Floral Wrap Dress — runs-small cluster fires; hips missing from chart.
+  3: {
+    recommended_size: "L",
+    confidence: 62,
+    confidence_level: "medium",
+    runner_up: { size: "M", score: 0.53 },
+    size_scores: [
+      { size: "XS", base_score: 0.05, review_bonus: 0, adjusted_score: 0.05 },
+      { size: "S", base_score: 0.21, review_bonus: 0, adjusted_score: 0.21 },
+      { size: "M", base_score: 0.53, review_bonus: 0, adjusted_score: 0.53 },
+      { size: "L", base_score: 1.0, review_bonus: 0.08, adjusted_score: 1.0 },
+    ],
+    fit_breakdown: [
+      { dim: "bust", garment: 96, body: 90, raw_ease: 6, effective_ease: 7.44, scoring_ease: 6, ideal_band: [6, 10], verdict: "ideal", score: 1.0, weight: 0.4 },
+      { dim: "waist", garment: 78, body: 72, raw_ease: 6, effective_ease: 7.17, scoring_ease: 6, ideal_band: [5, 9], verdict: "ideal", score: 1.0, weight: 0.35 },
+      { dim: "hips", garment: null, body: null, raw_ease: null, effective_ease: null, scoring_ease: null, ideal_band: [6, 10], verdict: "missing_data", score: null, weight: 0.25 },
+    ],
+    review_signal: { pct_small: 0.857, pct_tts: 0.143, pct_large: 0.0, bias_direction: "up", applied_shift_bias: false, caveat: "Reviewers say this runs small in the waist; consider sizing up." },
+    material_note: "Material: Cotton, 3% elastane. 3% stretch detected (stretch fabric); stretch was only used to reduce tightness penalties, not looseness.",
+    missing_fields: ["hips"],
+    debug: { category: "dress", fit_pref: "regular", data_completeness: 0.667, review_agreement: 0.42, margin: 0.47 },
   },
 }
 
 export async function getRecommendation({ product_id, fit_pref, measurements }) {
-  await new Promise((resolve) => setTimeout(resolve, 900))
-  return MOCK_RESPONSES[product_id] || MOCK_RESPONSES[1]
+  if (USE_MOCKS) {
+    await new Promise((resolve) => setTimeout(resolve, 900))
+    return MOCK_RESPONSES[product_id] || MOCK_RESPONSES[1]
+  }
+  const res = await fetch(`${API_BASE}/api/recommend`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ product_id, fit_pref, measurements }),
+  })
+  if (!res.ok) throw new Error(`recommend failed: HTTP ${res.status}`)
+  return res.json()
 }
 
 // ---------------------------------------------------------------------------
-// Seller dashboard — live endpoints with a mock fallback.
-// Set VITE_USE_MOCKS=1 to force mocks (demo insurance if the API is down);
-// the mock JSONs are captured real API responses, so both modes share one
-// shape. Backend contract: backend/app/schemas.py (SellerOverview,
-// SellerProductRisk, ProductDetail).
+// Seller dashboard — live endpoints with a mock fallback; the mock JSONs are
+// captured real API responses, so both modes share one shape. Backend
+// contract: backend/app/schemas.py (SellerOverview, SellerProductRisk,
+// ProductDetail).
 // ---------------------------------------------------------------------------
 
 import sellerOverview from './mocks/seller_overview.json'
@@ -79,9 +104,6 @@ import sellerRisk1 from './mocks/seller_risk_1.json'
 import sellerRisk2 from './mocks/seller_risk_2.json'
 import sellerRisk3 from './mocks/seller_risk_3.json'
 import productDetails from './mocks/product_details.json'
-
-const USE_MOCKS = import.meta.env.VITE_USE_MOCKS === '1'
-const API_BASE = import.meta.env.VITE_API_BASE ?? 'http://localhost:8000'
 
 const RISK_MOCKS = { 1: sellerRisk1, 2: sellerRisk2, 3: sellerRisk3 }
 

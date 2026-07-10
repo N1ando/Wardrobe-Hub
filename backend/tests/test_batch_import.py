@@ -13,7 +13,9 @@ from pathlib import Path
 import pytest
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-AMD_BATCH_FILE = REPO_ROOT / "data" / "processed" / "review_analysis.amd.240.json"
+# The canonical captured evidence (data/processed/ holds regenerable runtime
+# outputs only; the frozen AMD run lives in docs/amd_proof/).
+AMD_BATCH_FILE = REPO_ROOT / "docs" / "amd_proof" / "review_analysis_amd_240.json"
 
 
 def _session():

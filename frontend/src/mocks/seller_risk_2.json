@@ -1,0 +1,40 @@
+﻿{
+    "product_id":  2,
+    "name":  "Slim Tapered Jeans",
+    "image_url":  "/img/tapered-jeans.jpg",
+    "risk_level":  "low",
+    "risk_score":  0,
+    "missing_fields":  [
+
+                       ],
+    "complaint_clusters":  [
+
+                           ],
+    "review_summary":  {
+                           "pct_small":  0.0,
+                           "pct_large":  0.0,
+                           "pct_tts":  1.0,
+                           "reviews_analyzed":  8,
+                           "top_issues":  [
+
+                                          ]
+                       },
+    "suggestions":  [
+
+                    ],
+    "review_count":  8,
+    "complaint_count":  0,
+    "chart_completeness":  1.0,
+    "fit_distribution":  {
+                             "pct_small":  0.0,
+                             "pct_tts":  1.0,
+                             "pct_large":  0.0
+                         },
+    "quotes":  [
+                   {
+                       "text":  "True to size in the waist. Length is long though, expect to cuff or hem them.",
+                       "verdict":  "tts",
+                       "size_bought":  "33"
+                   }
+               ]
+}

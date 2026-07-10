@@ -1,0 +1,65 @@
+﻿{
+    "products":  [
+                     {
+                         "product_id":  1,
+                         "name":  "Classic Oxford Shirt",
+                         "category":  "shirt",
+                         "image_url":  "/img/oxford-shirt.jpg",
+                         "risk_level":  "low",
+                         "risk_score":  13,
+                         "missing_fields":  [
+                                                "sleeve"
+                                            ],
+                         "fit_complaint_pct":  0.0,
+                         "review_count":  8,
+                         "complaint_count":  0,
+                         "chart_completeness":  0.667,
+                         "fit_distribution":  {
+                                                  "pct_small":  0.0,
+                                                  "pct_tts":  1.0,
+                                                  "pct_large":  0.0
+                                              }
+                     },
+                     {
+                         "product_id":  2,
+                         "name":  "Slim Tapered Jeans",
+                         "category":  "jeans",
+                         "image_url":  "/img/tapered-jeans.jpg",
+                         "risk_level":  "low",
+                         "risk_score":  0,
+                         "missing_fields":  [
+
+                                            ],
+                         "fit_complaint_pct":  0.0,
+                         "review_count":  8,
+                         "complaint_count":  0,
+                         "chart_completeness":  1.0,
+                         "fit_distribution":  {
+                                                  "pct_small":  0.0,
+                                                  "pct_tts":  1.0,
+                                                  "pct_large":  0.0
+                                              }
+                     },
+                     {
+                         "product_id":  3,
+                         "name":  "Floral Wrap Dress",
+                         "category":  "dress",
+                         "image_url":  "/img/wrap-dress.jpg",
+                         "risk_level":  "high",
+                         "risk_score":  65,
+                         "missing_fields":  [
+                                                "hips"
+                                            ],
+                         "fit_complaint_pct":  0.857,
+                         "review_count":  8,
+                         "complaint_count":  7,
+                         "chart_completeness":  0.667,
+                         "fit_distribution":  {
+                                                  "pct_small":  0.857,
+                                                  "pct_tts":  0.143,
+                                                  "pct_large":  0.0
+                                              }
+                     }
+                 ],
+    "throughput_note":  "Analyzed 8 reviews in 0.0s"
+}

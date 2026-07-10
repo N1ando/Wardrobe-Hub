@@ -1,0 +1,71 @@
+﻿{
+    "product_id":  3,
+    "name":  "Floral Wrap Dress",
+    "image_url":  "/img/wrap-dress.jpg",
+    "risk_level":  "high",
+    "risk_score":  65,
+    "missing_fields":  [
+                           "hips"
+                       ],
+    "complaint_clusters":  [
+                               {
+                                   "area":  "waist",
+                                   "count":  5
+                               },
+                               {
+                                   "area":  "bust",
+                                   "count":  1
+                               }
+                           ],
+    "review_summary":  {
+                           "pct_small":  0.857,
+                           "pct_large":  0.0,
+                           "pct_tts":  0.143,
+                           "reviews_analyzed":  8,
+                           "top_issues":  [
+                                              {
+                                                  "area":  "waist",
+                                                  "count":  5
+                                              },
+                                              {
+                                                  "area":  "bust",
+                                                  "count":  1
+                                              }
+                                          ]
+                       },
+    "suggestions":  [
+                        "Add hips measurements to your size chart to cut fit guesswork.",
+                        "Reviewers flag waist; note true-to-size guidance for it.",
+                        "Many buyers say it runs small; recommend sizing up on the page."
+                    ],
+    "review_count":  8,
+    "complaint_count":  7,
+    "chart_completeness":  0.667,
+    "fit_distribution":  {
+                             "pct_small":  0.857,
+                             "pct_tts":  0.143,
+                             "pct_large":  0.0
+                         },
+    "quotes":  [
+                   {
+                       "text":  "Runs small, especially in the waist. I usually wear M and it was too tight, size up.",
+                       "verdict":  "small",
+                       "size_bought":  "M"
+                   },
+                   {
+                       "text":  "Cute dress but it runs small in the bust, I could not close the wrap comfortably.",
+                       "verdict":  "small",
+                       "size_bought":  "S"
+                   },
+                   {
+                       "text":  "Too small for the size, the waist was snug. Definitely runs small.",
+                       "verdict":  "small",
+                       "size_bought":  "L"
+                   },
+                   {
+                       "text":  "Fits true to size for me and the fabric has a slight stretch.",
+                       "verdict":  "tts",
+                       "size_bought":  "M"
+                   }
+               ]
+}

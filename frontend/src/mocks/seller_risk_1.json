@@ -1,0 +1,40 @@
+﻿{
+    "product_id":  1,
+    "name":  "Classic Oxford Shirt",
+    "image_url":  "/img/oxford-shirt.jpg",
+    "risk_level":  "low",
+    "risk_score":  13,
+    "missing_fields":  [
+                           "sleeve"
+                       ],
+    "complaint_clusters":  [
+
+                           ],
+    "review_summary":  {
+                           "pct_small":  0.0,
+                           "pct_large":  0.0,
+                           "pct_tts":  1.0,
+                           "reviews_analyzed":  8,
+                           "top_issues":  [
+
+                                          ]
+                       },
+    "suggestions":  [
+                        "Add sleeve measurements to your size chart to cut fit guesswork."
+                    ],
+    "review_count":  8,
+    "complaint_count":  0,
+    "chart_completeness":  0.667,
+    "fit_distribution":  {
+                             "pct_small":  0.0,
+                             "pct_tts":  1.0,
+                             "pct_large":  0.0
+                         },
+    "quotes":  [
+                   {
+                       "text":  "Fits true to size, ordered my usual M and it\u0027s spot on across the chest.",
+                       "verdict":  "tts",
+                       "size_bought":  "M"
+                   }
+               ]
+}

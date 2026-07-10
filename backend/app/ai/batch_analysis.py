@@ -41,8 +41,13 @@ def _keyword_verdict(text: str) -> dict:
     return {"fit_verdict": verdict, "areas": areas, "severity": 2, "quote": ""}
 
 
-def classify_review(text: str, size_bought: str | None = None) -> dict:
-    parsed, _ = complete_json(
+def classify_review(text: str, size_bought: str | None = None) -> tuple[dict, str]:
+    """Classify one review; returns (verdict dict, source that produced it).
+
+    Source vocabulary follows the ladder: amd-vllm | fireworks | cache |
+    keyword (the deterministic template fallback).
+    """
+    parsed, source = complete_json(
         prompts.REVIEW_MINER_SYSTEM,
         prompts.review_miner_user_prompt(text, size_bought),
         tag="review",
@@ -51,21 +56,29 @@ def classify_review(text: str, size_bought: str | None = None) -> dict:
     )
     if not isinstance(parsed, dict) or "fit_verdict" not in parsed:
         parsed = _keyword_verdict(text)
+        source = "template"
     if parsed.get("fit_verdict") not in ("small", "large", "tts", "none"):
         parsed["fit_verdict"] = "none"
     parsed.setdefault("areas", [])
-    return parsed
+    return parsed, "keyword" if source == "template" else source
 
 
-def analyze_product_reviews(db: Session, product_id: int) -> ReviewAnalysis:
-    """Mine every review of a product, aggregate, and upsert ReviewAnalysis."""
+def analyze_product_reviews(db: Session, product_id: int, *, mode: str = "live") -> ReviewAnalysis:
+    """Mine every review of a product, aggregate, and upsert ReviewAnalysis.
+
+    `mode` labels how the run was triggered ("live" for on-demand API calls,
+    "batch" for the pre-demo ingest script); it is downgraded to "fallback"
+    when the verdicts came from the keyword classifier rather than an LLM.
+    """
     reviews = db.query(Review).filter(Review.product_id == product_id).all()
     start = time.perf_counter()
 
     counts = Counter()
     area_counter = Counter()
+    source_counter = Counter()
     for review in reviews:
-        result = classify_review(review.text, review.size_bought)
+        result, source = classify_review(review.text, review.size_bought)
+        source_counter[source] += 1
         verdict = result["fit_verdict"]
         review.verdict = None if verdict == "none" else verdict
         review.areas = result.get("areas") or []
@@ -78,6 +91,7 @@ def analyze_product_reviews(db: Session, product_id: int) -> ReviewAnalysis:
     total = len(reviews)
     graded = counts["small"] + counts["large"] + counts["tts"]
     denom = graded or 1
+    dominant_source = source_counter.most_common(1)[0][0] if source_counter else None
 
     analysis = db.get(ReviewAnalysis, product_id) or ReviewAnalysis(product_id=product_id)
     analysis.pct_small = round(counts["small"] / denom, 3)
@@ -86,6 +100,9 @@ def analyze_product_reviews(db: Session, product_id: int) -> ReviewAnalysis:
     analysis.reviews_analyzed = total
     analysis.top_issues = [{"area": a, "count": c} for a, c in area_counter.most_common(3)]
     analysis.throughput_note = f"Analyzed {total} reviews in {elapsed:.1f}s"
+    analysis.analysis_source = dominant_source
+    analysis.analysis_mode = "fallback" if dominant_source == "keyword" else mode
+    analysis.elapsed_seconds = round(elapsed, 3)
     analysis.updated_at = datetime.now(timezone.utc)
 
     db.add(analysis)

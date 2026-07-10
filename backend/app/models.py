@@ -85,6 +85,11 @@ class ReviewAnalysis(Base):
     reviews_analyzed: Mapped[int] = mapped_column(Integer, default=0)
     top_issues: Mapped[list | None] = mapped_column(JSON, nullable=True)  # [{"area":..,"count":..}]
     throughput_note: Mapped[str | None] = mapped_column(String, nullable=True)  # AMD proof string
+    # Provenance of the aggregate. Nullable so rows written before these
+    # columns existed keep working unchanged.
+    analysis_source: Mapped[str | None] = mapped_column(String, nullable=True)  # amd-vllm | fireworks | keyword | cache
+    analysis_mode: Mapped[str | None] = mapped_column(String, nullable=True)  # batch | live | fallback
+    elapsed_seconds: Mapped[float | None] = mapped_column(Float, nullable=True)  # wall time of the producing run
     updated_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
 
     product: Mapped[Product] = relationship(back_populates="analysis")

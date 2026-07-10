@@ -41,6 +41,11 @@ class ReviewSummary(BaseModel):
     pct_tts: float = 0.0
     reviews_analyzed: int = 0
     top_issues: list[dict] = Field(default_factory=list)
+    # Provenance metadata; optional so pre-existing clients and rows are
+    # unaffected. Null means "recorded before provenance tracking".
+    analysis_source: Optional[str] = None  # amd-vllm | fireworks | keyword | cache
+    analysis_mode: Optional[str] = None  # batch | live | fallback
+    elapsed_seconds: Optional[float] = None
 
 
 class ProductDetail(ProductSummary):

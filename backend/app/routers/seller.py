@@ -125,6 +125,9 @@ def product_risk(product_id: int, db: Session = Depends(get_db)) -> SellerProduc
         pct_tts=a.pct_tts if a else 0.0,
         reviews_analyzed=a.reviews_analyzed if a else 0,
         top_issues=(a.top_issues or []) if a else [],
+        analysis_source=a.analysis_source if a else None,
+        analysis_mode=a.analysis_mode if a else None,
+        elapsed_seconds=a.elapsed_seconds if a else None,
     )
     clusters = (a.top_issues or []) if a else []
 

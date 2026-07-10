@@ -33,7 +33,7 @@ python -m core.recommender       # smoke demo: prints 3 scenarios as JSON
 ### Backend API
 
 ```bash
-docker compose up                # seeded, demo-ready on http://localhost:8000 (works offline)
+docker compose up                # full demo: web on :5173, seeded API on :8000 (works offline)
 # or without Docker:
 cd backend
 pip install -r requirements.txt

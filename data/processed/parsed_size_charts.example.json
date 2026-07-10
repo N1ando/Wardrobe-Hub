@@ -1,0 +1,221 @@
+[
+  {
+    "product_id": "jeans_001",
+    "category": "jeans",
+    "unit_detected": "inch",
+    "sizes": [
+      {
+        "label": "M",
+        "chest": null,
+        "bust": null,
+        "waist": null,
+        "hips": null,
+        "length": null,
+        "sleeve": null,
+        "inseam": null,
+        "shoulder": null
+      },
+      {
+        "label": "30",
+        "chest": null,
+        "bust": null,
+        "waist": 76.2,
+        "hips": null,
+        "length": null,
+        "sleeve": null,
+        "inseam": 78.7,
+        "shoulder": null
+      },
+      {
+        "label": "31",
+        "chest": null,
+        "bust": null,
+        "waist": 78.7,
+        "hips": null,
+        "length": null,
+        "sleeve": null,
+        "inseam": 78.7,
+        "shoulder": null
+      },
+      {
+        "label": "32",
+        "chest": null,
+        "bust": null,
+        "waist": 81.3,
+        "hips": null,
+        "length": null,
+        "sleeve": null,
+        "inseam": 81.3,
+        "shoulder": null
+      },
+      {
+        "label": "M",
+        "chest": null,
+        "bust": null,
+        "waist": null,
+        "hips": null,
+        "length": null,
+        "sleeve": null,
+        "inseam": null,
+        "shoulder": null
+      }
+    ],
+    "missing_fields": [
+      "chest",
+      "bust",
+      "hips",
+      "length",
+      "sleeve",
+      "shoulder"
+    ],
+    "warnings": [
+      "Converted inch measurements to cm."
+    ],
+    "parser_backend": "local",
+    "updated_at": "2026-07-10T05:14:01.732314+00:00"
+  },
+  {
+    "product_id": "shirt_001",
+    "category": "shirt",
+    "unit_detected": "cm",
+    "sizes": [
+      {
+        "label": "M",
+        "chest": null,
+        "bust": null,
+        "waist": null,
+        "hips": null,
+        "length": null,
+        "sleeve": null,
+        "inseam": null,
+        "shoulder": null
+      },
+      {
+        "label": "M",
+        "chest": 104.0,
+        "bust": null,
+        "waist": null,
+        "hips": null,
+        "length": 70.0,
+        "sleeve": null,
+        "inseam": null,
+        "shoulder": 45.0
+      },
+      {
+        "label": "L",
+        "chest": 108.0,
+        "bust": null,
+        "waist": null,
+        "hips": null,
+        "length": 72.0,
+        "sleeve": null,
+        "inseam": null,
+        "shoulder": 47.0
+      },
+      {
+        "label": "XL",
+        "chest": 112.0,
+        "bust": null,
+        "waist": null,
+        "hips": null,
+        "length": 74.0,
+        "sleeve": null,
+        "inseam": null,
+        "shoulder": 49.0
+      },
+      {
+        "label": "S",
+        "chest": null,
+        "bust": null,
+        "waist": null,
+        "hips": null,
+        "length": null,
+        "sleeve": null,
+        "inseam": null,
+        "shoulder": null
+      }
+    ],
+    "missing_fields": [
+      "bust",
+      "waist",
+      "hips",
+      "sleeve",
+      "inseam"
+    ],
+    "warnings": [],
+    "parser_backend": "local",
+    "updated_at": "2026-07-10T05:14:01.732314+00:00"
+  },
+  {
+    "product_id": "dress_001",
+    "category": "dress",
+    "unit_detected": "cm",
+    "sizes": [
+      {
+        "label": "S",
+        "chest": null,
+        "bust": 86.0,
+        "waist": 68.0,
+        "hips": 92.0,
+        "length": null,
+        "sleeve": null,
+        "inseam": null,
+        "shoulder": null
+      },
+      {
+        "label": "M",
+        "chest": null,
+        "bust": 90.0,
+        "waist": 72.0,
+        "hips": 96.0,
+        "length": null,
+        "sleeve": null,
+        "inseam": null,
+        "shoulder": null
+      },
+      {
+        "label": "L",
+        "chest": null,
+        "bust": 94.0,
+        "waist": 76.0,
+        "hips": 100.0,
+        "length": null,
+        "sleeve": null,
+        "inseam": null,
+        "shoulder": null
+      },
+      {
+        "label": "S",
+        "chest": null,
+        "bust": null,
+        "waist": null,
+        "hips": null,
+        "length": null,
+        "sleeve": null,
+        "inseam": null,
+        "shoulder": null
+      },
+      {
+        "label": "S",
+        "chest": null,
+        "bust": null,
+        "waist": null,
+        "hips": null,
+        "length": null,
+        "sleeve": null,
+        "inseam": null,
+        "shoulder": null
+      }
+    ],
+    "missing_fields": [
+      "chest",
+      "length",
+      "sleeve",
+      "inseam",
+      "shoulder"
+    ],
+    "warnings": [],
+    "parser_backend": "local",
+    "updated_at": "2026-07-10T05:14:01.732314+00:00"
+  }
+]

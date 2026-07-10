@@ -1,7 +1,6 @@
-# FitOS stack. `cp .env.example .env && docker compose up` boots the backend
-# demo-ready: the image is built with a seeded SQLite DB + pre-mined reviews, so
-# the API serves real data on first request. The frontend service is a
-# placeholder for the frontend team to fill in.
+# FitOS stack. `cp .env.example .env && docker compose up` boots the full demo:
+# API on :8000 (image is built with a seeded SQLite DB + pre-mined reviews) and
+# the frontend on :5173.
 services:
   api:
     build:
@@ -17,9 +16,15 @@ services:
       - path: .env
         required: false
 
-  # web:
-  #   build: ./frontend
-  #   ports:
-  #     - "5173:5173"
-  #   depends_on:
-  #     - api
+  web:
+    build:
+      context: ./frontend
+      # The browser calls the API directly, so for a REMOTE demo (AMD box)
+      # rebuild with the public origin:
+      #   docker compose build --build-arg VITE_API_BASE=http://<host>:8000 web
+      args:
+        VITE_API_BASE: ${VITE_API_BASE:-http://localhost:8000}
+    ports:
+      - "5173:5173"
+    depends_on:
+      - api

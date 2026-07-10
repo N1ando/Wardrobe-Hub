@@ -1,0 +1,151 @@
+[
+  {
+    "product_id": "jeans_001",
+    "category": "jeans",
+    "unit_detected": "unknown",
+    "sizes": [
+      {
+        "label": "30",
+        "chest": null,
+        "bust": 76.2,
+        "waist": 76.2,
+        "hips": 91.4,
+        "length": 76.2,
+        "sleeve": null,
+        "inseam": 76.2,
+        "shoulder": 45.0
+      },
+      {
+        "label": "31",
+        "chest": null,
+        "bust": 76.2,
+        "waist": 76.2,
+        "hips": 91.4,
+        "length": 76.2,
+        "sleeve": null,
+        "inseam": 76.2,
+        "shoulder": 45.0
+      },
+      {
+        "label": "32",
+        "chest": null,
+        "bust": 76.2,
+        "waist": 76.2,
+        "hips": 91.4,
+        "length": 76.2,
+        "sleeve": null,
+        "inseam": 76.2,
+        "shoulder": 45.0
+      }
+    ],
+    "missing_fields": [
+      "hips"
+    ],
+    "warnings": [
+      "Converted inches to cm"
+    ],
+    "parser_backend": "amd-vllm",
+    "updated_at": "2026-07-10T05:33:44.852671+00:00"
+  },
+  {
+    "product_id": "shirt_001",
+    "category": "shirt",
+    "unit_detected": "unknown",
+    "sizes": [
+      {
+        "label": "M",
+        "chest": 104.0,
+        "bust": null,
+        "waist": null,
+        "hips": null,
+        "length": 70.0,
+        "sleeve": null,
+        "inseam": null,
+        "shoulder": 45.0
+      },
+      {
+        "label": "L",
+        "chest": 108.0,
+        "bust": null,
+        "waist": null,
+        "hips": null,
+        "length": 72.0,
+        "sleeve": null,
+        "inseam": null,
+        "shoulder": 47.0
+      },
+      {
+        "label": "XL",
+        "chest": 112.0,
+        "bust": null,
+        "waist": null,
+        "hips": null,
+        "length": 74.0,
+        "sleeve": null,
+        "inseam": null,
+        "shoulder": 49.0
+      }
+    ],
+    "missing_fields": [
+      "waist",
+      "hips",
+      "sleeve",
+      "inseam"
+    ],
+    "warnings": [
+      "Converted inches to cm"
+    ],
+    "parser_backend": "amd-vllm",
+    "updated_at": "2026-07-10T05:33:45.943714+00:00"
+  },
+  {
+    "product_id": "dress_001",
+    "category": "dress",
+    "unit_detected": "unknown",
+    "sizes": [
+      {
+        "label": "S",
+        "chest": 86.0,
+        "bust": 86.0,
+        "waist": 68.0,
+        "hips": 92.0,
+        "length": null,
+        "sleeve": null,
+        "inseam": null,
+        "shoulder": null
+      },
+      {
+        "label": "M",
+        "chest": 90.0,
+        "bust": 90.0,
+        "waist": 72.0,
+        "hips": 96.0,
+        "length": null,
+        "sleeve": null,
+        "inseam": null,
+        "shoulder": null
+      },
+      {
+        "label": "L",
+        "chest": 94.0,
+        "bust": 94.0,
+        "waist": 76.0,
+        "hips": 100.0,
+        "length": null,
+        "sleeve": null,
+        "inseam": null,
+        "shoulder": null
+      }
+    ],
+    "missing_fields": [
+      "hips",
+      "sleeve",
+      "length"
+    ],
+    "warnings": [
+      "Converted inches to cm"
+    ],
+    "parser_backend": "amd-vllm",
+    "updated_at": "2026-07-10T05:33:47.032760+00:00"
+  }
+]

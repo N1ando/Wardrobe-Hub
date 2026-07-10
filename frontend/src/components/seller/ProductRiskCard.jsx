@@ -19,8 +19,11 @@ function issueLine(product) {
       .join(', ')
     return `Size chart missing: ${fields}`
   }
-  if (product.fit_complaint_pct > 0) {
-    return `${Math.round(product.fit_complaint_pct * 100)}% of reviews report fit complaints`
+  if (product.complaint_count > 0 && product.review_count > 0) {
+    // Derived from the counts shown on the card so the two never disagree
+    // (fit_complaint_pct uses graded reviews as denominator, not the total).
+    const pct = Math.round((product.complaint_count / product.review_count) * 100)
+    return `${pct}% of reviews report fit complaints`
   }
   return 'No fit complaints in mined reviews'
 }

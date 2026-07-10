@@ -1,0 +1,71 @@
+[
+  {
+    "id": "jeans_001",
+    "name": "TrailFlex Stretch Denim Jeans",
+    "category": "jeans",
+    "price": 39.9,
+    "image_url": "/images/jeans_001.jpg",
+    "material": "97% cotton, 3% elastane denim",
+    "stretch_pct": 0.03,
+    "raw_size_chart_text": "Size 30: waist 80cm hip 96cm inseam 78cm | Size 31: 83/99/79 | Size 32: 86/102/80 | Size 33: 89/105/81",
+    "size_chart": [
+      { "size_label": "30", "waist": 80, "hips": 96, "inseam": 78 },
+      { "size_label": "31", "waist": 83, "hips": 99, "inseam": 79 },
+      { "size_label": "32", "waist": 86, "hips": 102, "inseam": 80 },
+      { "size_label": "33", "waist": 89, "hips": 105, "inseam": 81 }
+    ],
+    "review_analysis": {
+      "pct_small": 0.1,
+      "pct_large": 0.08,
+      "pct_tts": 0.82,
+      "review_count": 64,
+      "top_issues": ["inseam runs long for buyers under 170cm"]
+    }
+  },
+  {
+    "id": "shirt_001",
+    "name": "Heritage Oxford Shirt",
+    "category": "shirt",
+    "price": 24.5,
+    "image_url": "/images/shirt_001.jpg",
+    "material": "100% cotton oxford (rigid)",
+    "stretch_pct": 0.0,
+    "raw_size_chart_text": "S: chest 37.8in waist 35.4in / M: chest 40.2in waist 37.8in / L: chest 42.5in waist 40.2in / XL: chest 44.9in waist 42.5in -- seller did not provide sleeve lengths",
+    "size_chart": [
+      { "size_label": "S", "chest": 96, "waist": 90 },
+      { "size_label": "M", "chest": 102, "waist": 96 },
+      { "size_label": "L", "chest": 108, "waist": 102 },
+      { "size_label": "XL", "chest": 114, "waist": 108 }
+    ],
+    "review_analysis": {
+      "pct_small": 0.06,
+      "pct_large": 0.18,
+      "pct_tts": 0.76,
+      "review_count": 51,
+      "top_issues": ["boxy through the waist"]
+    }
+  },
+  {
+    "id": "dress_001",
+    "name": "A-Line Midi Dress",
+    "category": "dress",
+    "price": 31.0,
+    "image_url": "/images/dress_001.jpg",
+    "material": "polyester blend, fully lined (no stretch)",
+    "stretch_pct": 0.0,
+    "raw_size_chart_text": "S bust 88 waist 70 hip 94 / M bust 94 waist 76 hip 100 / L bust 100 waist 82 hip 106 (all cm)",
+    "size_chart": [
+      { "size_label": "S", "bust": 88, "waist": 70, "hips": 94 },
+      { "size_label": "M", "bust": 94, "waist": 76, "hips": 100 },
+      { "size_label": "L", "bust": 100, "waist": 82, "hips": 106 }
+    ],
+    "review_analysis": {
+      "pct_small": 0.3,
+      "pct_large": 0.07,
+      "pct_tts": 0.63,
+      "review_count": 60,
+      "top_issues": ["tight in the bust", "zipper strains when seated"],
+      "caveat": "18 of 60 reviewers say this dress runs small in the bust."
+    }
+  }
+]

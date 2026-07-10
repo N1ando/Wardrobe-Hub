@@ -1,0 +1,34 @@
+{
+  "jordan": {
+    "label": "Demo buyer 1 - jeans at regular fit, clean 31 with medium confidence",
+    "fit_pref": "regular",
+    "measurements": {
+      "chest": 96,
+      "waist": 81,
+      "hips": 94,
+      "inseam": 79,
+      "sleeve": 62,
+      "height": 175
+    }
+  },
+  "riley": {
+    "label": "Demo buyer 2 - dress; base pick is M, runs-small reviews flip it to L",
+    "fit_pref": "regular",
+    "measurements": {
+      "bust": 89.2,
+      "waist": 71.2,
+      "hips": 95.2,
+      "height": 165
+    }
+  },
+  "sam": {
+    "label": "Demo buyer 3 - shirt; regular fit picks S, relaxed fit picks M",
+    "fit_pref": "relaxed",
+    "measurements": {
+      "chest": 88,
+      "waist": 76,
+      "sleeve": 61,
+      "height": 170
+    }
+  }
+}

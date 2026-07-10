@@ -135,7 +135,7 @@ function ProductDetailContent({ product }) {
                   <div className="text-xl font-display font-bold text-ink">
                     Recommended: {quickResult.recommended_size}{" "}
                     <span className="text-sm font-normal text-muted">
-                      ({quickResult.confidence}% confidence)
+                      (fit score {quickResult.confidence}/100)
                     </span>
                   </div>
                 </div>

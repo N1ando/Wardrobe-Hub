@@ -34,6 +34,8 @@ def review_summary(product: Product) -> ReviewSummary | None:
     return ReviewSummary(
         pct_small=a.pct_small, pct_large=a.pct_large, pct_tts=a.pct_tts,
         reviews_analyzed=a.reviews_analyzed, top_issues=a.top_issues or [],
+        analysis_source=a.analysis_source, analysis_mode=a.analysis_mode,
+        elapsed_seconds=a.elapsed_seconds,
     )
 
 

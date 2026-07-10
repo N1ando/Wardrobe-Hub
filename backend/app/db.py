@@ -30,6 +30,29 @@ def init_db() -> None:
     from app import models  # noqa: F401  (side-effect import)
 
     Base.metadata.create_all(bind=engine)
+    _add_missing_analysis_columns()
+
+
+# Columns added to review_analysis after the first release. create_all() only
+# creates missing tables, so pre-existing databases need an additive ALTER.
+_ANALYSIS_COLUMNS = {
+    "analysis_source": "VARCHAR",
+    "analysis_mode": "VARCHAR",
+    "elapsed_seconds": "FLOAT",
+}
+
+
+def _add_missing_analysis_columns() -> None:
+    from sqlalchemy import inspect, text
+
+    inspector = inspect(engine)
+    if not inspector.has_table("review_analysis"):
+        return
+    existing = {col["name"] for col in inspector.get_columns("review_analysis")}
+    with engine.begin() as conn:
+        for name, sql_type in _ANALYSIS_COLUMNS.items():
+            if name not in existing:
+                conn.execute(text(f"ALTER TABLE review_analysis ADD COLUMN {name} {sql_type}"))
 
 
 def get_db() -> Iterator[Session]:

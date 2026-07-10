@@ -92,6 +92,27 @@ export async function getRecommendation({ product_id, fit_pref, measurements }) 
   return res.json()
 }
 
+// Gemma explanation for a recommendation. The {recommendation: ...} wrapper
+// is required by the backend schema — posting the raw object 422s. The
+// backend's fallback ladder guarantees text (template worst case), so any
+// non-ok response here just means "render no sentence".
+export async function postExplain(recommendation, productName) {
+  if (USE_MOCKS) {
+    await new Promise((resolve) => setTimeout(resolve, 400))
+    return {
+      explanation: `We recommend size ${recommendation.recommended_size} (${recommendation.confidence}% confidence).`,
+      source: 'template',
+    }
+  }
+  const res = await fetch(`${API_BASE}/api/explain`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ recommendation, product_name: productName }),
+  })
+  if (!res.ok) throw new Error(`explain failed: HTTP ${res.status}`)
+  return res.json()
+}
+
 // ---------------------------------------------------------------------------
 // Seller dashboard — live endpoints with a mock fallback; the mock JSONs are
 // captured real API responses, so both modes share one shape. Backend

@@ -73,8 +73,12 @@ export default function SellerProductDetail() {
             </span>
           </div>
 
-          {/* AMD proof strip: above the fold on purpose. */}
-          <AmdStatsFooter reviewCount={risk.review_count} />
+          {/* Provenance strip: above the fold on purpose. */}
+          <AmdStatsFooter
+            reviewCount={risk.review_count}
+            source={risk.review_summary?.analysis_source}
+            mode={risk.review_summary?.analysis_mode}
+          />
 
           <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
             <SectionCard title={`Fit verdicts from ${risk.review_count} mined reviews`}>

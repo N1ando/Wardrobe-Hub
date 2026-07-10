@@ -44,9 +44,13 @@ python -m tools.amd_benchmark.batch_analysis --mode amd-vllm \
 ```
 
 **Measured result: 240 reviews / 39.97s / 6.0 reviews-per-second** on AMD
-Developer Cloud (ROCm + vLLM + Gemma). Headline line for dashboard/deck:
+Developer Cloud (ROCm + vLLM + Gemma). The input set is synthetic and the
+client is sequential (one request at a time): the number is **functional
+execution proof** — the pipeline running end-to-end on AMD hardware — not a
+tuned-throughput claim. Request batching / async clients are future work.
+Headline line for dashboard/deck:
 
-> Review analysis: 240 reviews / 39.97s on AMD MI300X (vLLM + ROCm)
+> Review analysis: 240 reviews / 39.97s on AMD MI300X (vLLM + ROCm, sequential client)
 
 Per-review output shape: `{"fit_verdict": "small|large|tts|none", "areas":
 ["waist"], "severity": 1-3, "quote": "..."}`, aggregated into per-product
@@ -83,3 +87,7 @@ structured cm JSON with `unit_detected`, `missing_fields`, and `warnings`.
 | `amd_llm_hello.txt`, `vllm_gemma_test.json`, `amd_llm_explain_test.txt` | Gemma answered through the OpenAI-compatible endpoint, including a recommendation explanation |
 | `rocm_smi_review_mining.txt`, `review_analysis_amd_7.json`, `review_analysis_amd_240.json`, `amd_review_mining_benchmark.txt` | Review mining ran on the AMD GPU; the 240-review throughput benchmark |
 | `rocm_smi_chart_parser.txt`, `parsed_size_charts_amd.json` | Size-chart parsing ran on the AMD GPU |
+
+Note: `amd_system.txt` mentions DigitalOcean — AMD Developer Cloud GPU
+instances run on DigitalOcean infrastructure. The `rocm-smi` captures confirm
+the AMD GPU underneath.

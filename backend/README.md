@@ -2,7 +2,7 @@
 
 FastAPI service behind FitOS: the sizing-intelligence layer for e-commerce
 marketplaces. It turns messy seller size charts and mined fit reviews into
-**explainable size recommendations** for buyers and **return-risk analytics**
+**explainable size recommendations** for buyers and **fit-risk analytics**
 for sellers.
 
 The size recommendation is computed by a **deterministic, testable rules

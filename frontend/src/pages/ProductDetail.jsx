@@ -8,37 +8,49 @@ import { getRecommendation } from '../api'
 
 export default function ProductDetail() {
   const { id } = useParams()
+  const product = MOCK_PRODUCTS.find((p) => p.id === Number(id))
+
+  if (!product) {
+    return <div className="p-8 text-ink">Product not found.</div>
+  }
+
+  // Keyed by product id: switching products remounts the detail view, which
+  // resets size, image, quantity, and quick result without effect resets.
+  return <ProductDetailContent key={product.id} product={product} />
+}
+
+function ProductDetailContent({ product }) {
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedSize, setSelectedSize] = useState(null)
   const [quickResult, setQuickResult] = useState(null)
-  const [checking, setChecking] = useState(true)
   const [activeImage, setActiveImage] = useState(0)
   const [quantity, setQuantity] = useState(1)
   const [highlightedIds, setHighlightedIds] = useState([])
+  const [profile] = useState(() => getFitProfile())
+  const [checking, setChecking] = useState(profile !== null)
   const reviewRefs = useRef({})
-  const product = MOCK_PRODUCTS.find((p) => p.id === Number(id))
 
   useEffect(() => {
-    setQuickResult(null)
-    setSelectedSize(null)
-    setActiveImage(0)
-    setQuantity(1)
-    setHighlightedIds([])
-    setChecking(true)
-    const profile = getFitProfile()
-    if (profile && product) {
-      getRecommendation({
-        product_id: product.id,
-        fit_pref: profile.fitPref,
-        measurements: profile.measurements,
-      }).then((data) => {
-        setQuickResult(data)
-        setChecking(false)
+    if (!profile) return
+    let alive = true
+    getRecommendation({
+      product_id: product.id,
+      fit_pref: profile.fitPref,
+      measurements: profile.measurements,
+    })
+      .then((data) => {
+        if (alive) {
+          setQuickResult(data)
+          setChecking(false)
+        }
       })
-    } else {
-      setChecking(false)
+      .catch(() => {
+        if (alive) setChecking(false)
+      })
+    return () => {
+      alive = false
     }
-  }, [id])
+  }, [product, profile])
 
   function handleViewReviews(ids) {
     setHighlightedIds(ids)
@@ -46,10 +58,6 @@ export default function ProductDetail() {
     if (firstId && reviewRefs.current[firstId]) {
       reviewRefs.current[firstId].scrollIntoView({ behavior: 'smooth', block: 'center' })
     }
-  }
-
-  if (!product) {
-    return <div className="p-8 text-ink">Product not found.</div>
   }
 
   return (

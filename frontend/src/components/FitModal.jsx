@@ -152,10 +152,11 @@ function FitBar({ dim }) {
     )
   }
 
-  // Map ease (cm) to a 0-100 position on a tight <-> loose scale.
+  // Map raw ease (cm) to a 0-100 position on a tight <-> loose scale.
   // Assume -6cm to +16cm is the visible range; clamp outside that.
+  // (Live contract field is raw_ease — see docs/recommendation_contract.md.)
   const min = -6, max = 16
-  const clamped = Math.max(min, Math.min(max, dim.ease))
+  const clamped = Math.max(min, Math.min(max, dim.raw_ease))
   const position = ((clamped - min) / (max - min)) * 100
 
   const verdictColor =
@@ -166,7 +167,7 @@ function FitBar({ dim }) {
     <div>
       <div className="flex justify-between text-sm mb-1">
         <span className="capitalize text-ink">{dim.dim}</span>
-        <span className="text-muted capitalize">{dim.verdict} · ease {dim.ease}cm</span>
+        <span className="text-muted capitalize">{dim.verdict} · ease {dim.raw_ease}cm</span>
       </div>
       <div className="relative h-2 bg-ink/10 rounded-full">
         <div

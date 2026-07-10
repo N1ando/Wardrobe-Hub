@@ -1,0 +1,189 @@
+﻿{
+    "1":  {
+              "id":  1,
+              "name":  "Classic Oxford Shirt",
+              "price":  29.9,
+              "image_url":  "/img/oxford-shirt.jpg",
+              "category":  "shirt",
+              "material":  "Cotton poplin",
+              "stretch_pct":  0.0,
+              "raw_size_chart_text":  "Size | Chest | Waist | Length\nS 100 90 72\nM 106 96 74\nL 112 102 76\nXL 118 108 78\n(measurements in cm, sleeve length not listed)",
+              "size_chart":  [
+                                 {
+                                     "size_label":  "S",
+                                     "chest":  100.0,
+                                     "waist":  90.0,
+                                     "hips":  null,
+                                     "length":  72.0,
+                                     "sleeve":  null,
+                                     "inseam":  null
+                                 },
+                                 {
+                                     "size_label":  "M",
+                                     "chest":  106.0,
+                                     "waist":  96.0,
+                                     "hips":  null,
+                                     "length":  74.0,
+                                     "sleeve":  null,
+                                     "inseam":  null
+                                 },
+                                 {
+                                     "size_label":  "L",
+                                     "chest":  112.0,
+                                     "waist":  102.0,
+                                     "hips":  null,
+                                     "length":  76.0,
+                                     "sleeve":  null,
+                                     "inseam":  null
+                                 },
+                                 {
+                                     "size_label":  "XL",
+                                     "chest":  118.0,
+                                     "waist":  108.0,
+                                     "hips":  null,
+                                     "length":  78.0,
+                                     "sleeve":  null,
+                                     "inseam":  null
+                                 }
+                             ],
+              "review_summary":  {
+                                     "pct_small":  0.0,
+                                     "pct_large":  0.0,
+                                     "pct_tts":  1.0,
+                                     "reviews_analyzed":  8,
+                                     "top_issues":  [
+
+                                                    ]
+                                 }
+          },
+    "2":  {
+              "id":  2,
+              "name":  "Slim Tapered Jeans",
+              "price":  44.0,
+              "image_url":  "/img/tapered-jeans.jpg",
+              "category":  "jeans",
+              "material":  "Denim, 1% elastane",
+              "stretch_pct":  0.01,
+              "raw_size_chart_text":  "Waist(in) Hip(in) Inseam(in)\n30 (S)  36.2  33.9\n31      37.4  33.9\n32 (M)  38.6  33.9\n33      39.8  33.9\n34 (L)  41.0  33.9\nNote: sizes labelled by waist inches, brand runs slim.",
+              "size_chart":  [
+                                 {
+                                     "size_label":  "30",
+                                     "chest":  null,
+                                     "waist":  78.0,
+                                     "hips":  92.0,
+                                     "length":  null,
+                                     "sleeve":  null,
+                                     "inseam":  86.0
+                                 },
+                                 {
+                                     "size_label":  "31",
+                                     "chest":  null,
+                                     "waist":  80.0,
+                                     "hips":  95.0,
+                                     "length":  null,
+                                     "sleeve":  null,
+                                     "inseam":  86.0
+                                 },
+                                 {
+                                     "size_label":  "32",
+                                     "chest":  null,
+                                     "waist":  82.0,
+                                     "hips":  98.0,
+                                     "length":  null,
+                                     "sleeve":  null,
+                                     "inseam":  86.0
+                                 },
+                                 {
+                                     "size_label":  "33",
+                                     "chest":  null,
+                                     "waist":  85.0,
+                                     "hips":  101.0,
+                                     "length":  null,
+                                     "sleeve":  null,
+                                     "inseam":  86.0
+                                 },
+                                 {
+                                     "size_label":  "34",
+                                     "chest":  null,
+                                     "waist":  88.0,
+                                     "hips":  104.0,
+                                     "length":  null,
+                                     "sleeve":  null,
+                                     "inseam":  86.0
+                                 }
+                             ],
+              "review_summary":  {
+                                     "pct_small":  0.0,
+                                     "pct_large":  0.0,
+                                     "pct_tts":  1.0,
+                                     "reviews_analyzed":  8,
+                                     "top_issues":  [
+
+                                                    ]
+                                 }
+          },
+    "3":  {
+              "id":  3,
+              "name":  "Floral Wrap Dress",
+              "price":  38.5,
+              "image_url":  "/img/wrap-dress.jpg",
+              "category":  "dress",
+              "material":  "Cotton, 3% elastane",
+              "stretch_pct":  0.03,
+              "raw_size_chart_text":  "Size Bust Waist\nXS 84 66\nS 88 70\nM 92 74\nL 96 78\n(hip measurements missing from seller chart)",
+              "size_chart":  [
+                                 {
+                                     "size_label":  "XS",
+                                     "chest":  84.0,
+                                     "waist":  66.0,
+                                     "hips":  null,
+                                     "length":  92.0,
+                                     "sleeve":  null,
+                                     "inseam":  null
+                                 },
+                                 {
+                                     "size_label":  "S",
+                                     "chest":  88.0,
+                                     "waist":  70.0,
+                                     "hips":  null,
+                                     "length":  93.0,
+                                     "sleeve":  null,
+                                     "inseam":  null
+                                 },
+                                 {
+                                     "size_label":  "M",
+                                     "chest":  92.0,
+                                     "waist":  74.0,
+                                     "hips":  null,
+                                     "length":  94.0,
+                                     "sleeve":  null,
+                                     "inseam":  null
+                                 },
+                                 {
+                                     "size_label":  "L",
+                                     "chest":  96.0,
+                                     "waist":  78.0,
+                                     "hips":  null,
+                                     "length":  95.0,
+                                     "sleeve":  null,
+                                     "inseam":  null
+                                 }
+                             ],
+              "review_summary":  {
+                                     "pct_small":  0.857,
+                                     "pct_large":  0.0,
+                                     "pct_tts":  0.143,
+                                     "reviews_analyzed":  8,
+                                     "top_issues":  [
+                                                        {
+                                                            "area":  "waist",
+                                                            "count":  5
+                                                        },
+                                                        {
+                                                            "area":  "bust",
+                                                            "count":  1
+                                                        }
+                                                    ]
+                                 }
+          }
+}

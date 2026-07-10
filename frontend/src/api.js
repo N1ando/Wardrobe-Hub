@@ -67,28 +67,56 @@ export async function getRecommendation({ product_id, fit_pref, measurements }) 
 }
 
 // ---------------------------------------------------------------------------
-// Seller dashboard — mocks for GET /api/seller/overview and
-// GET /api/seller/products/:id/risk. Numbers trace back to the seeded
-// review_analysis data in the main repo (data/seed/products.json).
-// TODO: swap the bodies for real fetch() calls once backend is live;
-// the JSON shapes stay identical.
+// Seller dashboard — live endpoints with a mock fallback.
+// Set VITE_USE_MOCKS=1 to force mocks (demo insurance if the API is down);
+// the mock JSONs are captured real API responses, so both modes share one
+// shape. Backend contract: backend/app/schemas.py (SellerOverview,
+// SellerProductRisk, ProductDetail).
 // ---------------------------------------------------------------------------
 
 import sellerOverview from './mocks/seller_overview.json'
 import sellerRisk1 from './mocks/seller_risk_1.json'
 import sellerRisk2 from './mocks/seller_risk_2.json'
 import sellerRisk3 from './mocks/seller_risk_3.json'
+import productDetails from './mocks/product_details.json'
+
+const USE_MOCKS = import.meta.env.VITE_USE_MOCKS === '1'
+const API_BASE = import.meta.env.VITE_API_BASE ?? 'http://localhost:8000'
 
 const RISK_MOCKS = { 1: sellerRisk1, 2: sellerRisk2, 3: sellerRisk3 }
 
+async function getJson(path) {
+  const res = await fetch(`${API_BASE}${path}`)
+  if (!res.ok) throw new Error(`${path} failed: HTTP ${res.status}`)
+  return res.json()
+}
+
 export async function getSellerOverview() {
-  await new Promise((resolve) => setTimeout(resolve, 600))
-  return sellerOverview
+  if (USE_MOCKS) {
+    await new Promise((resolve) => setTimeout(resolve, 600))
+    return sellerOverview
+  }
+  return getJson('/api/seller/overview')
 }
 
 export async function getProductRisk(productId) {
-  await new Promise((resolve) => setTimeout(resolve, 600))
-  const risk = RISK_MOCKS[productId]
-  if (!risk) throw new Error(`No risk data for product ${productId}`)
-  return risk
+  if (USE_MOCKS) {
+    await new Promise((resolve) => setTimeout(resolve, 600))
+    const risk = RISK_MOCKS[productId]
+    if (!risk) throw new Error(`No risk data for product ${productId}`)
+    return risk
+  }
+  return getJson(`/api/seller/products/${productId}/risk`)
+}
+
+// Product detail (category + size chart) — the seller drilldown uses it to
+// derive which chart fields exist vs. are required for the garment type.
+export async function getProduct(productId) {
+  if (USE_MOCKS) {
+    await new Promise((resolve) => setTimeout(resolve, 300))
+    const product = productDetails[productId]
+    if (!product) throw new Error(`No product ${productId}`)
+    return product
+  }
+  return getJson(`/api/products/${productId}`)
 }

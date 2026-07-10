@@ -17,6 +17,13 @@ export default function ComplaintAreasChart({ areas }) {
     area: a.area,
     pct: Math.round(a.pct * 100),
   }))
+  if (data.length === 0) {
+    return (
+      <p className="py-6 text-center text-sm text-gray-500">
+        No complaint clusters &mdash; mined reviews report no fit issues.
+      </p>
+    )
+  }
   // Container sized to content so labels never get clipped by a fixed height.
   const height = data.length * 40 + 8
 

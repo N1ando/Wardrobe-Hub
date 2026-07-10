@@ -1,36 +1,71 @@
-{
-  "_comment": "Mock for GET /api/seller/products/3/risk (Summer Floral Dress - the HIGH risk demo product with the planted runs-small review cluster).",
-  "id": 3,
-  "name": "Summer Floral Dress",
-  "risk_level": "high",
-  "risk_score": 74,
-  "review_count": 60,
-  "complaint_count": 22,
-  "chart_completeness": 1.0,
-  "fit_distribution": { "pct_small": 0.3, "pct_tts": 0.63, "pct_large": 0.07 },
-  "complaint_areas": [
-    { "area": "bust", "pct": 0.45 },
-    { "area": "waist", "pct": 0.3 },
-    { "area": "zipper / seated", "pct": 0.15 },
-    { "area": "hips", "pct": 0.1 }
-  ],
-  "required_fields": ["bust", "waist", "hips"],
-  "missing_fields": [],
-  "field_impact": {},
-  "suggestions": [
-    "Add a \"runs small - consider sizing up\" note to the listing; 30% of reviewers report a small fit, concentrated in the bust.",
-    "State clearly that the fabric has no stretch (fully lined polyester) - reviewers expecting give are the main complaint source.",
-    "Review the bust grading between M and L; most size complaints come from buyers between those two sizes."
-  ],
-  "quotes": [
-    { "text": "Gorgeous dress but SO tight in the bust, I should have sized up", "verdict": "small", "size_bought": "M" },
-    { "text": "The zipper strains when I sit down. Fabric has zero stretch", "verdict": "small", "size_bought": "M" },
-    { "text": "Runs a full size small in my opinion", "verdict": "small", "size_bought": "S" },
-    { "text": "True to the chart for me, but I'm between sizes and went up", "verdict": "tts", "size_bought": "L" }
-  ],
-  "analysis_meta": {
-    "reviews_processed": 175,
-    "seconds": null,
-    "backend": "Gemma on AMD MI300X (vLLM + ROCm)"
-  }
+﻿{
+    "product_id":  3,
+    "name":  "Floral Wrap Dress",
+    "image_url":  "/img/wrap-dress.jpg",
+    "risk_level":  "high",
+    "risk_score":  65,
+    "missing_fields":  [
+                           "hips"
+                       ],
+    "complaint_clusters":  [
+                               {
+                                   "area":  "waist",
+                                   "count":  5
+                               },
+                               {
+                                   "area":  "bust",
+                                   "count":  1
+                               }
+                           ],
+    "review_summary":  {
+                           "pct_small":  0.857,
+                           "pct_large":  0.0,
+                           "pct_tts":  0.143,
+                           "reviews_analyzed":  8,
+                           "top_issues":  [
+                                              {
+                                                  "area":  "waist",
+                                                  "count":  5
+                                              },
+                                              {
+                                                  "area":  "bust",
+                                                  "count":  1
+                                              }
+                                          ]
+                       },
+    "suggestions":  [
+                        "Add hips measurements to your size chart to cut fit guesswork.",
+                        "Reviewers flag waist; note true-to-size guidance for it.",
+                        "Many buyers say it runs small; recommend sizing up on the page."
+                    ],
+    "review_count":  8,
+    "complaint_count":  7,
+    "chart_completeness":  0.667,
+    "fit_distribution":  {
+                             "pct_small":  0.857,
+                             "pct_tts":  0.143,
+                             "pct_large":  0.0
+                         },
+    "quotes":  [
+                   {
+                       "text":  "Runs small, especially in the waist. I usually wear M and it was too tight, size up.",
+                       "verdict":  "small",
+                       "size_bought":  "M"
+                   },
+                   {
+                       "text":  "Cute dress but it runs small in the bust, I could not close the wrap comfortably.",
+                       "verdict":  "small",
+                       "size_bought":  "S"
+                   },
+                   {
+                       "text":  "Too small for the size, the waist was snug. Definitely runs small.",
+                       "verdict":  "small",
+                       "size_bought":  "L"
+                   },
+                   {
+                       "text":  "Fits true to size for me and the fabric has a slight stretch.",
+                       "verdict":  "tts",
+                       "size_bought":  "M"
+                   }
+               ]
 }

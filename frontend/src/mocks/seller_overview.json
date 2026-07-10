@@ -1,41 +1,65 @@
-{
-  "_comment": "Mock for GET /api/seller/overview. Numbers derive from data/seed/products.json review_analysis blobs (main repo): shirt=missing sleeve chart field, jeans=weak signal + inseam complaints, dress=planted runs-small cluster. complaint_count = round((pct_small+pct_large) * review_count). Replace with live endpoint via src/api.js only.",
-  "products": [
-    {
-      "id": 3,
-      "name": "Summer Floral Dress",
-      "image_url": "https://placehold.co/400x500?text=Dress",
-      "risk_level": "high",
-      "risk_score": 74,
-      "complaint_count": 22,
-      "review_count": 60,
-      "chart_completeness": 1.0,
-      "fit_distribution": { "pct_small": 0.3, "pct_tts": 0.63, "pct_large": 0.07 },
-      "top_issue": "30% of reviewers report it runs small"
-    },
-    {
-      "id": 1,
-      "name": "Classic White Shirt",
-      "image_url": "https://placehold.co/400x500?text=Shirt",
-      "risk_level": "medium",
-      "risk_score": 55,
-      "complaint_count": 12,
-      "review_count": 51,
-      "chart_completeness": 0.67,
-      "fit_distribution": { "pct_small": 0.06, "pct_tts": 0.76, "pct_large": 0.18 },
-      "top_issue": "sleeve measurements missing from size chart"
-    },
-    {
-      "id": 2,
-      "name": "Slim Fit Jeans",
-      "image_url": "https://placehold.co/400x500?text=Jeans",
-      "risk_level": "low",
-      "risk_score": 28,
-      "complaint_count": 12,
-      "review_count": 64,
-      "chart_completeness": 1.0,
-      "fit_distribution": { "pct_small": 0.1, "pct_tts": 0.82, "pct_large": 0.08 },
-      "top_issue": "inseam runs long for shorter buyers"
-    }
-  ]
+﻿{
+    "products":  [
+                     {
+                         "product_id":  1,
+                         "name":  "Classic Oxford Shirt",
+                         "category":  "shirt",
+                         "image_url":  "/img/oxford-shirt.jpg",
+                         "risk_level":  "low",
+                         "risk_score":  13,
+                         "missing_fields":  [
+                                                "sleeve"
+                                            ],
+                         "fit_complaint_pct":  0.0,
+                         "review_count":  8,
+                         "complaint_count":  0,
+                         "chart_completeness":  0.667,
+                         "fit_distribution":  {
+                                                  "pct_small":  0.0,
+                                                  "pct_tts":  1.0,
+                                                  "pct_large":  0.0
+                                              }
+                     },
+                     {
+                         "product_id":  2,
+                         "name":  "Slim Tapered Jeans",
+                         "category":  "jeans",
+                         "image_url":  "/img/tapered-jeans.jpg",
+                         "risk_level":  "low",
+                         "risk_score":  0,
+                         "missing_fields":  [
+
+                                            ],
+                         "fit_complaint_pct":  0.0,
+                         "review_count":  8,
+                         "complaint_count":  0,
+                         "chart_completeness":  1.0,
+                         "fit_distribution":  {
+                                                  "pct_small":  0.0,
+                                                  "pct_tts":  1.0,
+                                                  "pct_large":  0.0
+                                              }
+                     },
+                     {
+                         "product_id":  3,
+                         "name":  "Floral Wrap Dress",
+                         "category":  "dress",
+                         "image_url":  "/img/wrap-dress.jpg",
+                         "risk_level":  "high",
+                         "risk_score":  65,
+                         "missing_fields":  [
+                                                "hips"
+                                            ],
+                         "fit_complaint_pct":  0.857,
+                         "review_count":  8,
+                         "complaint_count":  7,
+                         "chart_completeness":  0.667,
+                         "fit_distribution":  {
+                                                  "pct_small":  0.857,
+                                                  "pct_tts":  0.143,
+                                                  "pct_large":  0.0
+                                              }
+                     }
+                 ],
+    "throughput_note":  "Analyzed 8 reviews in 0.0s"
 }

@@ -159,11 +159,23 @@ def import_review_analysis(db: Session, data: object) -> ImportReport:
             report.skipped.append(f"row {index} ({raw_id!r}): top_issues_json is not a list")
             continue
 
+        # Complaint verdicts counted from per-review ground truth when the list
+        # is complete; otherwise derived from the producer's pcts, which are
+        # computed over total_reviews (unlike the runtime miner's graded pcts).
+        classified = [r for r in item.get("classified_reviews", []) if isinstance(r, dict)]
+        if classified and len(classified) == int(total):
+            complaint_count = sum(
+                1 for r in classified if r.get("fit_verdict") in ("small", "large")
+            )
+        else:
+            complaint_count = round((pcts["pct_small"] + pcts["pct_large"]) * total)
+
         analysis = db.get(ReviewAnalysis, product.id) or ReviewAnalysis(product_id=product.id)
         analysis.pct_small = pcts["pct_small"]
         analysis.pct_large = pcts["pct_large"]
         analysis.pct_tts = pcts["pct_tts"]
         analysis.reviews_analyzed = int(total)
+        analysis.complaint_count = complaint_count
         analysis.top_issues = [i for i in issues if isinstance(i, dict)]
         analysis.analysis_source = source
         analysis.analysis_mode = "batch"

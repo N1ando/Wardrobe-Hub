@@ -30,7 +30,7 @@ class Settings(BaseSettings):
     # --- Gemma / AMD / Fireworks ---
     # Fallback ladder: AMD vLLM (gemma_url) -> Fireworks -> cache -> template.
     gemma_url: str = ""  # AMD Dev Cloud vLLM OpenAI-compatible base URL, e.g. http://host:8001/v1
-    gemma_model: str = "gemma-2-9b-it"  # model name served by vLLM
+    gemma_model: str = "fitos-gemma"  # served model name on the AMD vLLM box (weights: google/gemma-2-2b-it)
     fireworks_api_key: str = ""
     fireworks_model: str = "accounts/fireworks/models/gemma-2-9b-it"
     fireworks_base_url: str = "https://api.fireworks.ai/inference/v1"

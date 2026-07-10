@@ -98,6 +98,8 @@ def test_real_amd_batch_file_imports_into_review_analysis(restore_runtime_analys
 
     jeans = _get_analysis(2)  # jeans_001 in the benchmark file
     assert jeans.reviews_analyzed == 104
+    # Counted from the complete classified_reviews list: 2 small, 0 large.
+    assert jeans.complaint_count == 2
     assert jeans.pct_small == pytest.approx(0.0192)
     assert jeans.analysis_source == "amd-vllm"
     assert jeans.analysis_mode == "batch"
@@ -135,6 +137,10 @@ def test_invalid_rows_are_skipped_with_reasons_and_leave_db_unchanged(restore_ru
     assert len(report.skipped) == 6
     assert any("hat_999" in reason for reason in report.skipped)
     assert any("missing product_id" in reason for reason in report.skipped)
+
+    # _amd_row ships 1 classified review against total=10, so complaint_count
+    # falls back to the producer-pct derivation: round((0.2 + 0.1) * 10) = 3.
+    assert _get_analysis(2).complaint_count == 3
 
     # Every dress row was invalid: its runtime analysis must be untouched.
     after_dress = _get_analysis(3)

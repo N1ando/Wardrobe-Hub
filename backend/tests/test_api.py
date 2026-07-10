@@ -139,3 +139,63 @@ def test_analyze_reviews_endpoint(client):
     assert r.status_code == 200
     analyzed = r.json()["analyzed"]
     assert analyzed[0]["reviews_analyzed"] >= 50
+
+
+def test_complaint_counts_match_mined_verdicts(client):
+    # complaint_count must equal the actual small+large verdicts behind the
+    # pcts. The old derivation (complaint_pct x reviews_analyzed) mixed
+    # denominators — pcts are over graded reviews, the multiplier was the
+    # total — so the dress read 29 with only 26 complaint verdicts.
+    from app.db import SessionLocal
+    from app.models import Review
+
+    db = SessionLocal()
+    try:
+        rows = client.get("/api/seller/overview").json()["products"]
+        for row in rows:
+            verdicts = (
+                db.query(Review)
+                .filter(
+                    Review.product_id == row["product_id"],
+                    Review.verdict.in_(("small", "large")),
+                )
+                .count()
+            )
+            assert row["complaint_count"] == verdicts
+        dress = next(p for p in rows if p["product_id"] == 3)
+        assert dress["complaint_count"] == 26  # 23 small + 3 large in the seed
+    finally:
+        db.close()
+
+
+def test_complaint_count_ignores_unclassified_reviews(client):
+    """Adversarial case: 1 'runs small' review + 99 neutral ones must yield
+    complaint_count == 1 — not ~100, which the old pct-x-total math gave."""
+    from app.ai.batch_analysis import analyze_product_reviews
+    from app.db import SessionLocal
+    from app.models import Product, Review
+
+    db = SessionLocal()
+    product = Product(name="Adversarial Tee", category="shirt", price=10.0)
+    try:
+        db.add(product)
+        db.flush()
+        db.add(Review(product_id=product.id, text="Way too small, size up.", rating=2))
+        for i in range(99):
+            db.add(Review(product_id=product.id, text=f"Nice colour, fast delivery #{i}.", rating=5))
+        db.commit()
+
+        analysis = analyze_product_reviews(db, product.id)
+        assert analysis.reviews_analyzed == 100
+        assert analysis.complaint_count == 1
+        assert analysis.pct_small == 1.0  # share of graded reviews, by design
+
+        risk = client.get(f"/api/seller/products/{product.id}/risk").json()
+        assert risk["complaint_count"] == 1
+        assert risk["review_count"] == 100
+    finally:
+        # Drop the temp product (cascades to reviews + analysis) so the
+        # 3-product catalog pins in the other tests stay true.
+        db.delete(db.get(Product, product.id))
+        db.commit()
+        db.close()

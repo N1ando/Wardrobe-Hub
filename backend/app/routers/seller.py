@@ -64,11 +64,13 @@ def _distribution(analysis: ReviewAnalysis | None) -> FitDistribution:
     )
 
 
-def _counts(analysis: ReviewAnalysis | None, complaint_pct: float) -> tuple[int, int]:
-    """(review_count, complaint_count) from the mined aggregate."""
+def _counts(analysis: ReviewAnalysis | None) -> tuple[int, int]:
+    """(review_count, complaint_count) from the mined aggregate. The count is
+    stored by the miner/importer alongside the pcts — deriving it here from
+    complaint_pct would mix denominators (pcts are over graded reviews)."""
     if analysis is None:
         return 0, 0
-    return analysis.reviews_analyzed, round(complaint_pct * analysis.reviews_analyzed)
+    return analysis.reviews_analyzed, analysis.complaint_count
 
 
 def _quotes(db: Session, product: Product) -> list[QuoteItem]:
@@ -99,7 +101,7 @@ def overview(db: Session = Depends(get_db)) -> SellerOverview:
     rows, note = [], None
     for p in products:
         score, level, complaint_pct, missing, completeness = _risk(p)
-        review_count, complaint_count = _counts(p.analysis, complaint_pct)
+        review_count, complaint_count = _counts(p.analysis)
         rows.append(SellerRiskRow(
             product_id=p.id, name=p.name, category=p.category,
             image_url=p.image_url,
@@ -143,7 +145,7 @@ def product_risk(product_id: int, db: Session = Depends(get_db)) -> SellerProduc
         "pct_large": summary.pct_large,
     })
 
-    review_count, complaint_count = _counts(a, complaint_pct)
+    review_count, complaint_count = _counts(a)
     return SellerProductRisk(
         product_id=product.id, name=product.name, image_url=product.image_url,
         risk_level=level, risk_score=score,

@@ -1,28 +1,1082 @@
 [
-  {"product_id": 1, "rating": 5, "size_bought": "M", "text": "Fits true to size, ordered my usual M and it's spot on across the chest."},
-  {"product_id": 1, "rating": 4, "size_bought": "L", "text": "Good shirt, fit is as expected. Length is fine for me."},
-  {"product_id": 1, "rating": 5, "size_bought": "M", "text": "Perfect fit, exactly what the size chart said."},
-  {"product_id": 1, "rating": 4, "size_bought": "S", "text": "True to size, maybe a touch roomy in the waist but I like that."},
-  {"product_id": 1, "rating": 3, "size_bought": "L", "text": "Decent. Sleeves feel a little short but chest fits well."},
-  {"product_id": 1, "rating": 5, "size_bought": "M", "text": "Bought my normal size and it fits perfectly, no complaints."},
-  {"product_id": 1, "rating": 4, "size_bought": "XL", "text": "Fits as expected, true to size for a regular fit."},
-  {"product_id": 1, "rating": 5, "size_bought": "M", "text": "As expected, comfortable regular fit."},
-
-  {"product_id": 2, "rating": 4, "size_bought": "32", "text": "Waist fits great but the length runs long, had to hem the inseam."},
-  {"product_id": 2, "rating": 3, "size_bought": "31", "text": "Nice jeans but they run long, the inseam was way too long for me at 5'8."},
-  {"product_id": 2, "rating": 4, "size_bought": "33", "text": "True to size in the waist. Length is long though, expect to cuff or hem them."},
-  {"product_id": 2, "rating": 5, "size_bought": "32", "text": "Waist is true to size and the tapered fit is perfect."},
-  {"product_id": 2, "rating": 3, "size_bought": "34", "text": "Good denim, rigid so no stretch. The inseam runs long as others said."},
-  {"product_id": 2, "rating": 4, "size_bought": "30", "text": "Fits as expected in the waist, length a bit long on me."},
-  {"product_id": 2, "rating": 5, "size_bought": "32", "text": "Spot on sizing, true to size, very happy."},
-  {"product_id": 2, "rating": 4, "size_bought": "31", "text": "Waist true to size. Long in the leg but I'm tall so it worked."},
-
-  {"product_id": 3, "rating": 2, "size_bought": "M", "text": "Runs small, especially in the waist. I usually wear M and it was too tight, size up."},
-  {"product_id": 3, "rating": 3, "size_bought": "S", "text": "Cute dress but it runs small in the bust, I could not close the wrap comfortably."},
-  {"product_id": 3, "rating": 2, "size_bought": "L", "text": "Too small for the size, the waist was snug. Definitely runs small."},
-  {"product_id": 3, "rating": 3, "size_bought": "M", "text": "Beautiful print but too tight in the waist, had to return and size up."},
-  {"product_id": 3, "rating": 4, "size_bought": "S", "text": "Runs a little small in the bust but the length is nice."},
-  {"product_id": 3, "rating": 5, "size_bought": "M", "text": "Fits true to size for me and the fabric has a slight stretch."},
-  {"product_id": 3, "rating": 2, "size_bought": "XS", "text": "Way too small, the waist runs small. Order one size up."},
-  {"product_id": 3, "rating": 3, "size_bought": "S", "text": "Snug in the waist, runs small. Pretty otherwise."}
+  {
+    "product_id": 1,
+    "rating": 5,
+    "size_bought": "M",
+    "text": "Fits true to size, ordered my usual M and it's spot on across the chest."
+  },
+  {
+    "product_id": 1,
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Good shirt, fit is as expected. Length is fine for me."
+  },
+  {
+    "product_id": 1,
+    "rating": 5,
+    "size_bought": "M",
+    "text": "Perfect fit, exactly what the size chart said."
+  },
+  {
+    "product_id": 1,
+    "rating": 4,
+    "size_bought": "S",
+    "text": "True to size, maybe a touch roomy in the waist but I like that."
+  },
+  {
+    "product_id": 1,
+    "rating": 3,
+    "size_bought": "L",
+    "text": "Decent. Sleeves feel a little short but chest fits well."
+  },
+  {
+    "product_id": 1,
+    "rating": 5,
+    "size_bought": "M",
+    "text": "Bought my normal size and it fits perfectly, no complaints."
+  },
+  {
+    "product_id": 1,
+    "rating": 4,
+    "size_bought": "XL",
+    "text": "Fits as expected, true to size for a regular fit."
+  },
+  {
+    "product_id": 1,
+    "rating": 5,
+    "size_bought": "M",
+    "text": "As expected, comfortable regular fit."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "32",
+    "text": "Waist fits great but the length runs long, had to hem the inseam."
+  },
+  {
+    "product_id": 2,
+    "rating": 3,
+    "size_bought": "31",
+    "text": "Nice jeans but they run long, the inseam was way too long for me at 5'8."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "33",
+    "text": "True to size in the waist. Length is long though, expect to cuff or hem them."
+  },
+  {
+    "product_id": 2,
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Waist is true to size and the tapered fit is perfect."
+  },
+  {
+    "product_id": 2,
+    "rating": 3,
+    "size_bought": "34",
+    "text": "Good denim, rigid so no stretch. The inseam runs long as others said."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "30",
+    "text": "Fits as expected in the waist, length a bit long on me."
+  },
+  {
+    "product_id": 2,
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Spot on sizing, true to size, very happy."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "31",
+    "text": "Waist true to size. Long in the leg but I'm tall so it worked."
+  },
+  {
+    "product_id": 3,
+    "rating": 2,
+    "size_bought": "M",
+    "text": "Runs small, especially in the waist. I usually wear M and it was too tight, size up."
+  },
+  {
+    "product_id": 3,
+    "rating": 3,
+    "size_bought": "S",
+    "text": "Cute dress but it runs small in the bust, I could not close the wrap comfortably."
+  },
+  {
+    "product_id": 3,
+    "rating": 2,
+    "size_bought": "L",
+    "text": "Too small for the size, the waist was snug. Definitely runs small."
+  },
+  {
+    "product_id": 3,
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Beautiful print but too tight in the waist, had to return and size up."
+  },
+  {
+    "product_id": 3,
+    "rating": 4,
+    "size_bought": "S",
+    "text": "Runs a little small in the bust but the length is nice."
+  },
+  {
+    "product_id": 3,
+    "rating": 5,
+    "size_bought": "M",
+    "text": "Fits true to size for me and the fabric has a slight stretch."
+  },
+  {
+    "product_id": 3,
+    "rating": 2,
+    "size_bought": "XS",
+    "text": "Way too small, the waist runs small. Order one size up."
+  },
+  {
+    "product_id": 3,
+    "rating": 3,
+    "size_bought": "S",
+    "text": "Snug in the waist, runs small. Pretty otherwise."
+  },
+  {
+    "product_id": 1,
+    "rating": 4,
+    "size_bought": "S",
+    "text": "True to size, my usual M fits like it was made for me."
+  },
+  {
+    "product_id": 1,
+    "rating": 5,
+    "size_bought": "M",
+    "text": "Fits perfectly through the chest and shoulders, zero complaints."
+  },
+  {
+    "product_id": 1,
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Ordered my normal size and it's spot on."
+  },
+  {
+    "product_id": 1,
+    "rating": 4,
+    "size_bought": "S",
+    "text": "Perfect fit for a work shirt, crisp fabric too."
+  },
+  {
+    "product_id": 1,
+    "rating": 5,
+    "size_bought": "S",
+    "text": "As expected from the chart, no surprises."
+  },
+  {
+    "product_id": 1,
+    "rating": 4,
+    "size_bought": "S",
+    "text": "True to size. Washed twice, still fits the same."
+  },
+  {
+    "product_id": 1,
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Fits perfectly, I'm between sizes and the M still worked."
+  },
+  {
+    "product_id": 1,
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Great everyday shirt, fit is as expected."
+  },
+  {
+    "product_id": 1,
+    "rating": 5,
+    "size_bought": "M",
+    "text": "Spot on sizing, buying a second one."
+  },
+  {
+    "product_id": 1,
+    "rating": 5,
+    "size_bought": "L",
+    "text": "True to size, sleeves hit right at the wrist."
+  },
+  {
+    "product_id": 1,
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Exactly as expected, classic cut."
+  },
+  {
+    "product_id": 1,
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, not slim not boxy, just right."
+  },
+  {
+    "product_id": 1,
+    "rating": 5,
+    "size_bought": "M",
+    "text": "Fits perfectly untucked or tucked in."
+  },
+  {
+    "product_id": 1,
+    "rating": 4,
+    "size_bought": "L",
+    "text": "As expected. Nice weight to the fabric."
+  },
+  {
+    "product_id": 1,
+    "rating": 4,
+    "size_bought": "S",
+    "text": "True to size for me at 178cm, took the L."
+  },
+  {
+    "product_id": 1,
+    "rating": 5,
+    "size_bought": "S",
+    "text": "Spot on. Ironed well, collar keeps shape."
+  },
+  {
+    "product_id": 1,
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Fits perfectly after a wash, no shrinking."
+  },
+  {
+    "product_id": 1,
+    "rating": 5,
+    "size_bought": "S",
+    "text": "True to size, third one I've bought."
+  },
+  {
+    "product_id": 1,
+    "rating": 5,
+    "size_bought": "S",
+    "text": "As expected, the chart measurements were accurate."
+  },
+  {
+    "product_id": 1,
+    "rating": 5,
+    "size_bought": "S",
+    "text": "Perfect fit across the chest for a regular cut."
+  },
+  {
+    "product_id": 1,
+    "rating": 5,
+    "size_bought": "L",
+    "text": "True to size, gifted one to my brother too."
+  },
+  {
+    "product_id": 1,
+    "rating": 4,
+    "size_bought": "S",
+    "text": "Fits perfectly, exactly per the size chart."
+  },
+  {
+    "product_id": 1,
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Spot on fit and fast delivery."
+  },
+  {
+    "product_id": 1,
+    "rating": 5,
+    "size_bought": "S",
+    "text": "As expected, good staple shirt."
+  },
+  {
+    "product_id": 1,
+    "rating": 4,
+    "size_bought": "S",
+    "text": "True to size, wore it straight out of the pack."
+  },
+  {
+    "product_id": 1,
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, breathable for hot days."
+  },
+  {
+    "product_id": 1,
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Fits perfectly for office and weekend."
+  },
+  {
+    "product_id": 1,
+    "rating": 4,
+    "size_bought": "L",
+    "text": "As expected, buttons feel sturdy as well."
+  },
+  {
+    "product_id": 1,
+    "rating": 5,
+    "size_bought": "M",
+    "text": "Spot on, the poplin feels premium at this price."
+  },
+  {
+    "product_id": 1,
+    "rating": 5,
+    "size_bought": "S",
+    "text": "True to size even after tumble drying."
+  },
+  {
+    "product_id": 1,
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Perfect fit, my usual size worked great."
+  },
+  {
+    "product_id": 1,
+    "rating": 4,
+    "size_bought": "XL",
+    "text": "As expected. Would recommend to a friend."
+  },
+  {
+    "product_id": 1,
+    "rating": 5,
+    "size_bought": "L",
+    "text": "True to size, no gaping at the buttons."
+  },
+  {
+    "product_id": 1,
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Fits perfectly, chest measurement matched the chart exactly."
+  },
+  {
+    "product_id": 1,
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Spot on sizing and nice matte white, not see-through."
+  },
+  {
+    "product_id": 1,
+    "rating": 4,
+    "size_bought": "L",
+    "text": "As expected, my second Oxford from this shop."
+  },
+  {
+    "product_id": 1,
+    "rating": 5,
+    "size_bought": "L",
+    "text": "True to size, comfortable through the shoulders."
+  },
+  {
+    "product_id": 1,
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Perfect fit. Simple, clean, reliable."
+  },
+  {
+    "product_id": 1,
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Felt tight across the shoulders when reaching forward, consider going up."
+  },
+  {
+    "product_id": 1,
+    "rating": 3,
+    "size_bought": "XL",
+    "text": "A bit too tight in the upper arms for my build."
+  },
+  {
+    "product_id": 1,
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Snug through the chest for me, I'd size up if you lift."
+  },
+  {
+    "product_id": 1,
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Cut is roomy, almost baggy at the waist for my frame."
+  },
+  {
+    "product_id": 1,
+    "rating": 3,
+    "size_bought": "L",
+    "text": "Felt too loose around the middle, more of a relaxed cut."
+  },
+  {
+    "product_id": 1,
+    "rating": 4,
+    "size_bought": "XL",
+    "text": "Slightly oversized look on me, fine untucked though."
+  },
+  {
+    "product_id": 1,
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Wish the seller listed sleeve length in the chart, had to guess."
+  },
+  {
+    "product_id": 1,
+    "rating": 3,
+    "size_bought": "XL",
+    "text": "Fabric is nice and thick, survived a hot wash."
+  },
+  {
+    "product_id": 1,
+    "rating": 3,
+    "size_bought": "S",
+    "text": "Color is a clean white, not transparent."
+  },
+  {
+    "product_id": 1,
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Shipping took a week but packaging was neat."
+  },
+  {
+    "product_id": 1,
+    "rating": 5,
+    "size_bought": "M",
+    "text": "Collar stays sharp without much ironing."
+  },
+  {
+    "product_id": 1,
+    "rating": 5,
+    "size_bought": "XL",
+    "text": "No sleeve measurements in the listing, note to the seller."
+  },
+  {
+    "product_id": 1,
+    "rating": 5,
+    "size_bought": "S",
+    "text": "Good value for the price, stitching looks solid."
+  },
+  {
+    "product_id": 1,
+    "rating": 4,
+    "size_bought": "XL",
+    "text": "Buttons are properly sewn, no loose threads."
+  },
+  {
+    "product_id": 2,
+    "rating": 5,
+    "size_bought": "34",
+    "text": "True to size in the waist, my usual 32 fit right away."
+  },
+  {
+    "product_id": 2,
+    "rating": 5,
+    "size_bought": "34",
+    "text": "Fits perfectly through the seat and thigh."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "30",
+    "text": "Waist is spot on, exactly per the chart."
+  },
+  {
+    "product_id": 2,
+    "rating": 5,
+    "size_bought": "32",
+    "text": "As expected, comfortable straight out of the wash."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "32",
+    "text": "True to size, the 1% stretch makes them easy to wear all day."
+  },
+  {
+    "product_id": 2,
+    "rating": 5,
+    "size_bought": "31",
+    "text": "Perfect fit at the waist, tapered leg looks great."
+  },
+  {
+    "product_id": 2,
+    "rating": 5,
+    "size_bought": "30",
+    "text": "Spot on sizing, took my usual 31."
+  },
+  {
+    "product_id": 2,
+    "rating": 5,
+    "size_bought": "34",
+    "text": "As expected, good rise, no gap at the back."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "34",
+    "text": "True to size, denim feels sturdy but not stiff."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "32",
+    "text": "Fits perfectly, best jeans I've bought online."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "31",
+    "text": "Waist true to size, fades nicely too."
+  },
+  {
+    "product_id": 2,
+    "rating": 5,
+    "size_bought": "31",
+    "text": "As expected, third pair of these."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "34",
+    "text": "Spot on, no stretching out after a day's wear."
+  },
+  {
+    "product_id": 2,
+    "rating": 5,
+    "size_bought": "33",
+    "text": "True to size, comfortable for cycling to work."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "30",
+    "text": "Perfect fit in the waist and hips for me."
+  },
+  {
+    "product_id": 2,
+    "rating": 5,
+    "size_bought": "32",
+    "text": "As expected from the measurements listed."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "30",
+    "text": "True to size. Belt loops feel solid."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "34",
+    "text": "Fits perfectly, nice mid-weight denim."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "30",
+    "text": "Spot on waist fit, exactly like the chart says."
+  },
+  {
+    "product_id": 2,
+    "rating": 5,
+    "size_bought": "30",
+    "text": "As expected, took a 33 like always."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "31",
+    "text": "True to size, the taper is flattering without being skinny."
+  },
+  {
+    "product_id": 2,
+    "rating": 5,
+    "size_bought": "34",
+    "text": "Perfect fit, hems held up after machine wash."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "32",
+    "text": "As expected, quality rivets and stitching."
+  },
+  {
+    "product_id": 2,
+    "rating": 5,
+    "size_bought": "31",
+    "text": "Spot on, ordering a black pair next."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "32",
+    "text": "True to size at the waist for me at 90kg."
+  },
+  {
+    "product_id": 2,
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits perfectly, no bagging at the knees yet."
+  },
+  {
+    "product_id": 2,
+    "rating": 5,
+    "size_bought": "34",
+    "text": "As expected, great daily pair."
+  },
+  {
+    "product_id": 2,
+    "rating": 5,
+    "size_bought": "30",
+    "text": "True to size, glad I didn't size up."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "31",
+    "text": "Perfect fit, sits right at the hips."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "32",
+    "text": "Spot on sizing. Denim softened nicely after a week."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "34",
+    "text": "As expected, waist matched the chart to the centimetre."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "34",
+    "text": "True to size, my go-to jeans now."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "30",
+    "text": "Fits perfectly after the first wash."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "30",
+    "text": "As expected, nice deep pockets too."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "30",
+    "text": "Spot on fit, good stretch recovery."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "32",
+    "text": "True to size, no complaints after a month."
+  },
+  {
+    "product_id": 2,
+    "rating": 2,
+    "size_bought": "34",
+    "text": "Length runs generous, I had to size down to keep the inseam manageable."
+  },
+  {
+    "product_id": 2,
+    "rating": 2,
+    "size_bought": "32",
+    "text": "Inseam is really long, honestly size down or plan on hemming the length."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "33",
+    "text": "Too loose after they broke in and the length is long, size down if between."
+  },
+  {
+    "product_id": 2,
+    "rating": 2,
+    "size_bought": "34",
+    "text": "Runs large in the leg length for me at 168cm, sized down on exchange."
+  },
+  {
+    "product_id": 2,
+    "rating": 2,
+    "size_bought": "34",
+    "text": "The inseam length made me size down, otherwise nice denim."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "33",
+    "text": "A touch too big overall and the length is long, went one size down."
+  },
+  {
+    "product_id": 2,
+    "rating": 3,
+    "size_bought": "33",
+    "text": "Snug in the thigh for me, I have cyclist legs though."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "31",
+    "text": "A little tight at the waist fresh out of the wash."
+  },
+  {
+    "product_id": 2,
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Felt tight through the hips on day one, relaxed a bit after."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "32",
+    "text": "Waistband is snug if you're between sizes."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "33",
+    "text": "Had to cuff them twice, I'm on the shorter side."
+  },
+  {
+    "product_id": 2,
+    "rating": 4,
+    "size_bought": "30",
+    "text": "I hemmed the legs, tailor charged $8, worth it."
+  },
+  {
+    "product_id": 2,
+    "rating": 5,
+    "size_bought": "30",
+    "text": "Great denim. I always cuff my jeans anyway so no issue."
+  },
+  {
+    "product_id": 2,
+    "rating": 3,
+    "size_bought": "33",
+    "text": "The 33.9 inch inseam is real, plan accordingly if you're under 170cm."
+  },
+  {
+    "product_id": 2,
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Nice fades after a month, cuffed once for me."
+  },
+  {
+    "product_id": 2,
+    "rating": 3,
+    "size_bought": "31",
+    "text": "Solid jeans, note the legs come unfinished-long like selvedge brands."
+  },
+  {
+    "product_id": 3,
+    "rating": 1,
+    "size_bought": "S",
+    "text": "Runs small in the bust, I could barely zip it, size up for sure."
+  },
+  {
+    "product_id": 3,
+    "rating": 3,
+    "size_bought": "L",
+    "text": "Too tight across the bust for me, the wrap gaped when sitting."
+  },
+  {
+    "product_id": 3,
+    "rating": 1,
+    "size_bought": "L",
+    "text": "Beautiful print but runs small at the waist, order a size up."
+  },
+  {
+    "product_id": 3,
+    "rating": 1,
+    "size_bought": "M",
+    "text": "The bust is really snug, size up if you're between sizes."
+  },
+  {
+    "product_id": 3,
+    "rating": 2,
+    "size_bought": "S",
+    "text": "Too tight in the waist compared to my other dresses in the same size."
+  },
+  {
+    "product_id": 3,
+    "rating": 1,
+    "size_bought": "L",
+    "text": "Runs small overall, especially the bust. Exchanged for a size up."
+  },
+  {
+    "product_id": 3,
+    "rating": 3,
+    "size_bought": "XS",
+    "text": "Waist felt too tight after lunch, size up honestly."
+  },
+  {
+    "product_id": 3,
+    "rating": 1,
+    "size_bought": "XS",
+    "text": "Snug through the bust and shoulders, went up a size on reorder."
+  },
+  {
+    "product_id": 3,
+    "rating": 1,
+    "size_bought": "S",
+    "text": "Runs small, my usual M felt like an S in the bust."
+  },
+  {
+    "product_id": 3,
+    "rating": 1,
+    "size_bought": "L",
+    "text": "Size up! The waist tie sits too tight otherwise."
+  },
+  {
+    "product_id": 3,
+    "rating": 2,
+    "size_bought": "L",
+    "text": "Too small in the bust for me, gorgeous fabric though."
+  },
+  {
+    "product_id": 3,
+    "rating": 1,
+    "size_bought": "L",
+    "text": "Tight across the chest even with the wrap loosened fully."
+  },
+  {
+    "product_id": 3,
+    "rating": 1,
+    "size_bought": "S",
+    "text": "Runs small at the waist, the sash barely reached around."
+  },
+  {
+    "product_id": 3,
+    "rating": 2,
+    "size_bought": "XS",
+    "text": "Bust is cut too tight for anyone with a larger chest, size up."
+  },
+  {
+    "product_id": 3,
+    "rating": 2,
+    "size_bought": "M",
+    "text": "Snug in the bust, fine once I sized up to L."
+  },
+  {
+    "product_id": 3,
+    "rating": 2,
+    "size_bought": "M",
+    "text": "The waist runs small, wish I'd read the reviews first."
+  },
+  {
+    "product_id": 3,
+    "rating": 2,
+    "size_bought": "L",
+    "text": "Too tight under the arms and across the bust in my usual size."
+  },
+  {
+    "product_id": 3,
+    "rating": 3,
+    "size_bought": "S",
+    "text": "Ran a bit too loose on me at the waist, the tie fixes it mostly."
+  },
+  {
+    "product_id": 3,
+    "rating": 4,
+    "size_bought": "S",
+    "text": "Slightly baggy in the skirt for my height, still cute."
+  },
+  {
+    "product_id": 3,
+    "rating": 3,
+    "size_bought": "XS",
+    "text": "A little oversized in the shoulders on my frame."
+  },
+  {
+    "product_id": 3,
+    "rating": 5,
+    "size_bought": "XS",
+    "text": "True to size for me, the wrap style is forgiving."
+  },
+  {
+    "product_id": 3,
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Fits perfectly, the tie waist lets you adjust."
+  },
+  {
+    "product_id": 3,
+    "rating": 4,
+    "size_bought": "XS",
+    "text": "As expected, lovely summer dress."
+  },
+  {
+    "product_id": 3,
+    "rating": 4,
+    "size_bought": "S",
+    "text": "Spot on sizing, took my usual S."
+  },
+  {
+    "product_id": 3,
+    "rating": 4,
+    "size_bought": "XS",
+    "text": "True to size, the cotton has a nice bit of give."
+  },
+  {
+    "product_id": 3,
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Perfect fit at the bust and waist for me."
+  },
+  {
+    "product_id": 3,
+    "rating": 4,
+    "size_bought": "S",
+    "text": "As expected from the chart, no surprises."
+  },
+  {
+    "product_id": 3,
+    "rating": 4,
+    "size_bought": "XS",
+    "text": "True to size, wore it to a wedding, so many compliments."
+  },
+  {
+    "product_id": 3,
+    "rating": 5,
+    "size_bought": "M",
+    "text": "Fits perfectly, the stretch makes it comfortable."
+  },
+  {
+    "product_id": 3,
+    "rating": 5,
+    "size_bought": "S",
+    "text": "Spot on, the M matched the chart measurements exactly."
+  },
+  {
+    "product_id": 3,
+    "rating": 5,
+    "size_bought": "S",
+    "text": "As expected, flattering wrap cut."
+  },
+  {
+    "product_id": 3,
+    "rating": 5,
+    "size_bought": "L",
+    "text": "True to size, fabric is thicker than I expected in a good way."
+  },
+  {
+    "product_id": 3,
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Perfect fit, hits just below the knee at 165cm."
+  },
+  {
+    "product_id": 3,
+    "rating": 5,
+    "size_bought": "M",
+    "text": "As expected, the print looks like the photos."
+  },
+  {
+    "product_id": 3,
+    "rating": 4,
+    "size_bought": "XS",
+    "text": "True to size for me, bust fit was fine with a regular bra."
+  },
+  {
+    "product_id": 3,
+    "rating": 5,
+    "size_bought": "XS",
+    "text": "Fits perfectly, ordering the navy version too."
+  },
+  {
+    "product_id": 3,
+    "rating": 4,
+    "size_bought": "S",
+    "text": "Spot on fit, washes well without fading."
+  },
+  {
+    "product_id": 3,
+    "rating": 5,
+    "size_bought": "S",
+    "text": "As expected, great for hot weather."
+  },
+  {
+    "product_id": 3,
+    "rating": 5,
+    "size_bought": "XS",
+    "text": "True to size, tie waist is adjustable enough."
+  },
+  {
+    "product_id": 3,
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Perfect fit through the waist for me."
+  },
+  {
+    "product_id": 3,
+    "rating": 5,
+    "size_bought": "S",
+    "text": "As expected, lined so not see-through."
+  },
+  {
+    "product_id": 3,
+    "rating": 5,
+    "size_bought": "M",
+    "text": "True to size, my usual size worked out fine."
+  },
+  {
+    "product_id": 3,
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Fits perfectly and the pockets are a nice surprise."
+  },
+  {
+    "product_id": 3,
+    "rating": 4,
+    "size_bought": "S",
+    "text": "Spot on, elegant without being formal."
+  },
+  {
+    "product_id": 3,
+    "rating": 5,
+    "size_bought": "XS",
+    "text": "As expected, my favourite purchase this month."
+  },
+  {
+    "product_id": 3,
+    "rating": 4,
+    "size_bought": "S",
+    "text": "True to size, no gaping at the wrap."
+  },
+  {
+    "product_id": 3,
+    "rating": 4,
+    "size_bought": "M",
+    "text": "The seller chart has no hip measurements, had to guess from the bust."
+  },
+  {
+    "product_id": 3,
+    "rating": 5,
+    "size_bought": "S",
+    "text": "Fabric quality is lovely, print is vivid."
+  },
+  {
+    "product_id": 3,
+    "rating": 5,
+    "size_bought": "M",
+    "text": "Shipping was fast, dress came neatly folded."
+  },
+  {
+    "product_id": 3,
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Wish there were more colour options."
+  },
+  {
+    "product_id": 3,
+    "rating": 5,
+    "size_bought": "L",
+    "text": "No hip numbers in the chart, please add them seller!"
+  },
+  {
+    "product_id": 3,
+    "rating": 4,
+    "size_bought": "XS",
+    "text": "The lining makes it hang really nicely."
+  }
 ]

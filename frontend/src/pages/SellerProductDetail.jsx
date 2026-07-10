@@ -75,6 +75,7 @@ export default function SellerProductDetail() {
 
           {/* Provenance strip: above the fold on purpose. */}
           <AmdStatsFooter
+            note={risk.throughput_note}
             reviewCount={risk.review_count}
             source={risk.review_summary?.analysis_source}
             mode={risk.review_summary?.analysis_mode}

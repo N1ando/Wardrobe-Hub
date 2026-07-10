@@ -194,6 +194,9 @@ class SellerProductRisk(BaseModel):
     chart_completeness: float = 1.0
     fit_distribution: FitDistribution = Field(default_factory=FitDistribution)
     quotes: list[QuoteItem] = Field(default_factory=list)
+    # The analysis run's throughput line ("Analyzed N reviews in Xs ...") so
+    # the drilldown's provenance strip can show real numbers, not a hardcode.
+    throughput_note: Optional[str] = None
 
 
 # ---- Health -----------------------------------------------------------------

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { getRecommendation } from '../api'
+import { getRecommendation, postExplain } from '../api'
 import { saveFitProfile } from '../fitProfile'
 
 export default function FitModal({ product, onClose, onViewReviews }) {
@@ -9,6 +9,7 @@ export default function FitModal({ product, onClose, onViewReviews }) {
   const [fitPref, setFitPref] = useState('regular')
   const [status, setStatus] = useState('idle')
   const [result, setResult] = useState(null)
+  const [explanation, setExplanation] = useState(null)
 
   function handleChange(field, value) {
     setMeasurements((prev) => ({ ...prev, [field]: value }))
@@ -17,6 +18,7 @@ export default function FitModal({ product, onClose, onViewReviews }) {
   async function handleSubmit(e) {
     e.preventDefault()
     setStatus('loading')
+    setExplanation(null)
     try {
       const payload = {
         product_id: product.id,
@@ -32,6 +34,11 @@ export default function FitModal({ product, onClose, onViewReviews }) {
       saveFitProfile({ measurements: payload.measurements, fitPref: payload.fit_pref })
       setResult(data)
       setStatus('done')
+      // Gemma explanation is fire-and-forget: the recommendation never waits
+      // on it, and a failed call simply renders no sentence.
+      postExplain(data, product.name)
+        .then((res) => setExplanation(res.explanation))
+        .catch(() => {})
     } catch (err) {
       console.error(err)
       setStatus('error')
@@ -75,7 +82,7 @@ export default function FitModal({ product, onClose, onViewReviews }) {
             </button>
           </form>
         ) : status === 'done' ? (
-          <ResultCard result={result} onReset={() => setStatus('idle')} onViewReviews={onViewReviews} onClose={onClose} />
+          <ResultCard result={result} explanation={explanation} onReset={() => setStatus('idle')} onViewReviews={onViewReviews} onClose={onClose} />
         ) : (
           <div className="text-red-600">Something went wrong. Please try again.</div>
         )}
@@ -99,7 +106,7 @@ function Field({ label, value, onChange }) {
   )
 }
 
-function ResultCard({ result, onReset, onViewReviews, onClose }) {
+function ResultCard({ result, explanation, onReset, onViewReviews, onClose }) {
   return (
     <div className="space-y-4">
       <div className="text-center">
@@ -107,6 +114,12 @@ function ResultCard({ result, onReset, onViewReviews, onClose }) {
         <div className="font-display text-3xl font-bold text-ink mt-2">{result.recommended_size}</div>
         <div className="text-muted text-sm">Recommended Size</div>
       </div>
+
+      {explanation && (
+        <p className="text-sm text-ink bg-accent/10 border border-accent/20 rounded-lg p-3">
+          {explanation}
+        </p>
+      )}
 
       <div className="space-y-3">
         {result.fit_breakdown.map((dim) => (

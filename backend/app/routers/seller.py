@@ -43,10 +43,13 @@ def _risk(product: Product) -> tuple[int, str, float, list[str], float]:
     a = product.analysis
     complaint_pct = (a.pct_small + a.pct_large) if a else 0.0
 
-    score = round(100 * (0.4 * (1 - completeness) + 0.6 * complaint_pct))
+    # Complaint share saturates at 50%: in apparel, fit complaints from half
+    # the reviewers is already catastrophic, so the complaint term maxes out
+    # there instead of requiring an unrealistic 90%+ complaint rate. At real
+    # review volumes a ~40% runs-small cluster must still read as HIGH.
+    complaint_term = min(1.0, complaint_pct / 0.5)
+    score = round(100 * (0.35 * (1 - completeness) + 0.65 * complaint_term))
     score = max(0, min(100, score))
-    # High from 60: a product with a dominant complaint cluster (like the
-    # seeded dress) must read as high-risk on the dashboard.
     level = "low" if score < 34 else ("medium" if score < 60 else "high")
     return score, level, round(complaint_pct, 3), missing, round(completeness, 3)
 
@@ -150,4 +153,5 @@ def product_risk(product_id: int, db: Session = Depends(get_db)) -> SellerProduc
         chart_completeness=completeness,
         fit_distribution=_distribution(a),
         quotes=_quotes(db, product),
+        throughput_note=a.throughput_note if a else None,
     )

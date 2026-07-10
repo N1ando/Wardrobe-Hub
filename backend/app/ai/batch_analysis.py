@@ -98,6 +98,7 @@ def analyze_product_reviews(db: Session, product_id: int, *, mode: str = "live")
     analysis.pct_large = round(counts["large"] / denom, 3)
     analysis.pct_tts = round(counts["tts"] / denom, 3)
     analysis.reviews_analyzed = total
+    analysis.complaint_count = counts["small"] + counts["large"]
     analysis.top_issues = [{"area": a, "count": c} for a, c in area_counter.most_common(3)]
     analysis.throughput_note = f"Analyzed {total} reviews in {elapsed:.1f}s"
     analysis.analysis_source = dominant_source

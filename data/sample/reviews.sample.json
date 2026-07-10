@@ -1,0 +1,44 @@
+[
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up."
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug."
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size."
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight."
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material."
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit."
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight."
+  }
+]

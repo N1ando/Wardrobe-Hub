@@ -1,0 +1,17 @@
+[
+  {
+    "product_id": "jeans_001",
+    "category": "jeans",
+    "raw_chart": "Denim Jeans Size Chart. Size 30: waist 30 inches, hip 38 inches, inseam 31 inches. Size 31: waist 31 inches, hip 39 inches, inseam 31.5 inches. Size 32: waist 32 inches, hip 40 inches, inseam 32 inches. Material: rigid denim, no stretch."
+  },
+  {
+    "product_id": "shirt_001",
+    "category": "shirt",
+    "raw_chart": "Men oversized shirt. M: Chest 104cm, Shoulder 45cm, Length 70cm. L: Chest 108cm, Shoulder 47cm, Length 72cm. XL: Chest 112cm, Shoulder 49cm, Length 74cm. Waist and sleeve not listed."
+  },
+  {
+    "product_id": "dress_001",
+    "category": "dress",
+    "raw_chart": "Dress sizing: S bust 86 / waist 68 / hips 92 cm. M bust 90 / waist 72 / hips 96 cm. L bust 94 / waist 76 / hips 100 cm. Sleeve length missing. Slight stretch fabric."
+  }
+]

@@ -1,0 +1,1682 @@
+[
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 1.",
+    "review_id": "bench_001"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 2.",
+    "review_id": "bench_002"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 3.",
+    "review_id": "bench_003"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 4.",
+    "review_id": "bench_004"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 5.",
+    "review_id": "bench_005"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 6.",
+    "review_id": "bench_006"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 7.",
+    "review_id": "bench_007"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 8.",
+    "review_id": "bench_008"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 9.",
+    "review_id": "bench_009"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 10.",
+    "review_id": "bench_010"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 11.",
+    "review_id": "bench_011"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 12.",
+    "review_id": "bench_012"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 13.",
+    "review_id": "bench_013"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 14.",
+    "review_id": "bench_014"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 15.",
+    "review_id": "bench_015"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 16.",
+    "review_id": "bench_016"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 17.",
+    "review_id": "bench_017"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 18.",
+    "review_id": "bench_018"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 19.",
+    "review_id": "bench_019"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 20.",
+    "review_id": "bench_020"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 21.",
+    "review_id": "bench_021"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 22.",
+    "review_id": "bench_022"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 23.",
+    "review_id": "bench_023"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 24.",
+    "review_id": "bench_024"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 25.",
+    "review_id": "bench_025"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 26.",
+    "review_id": "bench_026"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 27.",
+    "review_id": "bench_027"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 28.",
+    "review_id": "bench_028"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 29.",
+    "review_id": "bench_029"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 30.",
+    "review_id": "bench_030"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 31.",
+    "review_id": "bench_031"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 32.",
+    "review_id": "bench_032"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 33.",
+    "review_id": "bench_033"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 34.",
+    "review_id": "bench_034"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 35.",
+    "review_id": "bench_035"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 36.",
+    "review_id": "bench_036"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 37.",
+    "review_id": "bench_037"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 38.",
+    "review_id": "bench_038"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 39.",
+    "review_id": "bench_039"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 40.",
+    "review_id": "bench_040"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 41.",
+    "review_id": "bench_041"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 42.",
+    "review_id": "bench_042"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 43.",
+    "review_id": "bench_043"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 44.",
+    "review_id": "bench_044"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 45.",
+    "review_id": "bench_045"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 46.",
+    "review_id": "bench_046"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 47.",
+    "review_id": "bench_047"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 48.",
+    "review_id": "bench_048"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 49.",
+    "review_id": "bench_049"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 50.",
+    "review_id": "bench_050"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 51.",
+    "review_id": "bench_051"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 52.",
+    "review_id": "bench_052"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 53.",
+    "review_id": "bench_053"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 54.",
+    "review_id": "bench_054"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 55.",
+    "review_id": "bench_055"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 56.",
+    "review_id": "bench_056"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 57.",
+    "review_id": "bench_057"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 58.",
+    "review_id": "bench_058"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 59.",
+    "review_id": "bench_059"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 60.",
+    "review_id": "bench_060"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 61.",
+    "review_id": "bench_061"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 62.",
+    "review_id": "bench_062"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 63.",
+    "review_id": "bench_063"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 64.",
+    "review_id": "bench_064"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 65.",
+    "review_id": "bench_065"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 66.",
+    "review_id": "bench_066"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 67.",
+    "review_id": "bench_067"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 68.",
+    "review_id": "bench_068"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 69.",
+    "review_id": "bench_069"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 70.",
+    "review_id": "bench_070"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 71.",
+    "review_id": "bench_071"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 72.",
+    "review_id": "bench_072"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 73.",
+    "review_id": "bench_073"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 74.",
+    "review_id": "bench_074"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 75.",
+    "review_id": "bench_075"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 76.",
+    "review_id": "bench_076"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 77.",
+    "review_id": "bench_077"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 78.",
+    "review_id": "bench_078"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 79.",
+    "review_id": "bench_079"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 80.",
+    "review_id": "bench_080"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 81.",
+    "review_id": "bench_081"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 82.",
+    "review_id": "bench_082"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 83.",
+    "review_id": "bench_083"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 84.",
+    "review_id": "bench_084"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 85.",
+    "review_id": "bench_085"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 86.",
+    "review_id": "bench_086"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 87.",
+    "review_id": "bench_087"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 88.",
+    "review_id": "bench_088"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 89.",
+    "review_id": "bench_089"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 90.",
+    "review_id": "bench_090"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 91.",
+    "review_id": "bench_091"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 92.",
+    "review_id": "bench_092"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 93.",
+    "review_id": "bench_093"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 94.",
+    "review_id": "bench_094"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 95.",
+    "review_id": "bench_095"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 96.",
+    "review_id": "bench_096"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 97.",
+    "review_id": "bench_097"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 98.",
+    "review_id": "bench_098"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 99.",
+    "review_id": "bench_099"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 100.",
+    "review_id": "bench_100"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 101.",
+    "review_id": "bench_101"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 102.",
+    "review_id": "bench_102"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 103.",
+    "review_id": "bench_103"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 104.",
+    "review_id": "bench_104"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 105.",
+    "review_id": "bench_105"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 106.",
+    "review_id": "bench_106"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 107.",
+    "review_id": "bench_107"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 108.",
+    "review_id": "bench_108"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 109.",
+    "review_id": "bench_109"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 110.",
+    "review_id": "bench_110"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 111.",
+    "review_id": "bench_111"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 112.",
+    "review_id": "bench_112"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 113.",
+    "review_id": "bench_113"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 114.",
+    "review_id": "bench_114"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 115.",
+    "review_id": "bench_115"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 116.",
+    "review_id": "bench_116"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 117.",
+    "review_id": "bench_117"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 118.",
+    "review_id": "bench_118"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 119.",
+    "review_id": "bench_119"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 120.",
+    "review_id": "bench_120"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 121.",
+    "review_id": "bench_121"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 122.",
+    "review_id": "bench_122"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 123.",
+    "review_id": "bench_123"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 124.",
+    "review_id": "bench_124"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 125.",
+    "review_id": "bench_125"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 126.",
+    "review_id": "bench_126"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 127.",
+    "review_id": "bench_127"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 128.",
+    "review_id": "bench_128"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 129.",
+    "review_id": "bench_129"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 130.",
+    "review_id": "bench_130"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 131.",
+    "review_id": "bench_131"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 132.",
+    "review_id": "bench_132"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 133.",
+    "review_id": "bench_133"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 134.",
+    "review_id": "bench_134"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 135.",
+    "review_id": "bench_135"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 136.",
+    "review_id": "bench_136"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 137.",
+    "review_id": "bench_137"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 138.",
+    "review_id": "bench_138"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 139.",
+    "review_id": "bench_139"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 140.",
+    "review_id": "bench_140"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 141.",
+    "review_id": "bench_141"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 142.",
+    "review_id": "bench_142"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 143.",
+    "review_id": "bench_143"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 144.",
+    "review_id": "bench_144"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 145.",
+    "review_id": "bench_145"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 146.",
+    "review_id": "bench_146"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 147.",
+    "review_id": "bench_147"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 148.",
+    "review_id": "bench_148"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 149.",
+    "review_id": "bench_149"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 150.",
+    "review_id": "bench_150"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 151.",
+    "review_id": "bench_151"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 152.",
+    "review_id": "bench_152"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 153.",
+    "review_id": "bench_153"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 154.",
+    "review_id": "bench_154"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 155.",
+    "review_id": "bench_155"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 156.",
+    "review_id": "bench_156"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 157.",
+    "review_id": "bench_157"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 158.",
+    "review_id": "bench_158"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 159.",
+    "review_id": "bench_159"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 160.",
+    "review_id": "bench_160"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 161.",
+    "review_id": "bench_161"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 162.",
+    "review_id": "bench_162"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 163.",
+    "review_id": "bench_163"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 164.",
+    "review_id": "bench_164"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 165.",
+    "review_id": "bench_165"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 166.",
+    "review_id": "bench_166"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 167.",
+    "review_id": "bench_167"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 168.",
+    "review_id": "bench_168"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 169.",
+    "review_id": "bench_169"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 170.",
+    "review_id": "bench_170"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 171.",
+    "review_id": "bench_171"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 172.",
+    "review_id": "bench_172"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 173.",
+    "review_id": "bench_173"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 174.",
+    "review_id": "bench_174"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 175.",
+    "review_id": "bench_175"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 176.",
+    "review_id": "bench_176"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 177.",
+    "review_id": "bench_177"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 178.",
+    "review_id": "bench_178"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 179.",
+    "review_id": "bench_179"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 180.",
+    "review_id": "bench_180"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 181.",
+    "review_id": "bench_181"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 182.",
+    "review_id": "bench_182"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 183.",
+    "review_id": "bench_183"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 184.",
+    "review_id": "bench_184"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 185.",
+    "review_id": "bench_185"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 186.",
+    "review_id": "bench_186"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 187.",
+    "review_id": "bench_187"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 188.",
+    "review_id": "bench_188"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 189.",
+    "review_id": "bench_189"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 190.",
+    "review_id": "bench_190"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 191.",
+    "review_id": "bench_191"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 192.",
+    "review_id": "bench_192"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 193.",
+    "review_id": "bench_193"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 194.",
+    "review_id": "bench_194"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 195.",
+    "review_id": "bench_195"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 196.",
+    "review_id": "bench_196"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 197.",
+    "review_id": "bench_197"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 198.",
+    "review_id": "bench_198"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 199.",
+    "review_id": "bench_199"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 200.",
+    "review_id": "bench_200"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 201.",
+    "review_id": "bench_201"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 202.",
+    "review_id": "bench_202"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 203.",
+    "review_id": "bench_203"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 204.",
+    "review_id": "bench_204"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 205.",
+    "review_id": "bench_205"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 206.",
+    "review_id": "bench_206"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 207.",
+    "review_id": "bench_207"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 208.",
+    "review_id": "bench_208"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 209.",
+    "review_id": "bench_209"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 210.",
+    "review_id": "bench_210"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 211.",
+    "review_id": "bench_211"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 212.",
+    "review_id": "bench_212"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 213.",
+    "review_id": "bench_213"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 214.",
+    "review_id": "bench_214"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 215.",
+    "review_id": "bench_215"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 216.",
+    "review_id": "bench_216"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 217.",
+    "review_id": "bench_217"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 218.",
+    "review_id": "bench_218"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 219.",
+    "review_id": "bench_219"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 220.",
+    "review_id": "bench_220"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 221.",
+    "review_id": "bench_221"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 222.",
+    "review_id": "bench_222"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 223.",
+    "review_id": "bench_223"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 224.",
+    "review_id": "bench_224"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 225.",
+    "review_id": "bench_225"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 226.",
+    "review_id": "bench_226"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 227.",
+    "review_id": "bench_227"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 228.",
+    "review_id": "bench_228"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 229.",
+    "review_id": "bench_229"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 230.",
+    "review_id": "bench_230"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 231.",
+    "review_id": "bench_231"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 232.",
+    "review_id": "bench_232"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 233.",
+    "review_id": "bench_233"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 5,
+    "size_bought": "32",
+    "text": "Fits well and feels true to size. Benchmark duplicate 234.",
+    "review_id": "bench_234"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 4,
+    "size_bought": "M",
+    "text": "Chest fits well but the shoulders are slightly tight. Benchmark duplicate 235.",
+    "review_id": "bench_235"
+  },
+  {
+    "product_id": "shirt_001",
+    "rating": 5,
+    "size_bought": "L",
+    "text": "Perfect fit, true to size, comfortable material. Benchmark duplicate 236.",
+    "review_id": "bench_236"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 3,
+    "size_bought": "M",
+    "text": "Runs small around the bust and hips. Size up if you want a relaxed fit. Benchmark duplicate 237.",
+    "review_id": "bench_237"
+  },
+  {
+    "product_id": "dress_001",
+    "rating": 4,
+    "size_bought": "L",
+    "text": "Waist fits nicely but the bust is still a little tight. Benchmark duplicate 238.",
+    "review_id": "bench_238"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 4,
+    "size_bought": "31",
+    "text": "The waist is a bit tight but the denim quality is good. I should have sized up. Benchmark duplicate 239.",
+    "review_id": "bench_239"
+  },
+  {
+    "product_id": "jeans_001",
+    "rating": 3,
+    "size_bought": "30",
+    "text": "Length runs long and the waist feels snug. Benchmark duplicate 240.",
+    "review_id": "bench_240"
+  }
+]

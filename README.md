@@ -65,8 +65,41 @@ For each size, ease = garment − body per dimension, scored against an ideal ea
 
 - [x] Deterministic recommendation engine + tests + seed data
 - [x] FastAPI backend (`/api/recommend`, `/api/explain`, seller endpoints) + docker-compose
-- [ ] Gemma explanation generation (Fireworks) + review mining batch (vLLM on AMD Developer Cloud, ROCm) — client + fallback ladder ready, needs live keys/instance
-- [ ] React frontend: product page, fit modal, seller dashboard
+- [x] Gemma review mining + chart parsing on AMD Developer Cloud (vLLM/ROCm) — proof in `docs/amd_proof/`
+- [x] React frontend: product page, fit modal, seller dashboard — wired to the live API
 - [ ] Deploy the compose stack on AMD Developer Cloud
 
-<!-- AMD & Gemma usage section goes here once the backend lands: vLLM/ROCm batch pipeline, throughput stats, rocm-smi evidence, Fireworks live path. -->
+---
+
+## AMD & Gemma Usage
+
+FitOS uses AMD Developer Cloud, ROCm, vLLM, Fireworks, and Gemma for the AI parts of the system.
+
+**The recommendation engine itself is deterministic — the LLM never invents a size.** Gemma is used only for the three language-heavy jobs it is strongest at:
+
+1. Parsing messy seller size charts into normalized JSON.
+2. Mining fit signals from product reviews (batch, on AMD GPU).
+3. Generating shopper-facing explanations from the engine's structured output.
+
+### AMD Developer Cloud + ROCm + vLLM (batch pipeline)
+
+```txt
+AMD Developer Cloud GPU instance
+  -> ROCm
+  -> vLLM
+  -> google/gemma-2-2b-it (served as "fitos-gemma", OpenAI-compatible endpoint)
+```
+
+**Measured throughput: 240 reviews mined in 40.0s (6.0 reviews/sec)** against the
+AMD-hosted Gemma endpoint. Evidence in [`docs/amd_proof/`](docs/amd_proof/):
+`rocm-smi` captures for the vLLM serve, the review-mining run, and the
+chart-parser run, vLLM server logs, and the raw analysis outputs. The seller
+dashboard surfaces the live mining stats in its "Review mining" strip.
+
+### Fireworks (live path) + fallback ladder
+
+Low-latency in-demo explanation calls use the Fireworks Gemma API. Every LLM
+call goes through the fallback ladder — **AMD vLLM → Fireworks → response
+cache → deterministic template** — so the demo can never hang on a dead
+endpoint: with no keys configured at all, the stack still answers with
+keyword-mined analysis and template explanations.

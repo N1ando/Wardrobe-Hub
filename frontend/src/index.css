@@ -1,26 +1,26 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #F7F3EA;
+  --color-background: #F7F5F0;
   --color-surface: #FFFFFF;
-  --color-ink: #1A1A17;
-  --color-muted: #7A756A;
-  --color-accent: #2F5233;
+  --color-ink: #1C1C1A;
+  --color-muted: #8A857A;
+  --color-accent: #4A5D45;
   --color-caution: #B8860B;
 
   --font-display: "Archivo", sans-serif;
   --font-body: "Inter", sans-serif;
 
-  --shadow-soft: 0 1px 2px rgba(26,26,23,0.04), 0 4px 16px rgba(26,26,23,0.05);
-  --shadow-lifted: 0 2px 8px rgba(26,26,23,0.06), 0 12px 32px rgba(26,26,23,0.08);
+  --shadow-soft: 0 1px 2px rgba(28,28,26,0.04), 0 4px 16px rgba(28,28,26,0.05);
+  --shadow-lifted: 0 2px 8px rgba(28,28,26,0.06), 0 12px 32px rgba(28,28,26,0.08);
 }
 
 .bg-page-gradient {
-  background: linear-gradient(160deg, #FAF7EE 0%, #F2ECDC 100%);
+  background: linear-gradient(160deg, #FAF9F5 0%, #F3F1EA 100%);
 }
 
 body {
-  background: linear-gradient(180deg, #F5EFE3 0%, #E8DFC9 100%);
+  background-color: var(--color-background);
   font-family: var(--font-body);
   color: var(--color-ink);
   -webkit-font-smoothing: antialiased;

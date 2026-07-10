@@ -1,0 +1,17 @@
+[
+  {"product_id": 1, "size_label": "S",  "order_index": 0, "chest": 100, "waist": 90,  "hips": null, "length": 72, "sleeve": null, "inseam": null},
+  {"product_id": 1, "size_label": "M",  "order_index": 1, "chest": 106, "waist": 96,  "hips": null, "length": 74, "sleeve": null, "inseam": null},
+  {"product_id": 1, "size_label": "L",  "order_index": 2, "chest": 112, "waist": 102, "hips": null, "length": 76, "sleeve": null, "inseam": null},
+  {"product_id": 1, "size_label": "XL", "order_index": 3, "chest": 118, "waist": 108, "hips": null, "length": 78, "sleeve": null, "inseam": null},
+
+  {"product_id": 2, "size_label": "30", "order_index": 0, "chest": null, "waist": 78, "hips": 92,  "length": null, "sleeve": null, "inseam": 86},
+  {"product_id": 2, "size_label": "31", "order_index": 1, "chest": null, "waist": 80, "hips": 95,  "length": null, "sleeve": null, "inseam": 86},
+  {"product_id": 2, "size_label": "32", "order_index": 2, "chest": null, "waist": 82, "hips": 98,  "length": null, "sleeve": null, "inseam": 86},
+  {"product_id": 2, "size_label": "33", "order_index": 3, "chest": null, "waist": 85, "hips": 101, "length": null, "sleeve": null, "inseam": 86},
+  {"product_id": 2, "size_label": "34", "order_index": 4, "chest": null, "waist": 88, "hips": 104, "length": null, "sleeve": null, "inseam": 86},
+
+  {"product_id": 3, "size_label": "XS", "order_index": 0, "chest": 84, "waist": 66, "hips": null, "length": 92, "sleeve": null, "inseam": null},
+  {"product_id": 3, "size_label": "S",  "order_index": 1, "chest": 88, "waist": 70, "hips": null, "length": 93, "sleeve": null, "inseam": null},
+  {"product_id": 3, "size_label": "M",  "order_index": 2, "chest": 92, "waist": 74, "hips": null, "length": 94, "sleeve": null, "inseam": null},
+  {"product_id": 3, "size_label": "L",  "order_index": 3, "chest": 96, "waist": 78, "hips": null, "length": 95, "sleeve": null, "inseam": null}
+]

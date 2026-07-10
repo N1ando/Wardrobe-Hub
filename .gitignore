@@ -1,9 +1,10 @@
-.env
-.venv/
 __pycache__/
 *.pyc
 .pytest_cache/
-data/cache/*.json
+.env
+.venv/
+venv/
 node_modules/
 dist/
+data/cache/*.json
 .DS_Store

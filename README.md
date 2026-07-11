@@ -4,9 +4,7 @@
 
 > Built for the **AMD Developer Hackathon ACT II (Unicorn Track)** · AMD Developer Cloud · ROCm · vLLM · Gemma · Fireworks
 
-<!-- SUBMISSION LINKS — uncomment and fill before submitting:
-> **Live demo:** http://<amd-box>:5173 · **Demo video:** <link> · **Deck:** <link>
--->
+> **Live demo:** https://fit-os-red.vercel.app · **Demo video:** [watch](https://drive.google.com/file/d/1x24ZYclfWW0EwBqotE8iMODm1GJUQJQf/view) · **Slide deck:** [PDF](https://drive.google.com/file/d/1D4Udb5SI5x8_4NOCgfBK1cxeqwLFD11J/view)
 
 ## What's here
 
@@ -106,7 +104,7 @@ For each size, ease = garment − body per dimension, scored against an ideal ea
 - [x] FastAPI backend (`/api/recommend`, `/api/explain`, seller endpoints) + docker-compose
 - [x] Gemma review mining + chart parsing on AMD Developer Cloud (vLLM/ROCm) — proof in `docs/amd_proof/`
 - [x] React frontend: product page, fit modal, seller dashboard — wired to the live API
-- [ ] Deploy the compose stack on AMD Developer Cloud
+- [x] Deploy the compose stack on AMD Developer Cloud (demo video recorded there; the always-on demo now runs on CPU hosting with the same honest fallback ladder)
 
 ---
 

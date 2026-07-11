@@ -214,8 +214,9 @@ function ConfidenceRing({ confidence }) {
           className="transition-all duration-700 ease-out"
         />
       </svg>
-      <div className="absolute inset-0 flex items-center justify-center font-display font-bold text-lg text-ink">
-        {confidence}%
+      <div className="absolute inset-0 flex flex-col items-center justify-center font-display text-ink">
+        <span className="font-bold text-lg leading-tight">{confidence}</span>
+        <span className="text-[10px] text-muted leading-tight">/100 fit score</span>
       </div>
     </div>
   )

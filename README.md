@@ -1,24 +1,44 @@
 # FitOS — Wardrobe Hub
 
-**The sizing intelligence layer for e-commerce marketplaces**: turns messy size charts and fit reviews into explainable size recommendations for buyers and return-risk analytics for sellers.
+**The sizing intelligence layer for e-commerce marketplaces**: turns messy size charts and fit reviews into explainable size recommendations for buyers and fit-risk analytics for sellers.
 
-> Built for the AMD Developer Hackathon ACT II (Unicorn Track). AMD Developer Cloud + Gemma integration sections land with the backend — placeholders below.
+> Built for the **AMD Developer Hackathon ACT II (Unicorn Track)** · AMD Developer Cloud · ROCm · vLLM · Gemma · Fireworks
 
-## What's here now
+<!-- SUBMISSION LINKS — uncomment and fill before submitting:
+> **Live demo:** http://<amd-box>:5173 · **Demo video:** <link> · **Deck:** <link>
+-->
 
-The **deterministic recommendation engine** (`core/`), seeded demo data, and the **FastAPI backend** (`backend/`) serving the full API with a seeded SQLite DB. The LLM never invents a size: Gemma is used only for parsing charts, mining reviews, and explaining the engine's structured output.
+## What's here
+
+The **deterministic recommendation engine** (`core/`), the **FastAPI backend** (`backend/`) serving the full API over a seeded SQLite DB, and the **React frontend** (`frontend/`): storefront, fit modal, and seller dashboard, wired to the live API. The LLM never invents a size: Gemma is used only for parsing charts, mining reviews, and explaining the engine's structured output.
 
 ```
 core/recommender.py    # scoring engine: ease bands, stretch rules, review bias
 core/confidence.py     # confidence blend (fit 45% / margin 20% / data 20% / reviews 15%)
 backend/               # FastAPI app: /api/products, /api/recommend, /api/explain, /api/seller/*
 backend/app/ai/        # Gemma client with fallback ladder (vLLM -> Fireworks -> cache -> template)
+frontend/              # React storefront + fit modal + seller dashboard (Vite + Tailwind)
 data/seed/             # 3 demo products + 3 rehearsed personas (load-bearing: pinned by tests)
 scripts/try_recommender.py         # poke the engine by hand
 docs/recommendation_contract.md    # FROZEN response contract for frontend/backend
 tests/                 # engine pytest suite; backend/tests/ has the API suite
-docker-compose.yml     # cp .env.example .env && docker compose up -> demo-ready API
+docker-compose.yml     # cp .env.example .env && docker compose up -> API :8000 + storefront :5173
 ```
+
+## What it looks like
+
+| Buyer | Seller |
+|---|---|
+| ![Storefront](docs/screenshots/storefront.png) | ![Seller dashboard](docs/screenshots/seller_overview.png) |
+| ![Product page with Find My Size](docs/screenshots/product_page.png) | ![Dress fit-risk drill-down](docs/screenshots/seller_dress_drilldown.png) |
+
+## 60-second walkthrough
+
+1. `cp .env.example .env && docker compose up` — storefront on :5173, API on :8000. Works fully offline.
+2. Open the **Floral Wrap Dress** → **Find My Size** → bust 90 / waist 72 → size **L** with a fit score, per-dimension fit bars, and a "runs small" caveat mined from reviews (without the review signal it would say M).
+3. Open another product — the **Fit Passport** reuses your measurements: same body, different garment, different (correct) size.
+4. Visit `/seller` — the dress reads **HIGH risk**: 26 fit complaints in 60 reviews, a missing hips column, complaint clusters by body area, and the mined quotes behind the numbers.
+5. The **Review mining** strip reports the actual analysis provenance (AMD vLLM when configured, keyword fallback offline) — it is never hardcoded.
 
 ## Quickstart
 
@@ -33,7 +53,7 @@ python -m core.recommender       # smoke demo: prints 3 scenarios as JSON
 ### Backend API
 
 ```bash
-docker compose up                # full demo: web on :5173, seeded API on :8000 (works offline)
+docker compose up                # seeded, demo-ready on http://localhost:8000 (works offline)
 # or without Docker:
 cd backend
 pip install -r requirements.txt
@@ -44,6 +64,15 @@ python -m pytest -q              # backend API suite
 
 Without `GEMMA_URL` / `FIREWORKS_API_KEY` in `.env`, review mining and explanations
 fall back to deterministic keyword mining and template text — the demo never hangs.
+
+### Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev                      # http://localhost:5173, expects the API on :8000
+npm run lint && npm run build    # CI runs both
+```
 
 ## Try it
 
@@ -60,6 +89,14 @@ Longer manual walkthrough: `python tests/manual_verify_recommender.py`
 ## Engine rules in one paragraph
 
 For each size, ease = garment − body per dimension, scored against an ideal ease band for the garment type and fit preference (slim/regular/relaxed). Fabric stretch is credited at half its nominal percentage and **only ever excuses tightness, never looseness**. If ≥25% of reviews say an item runs small (and outnumber runs-large by ≥15 points), the next size up gets a +0.08 bias — the shift is capped at one size. Confidence blends fit quality, winner margin, data completeness, and reviewer agreement, clamped to 35–96; charts missing half their fields force a "low" label. Bad input raises `ValueError` only — see [docs/recommendation_contract.md](docs/recommendation_contract.md).
+
+## Scope and known limitations
+
+**Prototype scope:** three garment categories (tops, pants, dresses) with cm-based size charts. The 180 seeded reviews are **synthetic**, written to exercise known sizing scenarios — a runs-small cluster on the dress, a length-complaint cluster on the jeans, a clean baseline on the shirt. Fit scores and fit-risk scores are **transparent heuristics**, not statistically calibrated predictions; validating them against real purchase and return outcomes is the next development stage.
+
+- Review percentages are shares of reviews that express a fit opinion; the counts shown beside them are actual mined-verdict counts.
+- Review-driven size shifts require a 25% runs-small share and a 15-point gap over runs-large, but no minimum review count yet.
+- The AMD benchmark below demonstrates functional ROCm/vLLM execution with a sequential client — it is not a tuned-throughput claim.
 
 ## Roadmap (hackathon week)
 
@@ -90,11 +127,7 @@ AMD Developer Cloud GPU instance
   -> google/gemma-2-2b-it (served as "fitos-gemma", OpenAI-compatible endpoint)
 ```
 
-**Measured throughput: 240 reviews mined in 40.0s (6.0 reviews/sec)** against the
-AMD-hosted Gemma endpoint. Evidence in [`docs/amd_proof/`](docs/amd_proof/):
-`rocm-smi` captures for the vLLM serve, the review-mining run, and the
-chart-parser run, vLLM server logs, and the raw analysis outputs. The seller
-dashboard surfaces the live mining stats in its "Review mining" strip.
+**Functional execution proof: 240 synthetic reviews mined in 40.0s (6.0 reviews/sec, sequential client)** against the AMD-hosted Gemma endpoint. Throughput optimization (request batching, async clients) is future work — the number demonstrates the pipeline running end-to-end on AMD hardware, not tuned MI300X performance. Evidence in [`docs/amd_proof/`](docs/amd_proof/): `rocm-smi` captures for the vLLM serve, the review-mining run, and the chart-parser run, vLLM server logs, and the raw analysis outputs. The seller dashboard surfaces the live mining stats in its "Review mining" strip. Pipeline details and reproduction steps: [docs/amd_pipeline.md](docs/amd_pipeline.md).
 
 ### Fireworks (live path) + fallback ladder
 

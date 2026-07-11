@@ -3,21 +3,6 @@ import RiskBadge from './RiskBadge'
 import FitComplaintChart from './FitComplaintChart'
 import { fieldLabel } from './chartFields'
 import { RISK } from './vizTheme'
-import { Shirt, PersonStanding } from 'lucide-react'
-
-function CategoryIcon({ category }) {
-  const iconClass = "w-7 h-7 text-ink/30"
-  if (category === 'dress') return <PersonStanding className={iconClass} strokeWidth={1.5} />
-  return <Shirt className={iconClass} strokeWidth={1.5} />
-}
-
-function imageSrc(product) {
-  const url = product.image || product.image_url || ''
-  
-  return url.startsWith('http') || url.startsWith('/')
-    ? url
-    : `https://placehold.co/160x200?text=${encodeURIComponent(product.category ?? 'item')}`
-}
 
 function issueLine(product) {
   if (product.missing_fields?.length) {
@@ -27,6 +12,8 @@ function issueLine(product) {
     return `Size chart missing: ${fields}`
   }
   if (product.complaint_count > 0 && product.review_count > 0) {
+    // Derived from the counts shown on the card so the two never disagree
+    // (fit_complaint_pct uses graded reviews as denominator, not the total).
     const pct = Math.round((product.complaint_count / product.review_count) * 100)
     return `${pct}% of reviews report fit complaints`
   }

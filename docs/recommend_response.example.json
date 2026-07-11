@@ -1,60 +1,63 @@
 {
-  "_comment": "Frozen response contract for core.recommend_size / POST /api/recommend. Generated from real engine output against data/seed - do not hand-edit; regenerate if the engine's output shape changes.",
-  "example_1_jeans_clean_fit_weak_reviews_no_shift": {
+  "_comment": "Frozen response contract for POST /api/recommend (served shape == core.recommend_size output). Captured from the live seeded API - do not hand-edit; regenerate against a running backend if the shape changes.",
+  "example_1_jeans_clean_fit": {
     "request": {
-      "product_id": "jeans_001",
+      "product_id": 2,
+      "fit_pref": "regular",
       "measurements": {
-        "chest": 96,
-        "waist": 81,
-        "hips": 94,
-        "inseam": 79,
-        "sleeve": 62,
-        "height": 175
-      },
-      "fit_pref": "regular"
+        "waist": 79,
+        "hips": 92,
+        "inseam": 85
+      }
     },
     "response": {
-      "recommended_size": "31",
-      "confidence": 74,
+      "recommended_size": "32",
+      "confidence": 73,
       "confidence_level": "medium",
       "runner_up": {
-        "size": "32",
+        "size": "31",
         "score": 0.887
       },
       "size_scores": [
         {
           "size": "30",
-          "base_score": 0.749,
+          "base_score": 0.397,
           "review_bonus": 0.0,
-          "adjusted_score": 0.749
+          "adjusted_score": 0.397
         },
         {
           "size": "31",
-          "base_score": 1.0,
-          "review_bonus": 0.0,
-          "adjusted_score": 1.0
-        },
-        {
-          "size": "32",
           "base_score": 0.887,
           "review_bonus": 0.0,
           "adjusted_score": 0.887
         },
         {
-          "size": "33",
-          "base_score": 0.287,
+          "size": "32",
+          "base_score": 1.0,
           "review_bonus": 0.0,
-          "adjusted_score": 0.287
+          "adjusted_score": 1.0
+        },
+        {
+          "size": "33",
+          "base_score": 0.688,
+          "review_bonus": 0.0,
+          "adjusted_score": 0.688
+        },
+        {
+          "size": "34",
+          "base_score": 0.2,
+          "review_bonus": 0.0,
+          "adjusted_score": 0.2
         }
       ],
       "fit_breakdown": [
         {
           "dim": "waist",
-          "garment": 83.0,
-          "body": 81.0,
-          "raw_ease": 2.0,
-          "effective_ease": 3.25,
-          "scoring_ease": 2.0,
+          "garment": 82.0,
+          "body": 79.0,
+          "raw_ease": 3.0,
+          "effective_ease": 3.41,
+          "scoring_ease": 3.0,
           "ideal_band": [
             2.0,
             4.0
@@ -65,11 +68,11 @@
         },
         {
           "dim": "hips",
-          "garment": 99.0,
-          "body": 94.0,
-          "raw_ease": 5.0,
-          "effective_ease": 6.48,
-          "scoring_ease": 5.0,
+          "garment": 98.0,
+          "body": 92.0,
+          "raw_ease": 6.0,
+          "effective_ease": 6.49,
+          "scoring_ease": 6.0,
           "ideal_band": [
             4.0,
             8.0
@@ -80,11 +83,11 @@
         },
         {
           "dim": "inseam",
-          "garment": 79.0,
-          "body": 79.0,
-          "raw_ease": 0.0,
-          "effective_ease": 1.19,
-          "scoring_ease": 0.0,
+          "garment": 86.0,
+          "body": 85.0,
+          "raw_ease": 1.0,
+          "effective_ease": 1.43,
+          "scoring_ease": 1.0,
           "ideal_band": [
             -2.0,
             2.0
@@ -95,80 +98,79 @@
         }
       ],
       "review_signal": {
-        "pct_small": 0.1,
-        "pct_large": 0.08,
-        "pct_tts": 0.82,
+        "pct_small": 0.098,
+        "pct_tts": 0.784,
+        "pct_large": 0.118,
         "bias_direction": "none",
         "applied_shift_bias": false,
         "caveat": null
       },
-      "material_note": "Material: 97% cotton, 3% elastane denim. 3% stretch detected (stretch fabric); stretch was only used to reduce tightness penalties, not looseness.",
+      "material_note": "Material: Denim, 1% elastane. 1% stretch detected (stretch fabric); stretch was only used to reduce tightness penalties, not looseness.",
       "missing_fields": [],
       "debug": {
         "category": "pants",
         "fit_pref": "regular",
         "data_completeness": 1.0,
-        "review_agreement": 0.458,
+        "review_agreement": 0.39,
         "margin": 0.113
       }
     }
   },
-  "example_2_shirt_missing_chart_field_low_data": {
+  "example_2_shirt_missing_sleeve_in_chart": {
     "request": {
-      "product_id": "shirt_001",
+      "product_id": 1,
+      "fit_pref": "regular",
       "measurements": {
-        "chest": 88,
-        "waist": 76,
-        "sleeve": 61,
-        "height": 170
-      },
-      "fit_pref": "relaxed"
+        "chest": 100,
+        "waist": 90,
+        "sleeve": 62
+      }
     },
     "response": {
-      "recommended_size": "M",
-      "confidence": 73,
+      "recommended_size": "L",
+      "confidence": 76,
       "confidence_level": "medium",
       "runner_up": {
-        "size": "S",
-        "score": 0.569
+        "size": "M",
+        "score": 0.559
       },
       "size_scores": [
         {
           "size": "S",
-          "base_score": 0.569,
+          "base_score": 0.0,
           "review_bonus": 0.0,
-          "adjusted_score": 0.569
+          "adjusted_score": 0.0
         },
         {
           "size": "M",
+          "base_score": 0.559,
+          "review_bonus": 0.0,
+          "adjusted_score": 0.559
+        },
+        {
+          "size": "L",
           "base_score": 1.0,
           "review_bonus": 0.0,
           "adjusted_score": 1.0
         },
         {
-          "size": "L",
-          "base_score": 0.52,
-          "review_bonus": 0.0,
-          "adjusted_score": 0.52
-        },
-        {
           "size": "XL",
-          "base_score": 0.0,
+          "base_score": 0.118,
           "review_bonus": 0.0,
-          "adjusted_score": 0.0
+          "adjusted_score": 0.118
         }
       ],
       "fit_breakdown": [
         {
           "dim": "chest",
-          "garment": 102.0,
-          "body": 88.0,
-          "raw_ease": 14.0,
-          "effective_ease": 14.0,
-          "scoring_ease": 14.0,
+          "garment": 112.0,
+          "body": 100.0,
+          "raw_ease": 12.0,
+          "effective_ease": 12.0,
+          "scoring_ease": 12.0,
           "ideal_band": [
-            12.0,
-            18.0
+            8.0,
+            12.0
           ],
           "verdict": "ideal",
           "score": 1.0,
@@ -176,14 +178,14 @@
         },
         {
           "dim": "waist",
-          "garment": 96.0,
-          "body": 76.0,
-          "raw_ease": 20.0,
-          "effective_ease": 20.0,
-          "scoring_ease": 20.0,
+          "garment": 102.0,
+          "body": 90.0,
+          "raw_ease": 12.0,
+          "effective_ease": 12.0,
+          "scoring_ease": 12.0,
           "ideal_band": [
-            12.0,
-            20.0
+            8.0,
+            14.0
           ],
           "verdict": "ideal",
           "score": 1.0,
@@ -192,7 +194,7 @@
         {
           "dim": "sleeve",
           "garment": null,
-          "body": 61.0,
+          "body": null,
           "raw_ease": null,
           "effective_ease": null,
           "scoring_ease": null,
@@ -206,9 +208,9 @@
         }
       ],
       "review_signal": {
-        "pct_small": 0.06,
-        "pct_large": 0.18,
-        "pct_tts": 0.76,
+        "pct_small": 0.059,
+        "pct_tts": 0.882,
+        "pct_large": 0.059,
         "bias_direction": "none",
         "applied_shift_bias": false,
         "caveat": null
@@ -219,33 +221,37 @@
       ],
       "debug": {
         "category": "tops",
-        "fit_pref": "relaxed",
+        "fit_pref": "regular",
         "data_completeness": 0.667,
-        "review_agreement": 0.376,
-        "margin": 0.431
+        "review_agreement": 0.595,
+        "margin": 0.441
       }
     }
   },
-  "example_3_dress_runs_small_reviews_flip_M_to_L": {
+  "example_3_dress_runs_small_reviews_bias_up": {
     "request": {
-      "product_id": "dress_001",
+      "product_id": 3,
+      "fit_pref": "regular",
       "measurements": {
-        "bust": 89.2,
-        "waist": 71.2,
-        "hips": 95.2,
-        "height": 165
-      },
-      "fit_pref": "regular"
+        "bust": 90,
+        "waist": 72
+      }
     },
     "response": {
       "recommended_size": "L",
-      "confidence": 59,
-      "confidence_level": "low",
+      "confidence": 73,
+      "confidence_level": "medium",
       "runner_up": {
         "size": "M",
-        "score": 0.787
+        "score": 0.43
       },
       "size_scores": [
+        {
+          "size": "XS",
+          "base_score": 0.0,
+          "review_bonus": 0.0,
+          "adjusted_score": 0.0
+        },
         {
           "size": "S",
           "base_score": 0.0,
@@ -254,80 +260,82 @@
         },
         {
           "size": "M",
-          "base_score": 0.787,
+          "base_score": 0.43,
           "review_bonus": 0.0,
-          "adjusted_score": 0.787
+          "adjusted_score": 0.43
         },
         {
           "size": "L",
-          "base_score": 0.713,
-          "review_bonus": 0.08,
-          "adjusted_score": 0.793
+          "base_score": 1.0,
+          "review_bonus": 0.0,
+          "adjusted_score": 1.0
         }
       ],
       "fit_breakdown": [
         {
           "dim": "bust",
-          "garment": 100.0,
-          "body": 89.2,
-          "raw_ease": 10.8,
-          "effective_ease": 10.8,
-          "scoring_ease": 10.8,
+          "garment": 96.0,
+          "body": 90.0,
+          "raw_ease": 6.0,
+          "effective_ease": 7.44,
+          "scoring_ease": 6.0,
           "ideal_band": [
             6.0,
             10.0
           ],
-          "verdict": "loose",
-          "score": 0.8,
+          "verdict": "ideal",
+          "score": 1.0,
           "weight": 0.4
         },
         {
           "dim": "waist",
-          "garment": 82.0,
-          "body": 71.2,
-          "raw_ease": 10.8,
-          "effective_ease": 10.8,
-          "scoring_ease": 10.8,
+          "garment": 78.0,
+          "body": 72.0,
+          "raw_ease": 6.0,
+          "effective_ease": 7.17,
+          "scoring_ease": 6.0,
           "ideal_band": [
             5.0,
             9.0
           ],
-          "verdict": "loose",
-          "score": 0.55,
+          "verdict": "ideal",
+          "score": 1.0,
           "weight": 0.35
         },
         {
           "dim": "hips",
-          "garment": 106.0,
-          "body": 95.2,
-          "raw_ease": 10.8,
-          "effective_ease": 10.8,
-          "scoring_ease": 10.8,
+          "garment": null,
+          "body": null,
+          "raw_ease": null,
+          "effective_ease": null,
+          "scoring_ease": null,
           "ideal_band": [
             6.0,
             10.0
           ],
-          "verdict": "loose",
-          "score": 0.8,
+          "verdict": "missing_data",
+          "score": null,
           "weight": 0.25
         }
       ],
       "review_signal": {
-        "pct_small": 0.3,
-        "pct_large": 0.07,
-        "pct_tts": 0.63,
+        "pct_small": 0.434,
+        "pct_tts": 0.509,
+        "pct_large": 0.057,
         "bias_direction": "up",
-        "applied_shift_bias": true,
-        "caveat": "18 of 60 reviewers say this dress runs small in the bust."
+        "applied_shift_bias": false,
+        "caveat": "Reviewers say this runs small in the waist; consider sizing up."
       },
-      "material_note": "Rigid fabric (no stretch); ease was scored as measured.",
-      "missing_fields": [],
+      "material_note": "Material: Cotton, 3% elastane. 3% stretch detected (stretch fabric); stretch was only used to reduce tightness penalties, not looseness.",
+      "missing_fields": [
+        "hips"
+      ],
       "debug": {
         "category": "dress",
         "fit_pref": "regular",
-        "data_completeness": 1.0,
-        "review_agreement": 0.237,
-        "margin": 0.005
+        "data_completeness": 0.667,
+        "review_agreement": 0.209,
+        "margin": 0.57
       }
     }
   }

@@ -83,6 +83,10 @@ class ReviewAnalysis(Base):
     pct_large: Mapped[float] = mapped_column(Float, default=0.0)
     pct_tts: Mapped[float] = mapped_column(Float, default=0.0)
     reviews_analyzed: Mapped[int] = mapped_column(Integer, default=0)
+    # small+large verdicts counted at mining/import time, NOT derived from the
+    # pcts (whose denominator is graded reviews only) so displayed counts can
+    # never drift from the verdicts behind them.
+    complaint_count: Mapped[int] = mapped_column(Integer, default=0)
     top_issues: Mapped[list | None] = mapped_column(JSON, nullable=True)  # [{"area":..,"count":..}]
     throughput_note: Mapped[str | None] = mapped_column(String, nullable=True)  # AMD proof string
     # Provenance of the aggregate. Nullable so rows written before these

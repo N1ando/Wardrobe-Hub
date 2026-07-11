@@ -100,7 +100,7 @@ export async function postExplain(recommendation, productName) {
   if (USE_MOCKS) {
     await new Promise((resolve) => setTimeout(resolve, 400))
     return {
-      explanation: `We recommend size ${recommendation.recommended_size} (${recommendation.confidence}% confidence).`,
+      explanation: `We recommend size ${recommendation.recommended_size} (fit score ${recommendation.confidence}/100).`,
       source: 'template',
     }
   }

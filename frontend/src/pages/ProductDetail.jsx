@@ -29,6 +29,7 @@ function ProductDetailContent({ product }) {
   const [profile] = useState(() => getFitProfile())
   const [checking, setChecking] = useState(profile !== null)
   const reviewRefs = useRef({})
+  const [lightboxOpen, setLightboxOpen] = useState(false)
 
   useEffect(() => {
     if (!profile) return
@@ -71,7 +72,12 @@ function ProductDetailContent({ product }) {
           {/* Left: image + thumbnails */}
           <div>
             <div className="bg-[#EEEEE9] rounded-xl overflow-hidden mb-3">
-              <img src={product.images[activeImage]} alt={product.name} className="w-full h-[420px] object-cover" />
+              <img
+                src={product.images[activeImage]}
+                alt={product.name}
+                className="w-full h-[420px] object-contain p-4 cursor-zoom-in"
+                onClick={() => setLightboxOpen(true)}
+              />
             </div>
             <div className="flex gap-3">
               {product.images.map((img, i) => (
@@ -232,6 +238,15 @@ function ProductDetailContent({ product }) {
           </div>
         </div>
       </div>
+      
+      {lightboxOpen && (
+        <ImageLightbox
+          images={product.images}
+          activeIndex={activeImage}
+          onClose={() => setLightboxOpen(false)}
+          onNavigate={setActiveImage}
+        />
+      )}     
 
       {modalOpen && (
         <FitModal
@@ -250,6 +265,53 @@ function FitPassportSkeleton() {
       <div className="h-3 w-32 bg-ink/10 rounded" />
       <div className="h-6 w-48 bg-ink/10 rounded" />
       <div className="h-10 w-full bg-ink/10 rounded-lg mt-3" />
+    </div>
+  )
+}
+
+function ImageLightbox({ images, activeIndex, onClose, onNavigate }) {
+  return (
+    <div
+      className="fixed inset-0 bg-ink/90 z-[60] flex items-center justify-center p-6"
+      onClick={onClose}
+    >
+      <button
+        onClick={onClose}
+        className="absolute top-6 right-6 text-white text-3xl leading-none hover:opacity-70"
+      >
+        &times;
+      </button>
+
+      {images.length > 1 && (
+        <button
+          onClick={(e) => {
+            e.stopPropagation()
+            onNavigate(activeIndex === 0 ? images.length - 1 : activeIndex - 1)
+          }}
+          className="absolute left-6 text-white text-4xl hover:opacity-70"
+        >
+          &#8249;
+        </button>
+      )}
+
+      <img
+        src={images[activeIndex]}
+        alt=""
+        className="max-h-[85vh] max-w-[85vw] object-contain"
+        onClick={(e) => e.stopPropagation()}
+      />
+
+      {images.length > 1 && (
+        <button
+          onClick={(e) => {
+            e.stopPropagation()
+            onNavigate(activeIndex === images.length - 1 ? 0 : activeIndex + 1)
+          }}
+          className="absolute right-6 text-white text-4xl hover:opacity-70"
+        >
+          &#8250;
+        </button>
+      )}
     </div>
   )
 }

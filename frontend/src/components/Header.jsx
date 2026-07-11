@@ -14,17 +14,11 @@ export default function Header() {
             <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted" />
             <input
               type="text"
-              placeholder="Search products..."
+              placeholder="Search for your next outfit"
               className="w-full bg-background border border-ink/10 rounded-full pl-9 pr-4 py-2 text-sm placeholder:text-muted focus:outline-none focus:border-ink/30 transition-colors"
             />
           </div>
 
-          <button className="relative text-ink">
-            <ShoppingBag size={20} />
-            <span className="absolute -top-1.5 -right-1.5 bg-accent text-white text-[10px] font-medium w-4 h-4 rounded-full flex items-center justify-center">
-              0
-            </span>
-          </button>
         </div>
       </div>
     </header>

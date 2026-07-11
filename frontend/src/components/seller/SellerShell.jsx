@@ -1,31 +1,30 @@
 import { Link } from 'react-router-dom'
 
-// Shared frame for the two seller pages: one header, one content width.
 export default function SellerShell({ title, backTo, backLabel, children }) {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="border-b bg-white">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+    <div className="min-h-screen bg-background">
+      <header className="border-b border-ink/10 bg-surface">
+        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
           <div>
             {backTo && (
-              <Link to={backTo} className="text-sm text-blue-700 hover:underline">
+              <Link to={backTo} className="text-sm text-accent hover:underline">
                 &larr; {backLabel}
               </Link>
             )}
-            <h1 className="text-2xl font-bold">{title}</h1>
+            <h1 className="font-serif-strong text-4xl font-bold tracking-tight text-ink mt-1">{title}</h1>
           </div>
-          <span className="text-sm font-semibold text-gray-400">FitOS Seller</span>
+          <span className="text-sm font-semibold text-muted">Wardrobe-Hub Seller</span>
         </div>
       </header>
-      <main className="mx-auto max-w-5xl px-6 py-6">{children}</main>
+      <main className="mx-auto max-w-5xl px-6 py-8">{children}</main>
     </div>
   )
 }
 
 export function SectionCard({ title, children, className = '' }) {
   return (
-    <section className={`rounded-lg border bg-white p-5 ${className}`}>
-      <h3 className="mb-3 text-sm font-semibold text-gray-900">{title}</h3>
+    <section className={`rounded-xl border border-ink/10 bg-surface p-6 shadow-[var(--shadow-soft)] ${className}`}>
+      <h3 className="font-serif-strong mb-4 text-lg font-bold text-ink">{title}</h3>
       {children}
     </section>
   )
@@ -33,7 +32,7 @@ export function SectionCard({ title, children, className = '' }) {
 
 export function ErrorBox({ message, onRetry }) {
   return (
-    <div className="rounded-lg border border-red-200 bg-red-50 p-5 text-sm">
+    <div className="rounded-xl border border-red-200 bg-red-50 p-5 text-sm">
       <p className="font-semibold text-red-800">Couldn&apos;t load this view</p>
       <p className="mt-1 text-red-700">{message}</p>
       {onRetry && (
@@ -49,5 +48,5 @@ export function ErrorBox({ message, onRetry }) {
 }
 
 export function Skeleton({ className = '' }) {
-  return <div className={`animate-pulse rounded-lg bg-gray-200 ${className}`} />
+  return <div className={`animate-pulse rounded-xl bg-ink/10 ${className}`} />
 }

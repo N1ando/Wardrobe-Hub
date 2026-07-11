@@ -11,14 +11,12 @@ import AmdStatsFooter from '../components/seller/AmdStatsFooter'
 import { fieldLabel, requiredFieldsFor } from '../components/seller/chartFields'
 import SellerShell, { ErrorBox, SectionCard, Skeleton } from '../components/seller/SellerShell'
 
-// The API reports complaint clusters as counts; the chart wants shares.
 function clustersToAreas(clusters) {
   const total = (clusters ?? []).reduce((sum, c) => sum + (c.count ?? 0), 0)
   if (!total) return []
   return clusters.map((c) => ({ area: c.area, pct: c.count / total }))
 }
 
-// Impact note when a missing chart field is also a complaint area.
 function impactFromClusters(missingFields, clusters, category) {
   const impact = {}
   for (const field of missingFields ?? []) {
@@ -62,13 +60,13 @@ export default function SellerProductDetail() {
 
       {risk && (
         <div className="space-y-5">
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 rounded-xl border border-ink/10 bg-surface p-4 shadow-[var(--shadow-soft)]">
             <RiskBadge level={risk.risk_level} />
-            <span className="text-sm text-gray-600">
-              Risk score <span className="text-lg font-bold text-gray-900">{risk.risk_score}</span>
+            <span className="text-sm text-muted">
+              Risk score <span className="text-lg font-bold text-ink">{risk.risk_score}</span>
               /100
             </span>
-            <span className="text-sm text-gray-600">
+            <span className="text-sm text-muted">
               {risk.complaint_count} fit complaints in {risk.review_count} reviews
             </span>
           </div>

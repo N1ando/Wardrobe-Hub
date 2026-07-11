@@ -2,15 +2,7 @@ import { Link } from 'react-router-dom'
 import RiskBadge from './RiskBadge'
 import FitComplaintChart from './FitComplaintChart'
 import { fieldLabel } from './chartFields'
-
-// Seed image_url values point at /img/* assets that don't exist yet;
-// fall back to a category placeholder so cards never show broken images.
-function imageSrc(product) {
-  const url = product.image_url || ''
-  return url.startsWith('http')
-    ? url
-    : `https://placehold.co/160x200?text=${encodeURIComponent(product.category ?? 'item')}`
-}
+import { RISK } from './vizTheme'
 
 function issueLine(product) {
   if (product.missing_fields?.length) {
@@ -29,43 +21,49 @@ function issueLine(product) {
 }
 
 export default function ProductRiskCard({ product }) {
+  const risk = RISK[product.risk_level] ?? RISK.medium
+
   return (
     <Link
       to={`/seller/products/${product.product_id}`}
-      className="block rounded-lg border bg-white p-4 transition hover:shadow-lg"
+      className="group relative flex flex-col gap-4 overflow-hidden rounded-xl border border-ink/10 bg-surface p-4 pl-6 shadow-[var(--shadow-soft)] transition-all duration-200 hover:shadow-[var(--shadow-lifted)] md:flex-row md:items-center"
     >
-      <div className="flex items-start gap-4">
-        <img
-          src={imageSrc(product)}
-          alt={product.name}
-          className="h-20 w-16 rounded object-cover"
-        />
-        <div className="min-w-0 flex-1">
-          <div className="flex items-center justify-between gap-2">
-            <h2 className="truncate font-semibold">{product.name}</h2>
-            <RiskBadge level={product.risk_level} />
-          </div>
-          <p className="mt-1 text-sm text-gray-600">
-            {product.complaint_count} fit complaints in {product.review_count} reviews
-          </p>
-          <p className="mt-0.5 truncate text-sm text-gray-600">{issueLine(product)}</p>
+      {/* Risk-colored accent edge */}
+      <span
+        className="absolute left-0 top-0 bottom-0 w-1.5"
+        style={{ backgroundColor: risk.color }}
+        aria-hidden="true"
+      />
+
+      {/* Main info */}
+      <div className="min-w-0 flex-1">
+        <div className="flex flex-wrap items-center gap-2">
+          <h2 className="font-serif-strong truncate text-2xl font-bold tracking-tight text-ink">{product.name}</h2>
+          <RiskBadge level={product.risk_level} />
         </div>
+        <p className="mt-1 text-sm text-muted">
+          {product.complaint_count} fit complaints in {product.review_count} reviews
+        </p>
+        <p className="mt-0.5 truncate text-sm text-muted">{issueLine(product)}</p>
       </div>
 
-      <div className="mt-4">
+      {/* Chart */}
+      <div className="w-full md:w-40 md:shrink-0">
         <FitComplaintChart distribution={product.fit_distribution} compact />
       </div>
 
-      <div className="mt-3 flex items-center justify-between text-sm">
-        <span className="text-gray-600">
-          Chart completeness{' '}
-          <span
-            className={`font-semibold ${product.chart_completeness < 1 ? 'text-gray-900' : 'text-gray-600'}`}
-          >
+      {/* Completeness + CTA */}
+      <div className="flex shrink-0 items-center justify-between gap-4 md:w-44 md:flex-col md:items-end md:justify-center md:gap-1">
+        <span className="text-sm text-muted">
+          Chart{' '}
+          <span className="font-semibold text-ink">
             {Math.round(product.chart_completeness * 100)}%
           </span>
         </span>
-        <span className="font-medium text-blue-700">View details &rarr;</span>
+        <span className="flex items-center gap-1 text-sm font-medium text-accent">
+          View details
+          <span className="transition-transform duration-200 group-hover:translate-x-1">&rarr;</span>
+        </span>
       </div>
     </Link>
   )

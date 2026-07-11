@@ -15,9 +15,9 @@ The **deterministic recommendation engine** (`core/`), the **FastAPI backend** (
 ```
 core/recommender.py    # scoring engine: ease bands, stretch rules, review bias
 core/confidence.py     # confidence blend (fit 45% / margin 20% / data 20% / reviews 15%)
-backend/               # FastAPI app: /api/products, /api/recommend, /api/explain, /api/seller/*
+backend/               # FastAPI app: /api/products, /api/recommend, /api/explain, /api/seller/*, /api/cart
 backend/app/ai/        # Gemma client with fallback ladder (vLLM -> Fireworks -> cache -> template)
-frontend/              # React storefront + fit modal + seller dashboard (Vite + Tailwind)
+frontend/              # React landing + storefront + fit modal + cart + seller dashboard (Vite + Tailwind)
 data/seed/             # 3 demo products + 3 rehearsed personas (load-bearing: pinned by tests)
 scripts/try_recommender.py         # poke the engine by hand
 docs/recommendation_contract.md    # FROZEN response contract for frontend/backend
@@ -27,15 +27,17 @@ docker-compose.yml     # cp .env.example .env && docker compose up -> API :8000 
 
 ## What it looks like
 
+![Landing page](docs/screenshots/landing.png)
+
 | Buyer | Seller |
 |---|---|
-| ![Storefront](docs/screenshots/storefront.png) | ![Seller dashboard](docs/screenshots/seller_overview.png) |
+| ![Shop](docs/screenshots/storefront.png) | ![Seller dashboard](docs/screenshots/seller_overview.png) |
 | ![Product page with Find My Size](docs/screenshots/product_page.png) | ![Dress fit-risk drill-down](docs/screenshots/seller_dress_drilldown.png) |
 
 ## 60-second walkthrough
 
-1. `cp .env.example .env && docker compose up` — storefront on :5173, API on :8000. Works fully offline.
-2. Open the **Floral Wrap Dress** → **Find My Size** → bust 90 / waist 72 → size **L** with a fit score, per-dimension fit bars, and a "runs small" caveat mined from reviews (without the review signal it would say M).
+1. `cp .env.example .env && docker compose up` — landing page on :5173 (**Browse the shop**), API on :8000. Works fully offline.
+2. In the shop, open the **Floral Wrap Dress** → **Find My Size** → bust 90 / waist 72 → size **L** with a fit score, per-dimension fit bars, and a "runs small" caveat mined from reviews (without the review signal it would say M).
 3. Open another product — the **Fit Passport** reuses your measurements: same body, different garment, different (correct) size.
 4. Visit `/seller` — the dress reads **HIGH risk**: 26 fit complaints in 60 reviews, a missing hips column, complaint clusters by body area, and the mined quotes behind the numbers.
 5. The **Review mining** strip reports the actual analysis provenance (AMD vLLM when configured, keyword fallback offline) — it is never hardcoded.

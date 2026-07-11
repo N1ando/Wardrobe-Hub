@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Search, ShoppingBag } from 'lucide-react'
+import { Search } from 'lucide-react'
 
 export default function Header() {
   return (

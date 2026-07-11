@@ -4,7 +4,7 @@ const DEFAULT_ITEMS = [
   'Review-backed sizing',
   'Explainable fit scores',
   'No more guesswork',
-  'Built on real buyer data',
+  'Built on review mining',
   'Tight to loose, per dimension',
 ]
 

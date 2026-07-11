@@ -85,7 +85,7 @@ export default function ProductList() {
             )
           })}
           <span className="ml-auto hidden sm:block font-accent italic text-xs text-muted tracking-wide">
-            Every piece fit-checked against real reviews
+            Every piece fit-checked against mined reviews
           </span>
         </div>
 

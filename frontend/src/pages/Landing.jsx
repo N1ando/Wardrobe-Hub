@@ -18,7 +18,7 @@ const STEPS = [
   {
     icon: MessagesSquare,
     title: 'We read the reviews for you',
-    text: 'Thousands of buyer reviews are mined for fit signals: runs small, tight shoulders, long in the leg.',
+    text: 'Buyer reviews are mined for fit signals: runs small, tight shoulders, long in the leg.',
   },
   {
     icon: BadgeCheck,
@@ -56,7 +56,7 @@ export default function Landing() {
               <span className="font-accent italic font-medium text-accent">blind.</span>
             </h1>
             <p className="font-accent text-muted text-lg max-w-md leading-relaxed mb-8">
-              fitOS turns thousands of buyer reviews and real size charts
+              fitOS turns buyer reviews and messy size charts
               into one explainable size recommendation — before you order,
               not after the return.
             </p>
@@ -202,8 +202,8 @@ export default function Landing() {
       <section className="max-w-6xl mx-auto px-6 py-20">
         <div className="mb-12 flex flex-wrap items-end justify-between gap-4">
           <h2 className="font-display font-extrabold text-ink text-4xl md:text-5xl leading-tight">
-            Real buyers,{' '}
-            <span className="font-accent italic font-medium text-accent">real fits.</span>
+            Mined reviews,{' '}
+            <span className="font-accent italic font-medium text-accent">honest fits.</span>
           </h2>
           <span className="font-accent italic text-sm text-muted">
             Pulled straight from product reviews

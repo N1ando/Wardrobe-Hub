@@ -205,3 +205,26 @@ class SellerProductRisk(BaseModel):
 class HealthResponse(BaseModel):
     status: str = "ok"
     gemma_backend: str  # amd-vllm | fireworks | cache | template
+
+
+# ---- Cart -------------------------------------------------------------------
+
+
+class CartItemIn(BaseModel):
+    product_id: int
+    size: str
+    quantity: int = Field(default=1, ge=1)
+
+
+class CartItemOut(BaseModel):
+    id: int
+    product_id: int
+    name: str
+    size: str
+    quantity: int
+    price: float
+
+
+class CartResponse(BaseModel):
+    items: list[CartItemOut] = Field(default_factory=list)
+    total: float = 0.0

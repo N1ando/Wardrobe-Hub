@@ -107,3 +107,17 @@ class FitProfile(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     measurements: Mapped[dict] = mapped_column(JSON)
     fit_pref: Mapped[str] = mapped_column(String, default="regular")
+
+
+class CartItem(Base):
+    """A line in the demo's single shared cart (no auth/users in scope)."""
+
+    __tablename__ = "cart_items"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    product_id: Mapped[int] = mapped_column(ForeignKey("products.id"))
+    size: Mapped[str] = mapped_column(String)
+    quantity: Mapped[int] = mapped_column(Integer, default=1)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
+
+    product: Mapped[Product] = relationship()

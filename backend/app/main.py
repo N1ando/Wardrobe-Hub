@@ -14,7 +14,7 @@ from app import __version__
 from app.ai.gemma_client import active_backend
 from app.config import get_settings
 from app.db import init_db
-from app.routers import ai, explain, products, recommend, seller
+from app.routers import ai, cart, explain, products, recommend, seller
 from app.schemas import HealthResponse
 
 
@@ -38,7 +38,7 @@ def create_app() -> FastAPI:
     def health() -> HealthResponse:
         return HealthResponse(status="ok", gemma_backend=active_backend())
 
-    for module in (products, recommend, explain, seller, ai):
+    for module in (products, recommend, explain, seller, ai, cart):
         app.include_router(module.router)
     return app
 

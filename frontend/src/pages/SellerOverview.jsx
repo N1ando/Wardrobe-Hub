@@ -8,7 +8,7 @@ export default function SellerOverview() {
   const { data, loading, error, reload } = useApi(getSellerOverview, [])
 
   return (
-    <SellerShell title="Seller dashboard" backTo="/" backLabel="Store view">
+    <SellerShell title="Seller dashboard" backTo="/shop" backLabel="Store view">
       <p className="mb-6 text-base text-muted">
         Size-fit risk across your catalog, mined from buyer reviews and your size charts.
       </p>

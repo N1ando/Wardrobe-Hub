@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { Star, ChevronLeft, ShieldCheck, MessageCircle, Minus, Plus } from 'lucide-react'
+import { Star, ChevronLeft, ShieldCheck, MessageCircle, Minus, Plus, BadgeCheck, Check } from 'lucide-react'
 import { MOCK_PRODUCTS } from '../data/mockProducts'
 import FitModal from '../components/FitModal'
 import { getFitProfile } from '../fitProfile'
-import { getRecommendation } from '../api'
+import { getRecommendation, addToCart } from '../api'
+import { setCart } from '../cartStore'
 
 export default function ProductDetail() {
   const { id } = useParams()
@@ -26,6 +27,7 @@ function ProductDetailContent({ product }) {
   const [activeImage, setActiveImage] = useState(0)
   const [quantity, setQuantity] = useState(1)
   const [highlightedIds, setHighlightedIds] = useState([])
+  const [cartStatus, setCartStatus] = useState('idle')
   const [profile] = useState(() => getFitProfile())
   const [checking, setChecking] = useState(profile !== null)
   const reviewRefs = useRef({})
@@ -53,6 +55,28 @@ function ProductDetailContent({ product }) {
     }
   }, [product, profile])
 
+  async function handleAddToCart() {
+    if (!selectedSize) {
+      setCartStatus('need-size')
+      return
+    }
+    setCartStatus('adding')
+    try {
+      const cart = await addToCart({
+        product_id: product.id,
+        size: selectedSize,
+        quantity,
+        name: product.name,
+        price: product.price,
+      })
+      setCart(cart)
+      setCartStatus('added')
+      setTimeout(() => setCartStatus('idle'), 2000)
+    } catch {
+      setCartStatus('error')
+    }
+  }
+
   function handleViewReviews(ids) {
     setHighlightedIds(ids)
     const firstId = ids[0]
@@ -64,18 +88,18 @@ function ProductDetailContent({ product }) {
   return (
     <div className="min-h-screen bg-page-gradient">
       <div className="max-w-5xl mx-auto px-6 py-8">
-        <Link to="/" className="inline-flex items-center gap-1 text-sm text-muted hover:text-ink transition-colors mb-6">
+        <Link to="/shop" className="inline-flex items-center gap-1 text-sm text-muted hover:text-ink transition-colors mb-6">
           <ChevronLeft size={16} /> Back to products
         </Link>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Left: image + thumbnails */}
-          <div>
-            <div className="bg-[#EEEEE9] rounded-xl overflow-hidden mb-3">
+          <div className="md:sticky md:top-24 md:self-start stagger-child" style={{ '--stagger-i': 0 }}>
+            <div className="bg-[#EEEEE9] rounded-xl overflow-hidden mb-3 group">
               <img
                 src={product.images[activeImage]}
                 alt={product.name}
-                className="w-full h-[420px] object-contain p-4 cursor-zoom-in"
+                className="w-full h-[420px] object-contain p-4 cursor-zoom-in group-hover:scale-[1.03] transition-transform duration-500"
                 onClick={() => setLightboxOpen(true)}
               />
             </div>
@@ -95,8 +119,11 @@ function ProductDetailContent({ product }) {
           </div>
 
           {/* Right: details */}
-          <div>
-            <h1 className="font-display font-bold text-3xl text-ink mb-2">{product.name}</h1>
+          <div className="stagger-child" style={{ '--stagger-i': 1 }}>
+            <div className="font-accent italic text-xs tracking-[0.15em] text-accent uppercase mb-2">
+              {product.category}
+            </div>
+            <h1 className="font-display font-bold text-4xl text-ink mb-2">{product.name}</h1>
             <p className="text-sm text-muted mb-3">{product.description}</p>
             <div className="flex items-center gap-2 text-sm text-muted mb-4">
               <span className="flex items-center gap-1">
@@ -114,7 +141,10 @@ function ProductDetailContent({ product }) {
                 {product.sizes.map((size) => (
                   <button
                     key={size}
-                    onClick={() => setSelectedSize(size)}
+                    onClick={() => {
+                      setSelectedSize(size)
+                      setCartStatus((s) => (s === 'need-size' ? 'idle' : s))
+                    }}
                     className={`min-w-12 border rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
                       selectedSize === size
                         ? 'border-ink bg-ink text-white'
@@ -127,33 +157,56 @@ function ProductDetailContent({ product }) {
               </div>
             </div>
 
-            {/* FitOS integration */}
-            <div className="border border-accent/20 bg-gradient-to-br from-accent/8 to-accent/3 rounded-2xl p-5 mb-4 shadow-[var(--shadow-soft)]">
-              <div className="flex items-center gap-2 text-accent text-sm font-medium mb-3">
-                <ShieldCheck size={16} /> Wardrobe-Hub Sizing Intelligence
+            {/* FitOS integration — ticket-style fit passport */}
+            <div className="relative border border-accent/25 bg-gradient-to-br from-accent/8 to-accent/3 rounded-2xl mb-4 shadow-[var(--shadow-soft)] overflow-hidden">
+              <div className="absolute top-0 left-0 h-full w-1 bg-accent/60" />
+              <div className="p-5 pb-4">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2 text-accent text-sm font-medium">
+                    <ShieldCheck size={16} /> fitOS Sizing Intelligence
+                  </div>
+                  <span className="font-accent italic text-[10px] tracking-[0.15em] text-accent/70 uppercase">
+                    Fit Passport
+                  </span>
+                </div>
+
+                {checking ? (
+                  <FitPassportSkeleton />
+                ) : quickResult ? (
+                  <div className="mb-1">
+                    <div className="flex items-center gap-1 text-xs text-accent font-medium mb-1.5">
+                      <BadgeCheck size={13} /> Fit Passport applied
+                    </div>
+                    <div className="flex items-end gap-3">
+                      <span className="font-display font-bold text-4xl text-ink leading-none">
+                        {quickResult.recommended_size}
+                      </span>
+                      <span className="text-sm text-muted pb-0.5">
+                        recommended · fit score{' '}
+                        <span className="font-semibold text-ink">{quickResult.confidence}</span>/100
+                      </span>
+                    </div>
+                  </div>
+                ) : (
+                  <p className="font-accent italic text-sm text-muted mb-1">
+                    Four measurements. One honest answer.
+                  </p>
+                )}
               </div>
 
-              {checking ? (
-                <FitPassportSkeleton />
-              ) : quickResult ? (
-                <div className="mb-3">
-                  <div className="text-xs text-accent font-medium mb-1">✓ Fit Passport applied</div>
-                  <div className="text-xl font-display font-bold text-ink">
-                    Recommended: {quickResult.recommended_size}{" "}
-                    <span className="text-sm font-normal text-muted">
-                      (fit score {quickResult.confidence}/100)
-                    </span>
-                  </div>
-                </div>
-              ) : null}
+              {!checking && (
+                <div className="ticket-divider mx-5" />
+              )}
 
               {!checking && (
-                <button
-                  onClick={() => setModalOpen(true)}
-                  className="w-full bg-ink text-white px-6 py-3 rounded-lg font-medium hover:bg-ink/90 transition-colors"
-                >
-                  {quickResult ? "Re-check My Size" : "Find My Size"}
-                </button>
+                <div className="p-5 pt-4">
+                  <button
+                    onClick={() => setModalOpen(true)}
+                    className="w-full bg-ink text-white px-6 py-3 rounded-lg font-medium hover:bg-accent transition-colors duration-300 cursor-pointer"
+                  >
+                    {quickResult ? "Re-check My Size" : "Find My Size"}
+                  </button>
+                </div>
               )}
             </div>
 
@@ -177,12 +230,36 @@ function ProductDetailContent({ product }) {
               </div>
             </div>
 
-            <button className="w-full border border-ink/20 text-ink px-6 py-3 rounded-lg font-medium hover:border-ink transition-colors mb-6">
-              Add to Cart
+            <button
+              onClick={handleAddToCart}
+              disabled={cartStatus === 'adding'}
+              className={`w-full px-6 py-3 rounded-lg font-medium transition-colors mb-2 cursor-pointer disabled:opacity-60 ${
+                cartStatus === 'added'
+                  ? 'bg-accent text-white border border-accent'
+                  : 'border border-ink/20 text-ink hover:border-ink'
+              }`}
+            >
+              {cartStatus === 'adding' ? (
+                'Adding...'
+              ) : cartStatus === 'added' ? (
+                <span className="inline-flex items-center gap-1.5">
+                  <Check size={16} /> Added to cart
+                </span>
+              ) : (
+                'Add to Cart'
+              )}
             </button>
+            <div className="h-5 mb-4 text-xs" aria-live="polite">
+              {cartStatus === 'need-size' && (
+                <span className="text-caution">Pick a size first — or let us find it for you above.</span>
+              )}
+              {cartStatus === 'error' && (
+                <span className="text-red-600">Couldn't add to cart. Please try again.</span>
+              )}
+            </div>
 
             {/* Seller mini-card */}
-            <div className="flex items-center justify-between border border-ink/10 rounded-none p-4 w-full -ml-0">
+            <div className="flex items-center justify-between border border-ink/10 bg-surface rounded-xl p-4 w-full shadow-[var(--shadow-soft)]">
               <div>
                 <div className="text-sm font-medium text-ink">{product.seller.name}</div>
                 <div className="flex items-center gap-2 text-xs text-muted mt-0.5">
@@ -203,8 +280,11 @@ function ProductDetailContent({ product }) {
         {/* Reviews */}
         <div className="mt-16 max-w-3xl">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="font-display font-bold text-xl text-ink">
-              Reviews <span className="text-muted font-normal">({product.reviews.length})</span>
+            <h2 className="font-display font-bold text-2xl text-ink">
+              What buyers said{' '}
+              <span className="font-accent italic font-normal text-muted text-lg">
+                ({product.reviews.length} reviews)
+              </span>
             </h2>
             <div className="flex items-center gap-1 text-sm">
               <Star size={14} className="fill-accent text-accent" />
@@ -224,6 +304,9 @@ function ProductDetailContent({ product }) {
                 }`}
               >
                 <div className="flex items-center gap-2 mb-1.5">
+                  <span className="w-6 h-6 rounded-full bg-accent/15 text-accent text-[10px] font-bold flex items-center justify-center uppercase">
+                    {review.user.slice(0, 2)}
+                  </span>
                   <span className="font-medium text-sm text-ink">{review.user}</span>
                   <span className="flex items-center gap-0.5">
                     {Array.from({ length: review.rating }).map((_, i) => (

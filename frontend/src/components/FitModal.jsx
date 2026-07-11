@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Ruler, AlertTriangle, X } from 'lucide-react'
 import { getRecommendation, postExplain } from '../api'
 import { saveFitProfile } from '../fitProfile'
 
@@ -46,12 +47,29 @@ export default function FitModal({ product, onClose, onViewReviews }) {
   }
 
   return (
-    <div className="fixed inset-0 bg-ink/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-surface rounded-xl max-w-md w-full p-6 max-h-[90vh] overflow-y-auto">
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="font-display text-xl font-bold text-ink">Find My Size</h2>
-          <button onClick={onClose} className="text-muted hover:text-ink text-2xl leading-none">&times;</button>
+    <div
+      className="fixed inset-0 bg-ink/50 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-backdrop-in"
+      onClick={onClose}
+    >
+      <div
+        className="bg-surface rounded-2xl max-w-md w-full p-6 max-h-[90vh] overflow-y-auto animate-modal-in shadow-[var(--shadow-lifted)]"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex justify-between items-center mb-1">
+          <h2 className="font-display text-2xl font-bold text-ink flex items-center gap-2">
+            <Ruler size={18} className="text-accent" /> Find My Size
+          </h2>
+          <button
+            onClick={onClose}
+            aria-label="Close"
+            className="text-muted hover:text-ink transition-colors cursor-pointer p-1 -m-1"
+          >
+            <X size={20} />
+          </button>
         </div>
+        <p className="font-accent italic text-sm text-muted mb-5">
+          Four measurements. One honest answer.
+        </p>
 
         {status === 'idle' || status === 'loading' ? (
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -76,9 +94,9 @@ export default function FitModal({ product, onClose, onViewReviews }) {
             <button
               type="submit"
               disabled={status === 'loading'}
-              className="w-full bg-ink text-white rounded-lg py-2.5 font-medium disabled:opacity-50"
+              className="w-full bg-ink text-white rounded-lg py-2.5 font-medium hover:bg-accent transition-colors duration-300 disabled:opacity-50 disabled:hover:bg-ink cursor-pointer"
             >
-              {status === 'loading' ? 'Analyzing...' : 'Get My Size'}
+              {status === 'loading' ? 'Analyzing your fit...' : 'Get My Size'}
             </button>
           </form>
         ) : status === 'done' ? (
@@ -108,11 +126,11 @@ function Field({ label, value, onChange }) {
 
 function ResultCard({ result, explanation, onReset, onViewReviews, onClose }) {
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 animate-fade-up">
       <div className="text-center">
         <ConfidenceRing confidence={result.confidence} />
-        <div className="font-display text-3xl font-bold text-ink mt-2">{result.recommended_size}</div>
-        <div className="text-muted text-sm">Recommended Size</div>
+        <div className="font-display text-5xl font-bold text-ink mt-3">{result.recommended_size}</div>
+        <div className="font-accent italic text-muted text-sm mt-1">your recommended size</div>
       </div>
 
       {explanation && (
@@ -133,10 +151,12 @@ function ResultCard({ result, explanation, onReset, onViewReviews, onClose }) {
             onClose()
             onViewReviews?.(result.review_signal.caveat_review_ids || [])
           }}
-          className="w-full text-left bg-caution/10 border border-caution/30 rounded-lg p-3 text-sm hover:bg-caution/15 transition-colors"
+          className="w-full text-left bg-caution/10 border border-caution/30 rounded-lg p-3 text-sm hover:bg-caution/15 transition-colors cursor-pointer"
         >
-          <span className="text-caution font-medium">⚠ {result.review_signal.caveat}</span>
-          <span className="text-muted"> — {Math.round(result.review_signal.pct_small * 100)}% of reviewers. Tap to see reviews →</span>
+          <span className="text-caution font-medium inline-flex items-center gap-1.5">
+            <AlertTriangle size={13} className="shrink-0" /> {result.review_signal.caveat}
+          </span>
+          <span className="text-muted"> — {Math.round(result.review_signal.pct_small * 100)}% of reviewers. Tap to see reviews</span>
         </button>
       )}
 
@@ -144,7 +164,10 @@ function ResultCard({ result, explanation, onReset, onViewReviews, onClose }) {
         <div className="text-sm text-muted">{result.material_note}</div>
       )}
 
-      <button onClick={onReset} className="w-full border border-ink/20 rounded-lg py-2.5 font-medium text-ink">
+      <button
+        onClick={onReset}
+        className="w-full border border-ink/20 rounded-lg py-2.5 font-medium text-ink hover:border-ink transition-colors cursor-pointer"
+      >
         Try Again
       </button>
     </div>

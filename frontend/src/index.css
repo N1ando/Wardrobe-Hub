@@ -8,13 +8,39 @@
   --color-accent: #4A5D45;
   --color-caution: #B8860B;
 
-  --font-display: "Playfair Display", serif;
-  --font-accent: "Fraunces", serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-accent: "Inter", sans-serif;
   --font-body: "Inter", sans-serif;
-  --font-serif-strong: "Libre Baskerville", serif;
+  --font-serif-strong: "Space Grotesk", sans-serif;
 
   --shadow-soft: 0 1px 2px rgba(28,28,26,0.04), 0 4px 16px rgba(28,28,26,0.05);
   --shadow-lifted: 0 2px 8px rgba(28,28,26,0.06), 0 12px 32px rgba(28,28,26,0.08);
+
+  --animate-fade-up: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-fade-in: fade-in 0.4s ease-out both;
+  --animate-marquee: marquee 56s linear infinite;
+  --animate-modal-in: modal-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-backdrop-in: fade-in 0.25s ease-out both;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes modal-in {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .bg-page-gradient {
@@ -35,4 +61,61 @@ h1, h2, h3 {
 
 .font-display {
   letter-spacing: -0.01em;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Hollow display type for editorial headlines */
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--color-ink);
+}
+
+/* Animated underline for nav links */
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.link-underline:hover::after,
+.link-underline[aria-current="page"]::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Perforated ticket edge for the fit passport card */
+.ticket-divider {
+  border-top: 1.5px dashed rgba(28, 28, 26, 0.18);
+}
+
+/* Staggered entrance helper: set --stagger-i per item */
+.stagger-child {
+  animation: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--stagger-i, 0) * 70ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

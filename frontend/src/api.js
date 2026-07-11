@@ -152,6 +152,61 @@ export async function getProductRisk(productId) {
   return getJson(`/api/seller/products/${productId}/risk`)
 }
 
+// ---------------------------------------------------------------------------
+// Cart — backend-backed with a localStorage mock fallback so the demo works
+// without the API. Backend contract: Backend/app/routers/cart.py.
+// ---------------------------------------------------------------------------
+
+const MOCK_CART_KEY = 'fitos_mock_cart'
+
+function readMockCart() {
+  try {
+    return JSON.parse(localStorage.getItem(MOCK_CART_KEY)) ?? []
+  } catch {
+    return []
+  }
+}
+
+function writeMockCart(items) {
+  localStorage.setItem(MOCK_CART_KEY, JSON.stringify(items))
+  return { items, total: items.reduce((s, i) => s + i.price * i.quantity, 0) }
+}
+
+export async function getCart() {
+  if (USE_MOCKS) {
+    const items = readMockCart()
+    return { items, total: items.reduce((s, i) => s + i.price * i.quantity, 0) }
+  }
+  return getJson('/api/cart')
+}
+
+export async function addToCart({ product_id, size, quantity, name, price }) {
+  if (USE_MOCKS) {
+    await new Promise((resolve) => setTimeout(resolve, 300))
+    const items = readMockCart()
+    const existing = items.find((i) => i.product_id === product_id && i.size === size)
+    if (existing) existing.quantity += quantity
+    else items.push({ id: Date.now(), product_id, size, quantity, name, price })
+    return writeMockCart(items)
+  }
+  const res = await fetch(`${API_BASE}/api/cart/items`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ product_id, size, quantity }),
+  })
+  if (!res.ok) throw new Error(`add to cart failed: HTTP ${res.status}`)
+  return res.json()
+}
+
+export async function removeCartItem(itemId) {
+  if (USE_MOCKS) {
+    return writeMockCart(readMockCart().filter((i) => i.id !== itemId))
+  }
+  const res = await fetch(`${API_BASE}/api/cart/items/${itemId}`, { method: 'DELETE' })
+  if (!res.ok) throw new Error(`remove cart item failed: HTTP ${res.status}`)
+  return res.json()
+}
+
 // Product detail (category + size chart) — the seller drilldown uses it to
 // derive which chart fields exist vs. are required for the garment type.
 export async function getProduct(productId) {

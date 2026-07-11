@@ -13,10 +13,12 @@ export default function SellerShell({ title, backTo, backLabel, children }) {
             )}
             <h1 className="font-serif-strong text-4xl font-bold tracking-tight text-ink mt-1">{title}</h1>
           </div>
-          <span className="text-sm font-semibold text-muted">Wardrobe-Hub Seller</span>
+          <span className="font-accent italic text-sm tracking-[0.15em] text-accent uppercase">
+            Seller Studio
+          </span>
         </div>
       </header>
-      <main className="mx-auto max-w-5xl px-6 py-8">{children}</main>
+      <main className="mx-auto max-w-5xl px-6 py-8 animate-fade-up">{children}</main>
     </div>
   )
 }

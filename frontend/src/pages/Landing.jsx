@@ -6,6 +6,7 @@ import {
   BadgeCheck,
   ShieldCheck,
   Star,
+  Store,
 } from 'lucide-react'
 import Marquee from '../components/Marquee'
 
@@ -67,6 +68,13 @@ export default function Landing() {
               >
                 Browse the shop
                 <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+              </Link>
+              <Link
+                to="/seller"
+                className="inline-flex items-center gap-2 border border-ink/20 text-ink px-7 py-3.5 rounded-full font-medium hover:border-ink transition-colors duration-300"
+              >
+                <Store size={16} className="text-accent" />
+                Seller dashboard
               </Link>
               <a
                 href="#how-it-works"

@@ -66,9 +66,10 @@ def _chat(base_url: str, api_key: str, model: str, system: str, user: str,
         headers["Authorization"] = f"Bearer {api_key}"
     payload = {
         "model": model,
+        # Gemma-2 chat templates reject the "system" role (vLLM answers 400),
+        # so fold the system prompt into the user turn — accepted everywhere.
         "messages": [
-            {"role": "system", "content": system},
-            {"role": "user", "content": user},
+            {"role": "user", "content": f"{system}\n\n{user}" if system else user},
         ],
         "temperature": temperature,
     }

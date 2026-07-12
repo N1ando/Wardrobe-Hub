@@ -4,7 +4,7 @@
 
 > Built for the **AMD Developer Hackathon ACT II (Unicorn Track)** · AMD Developer Cloud · ROCm · vLLM · Gemma · Fireworks
 
-> **Live demo:** https://fit-os-red.vercel.app · **Demo video:** [watch](https://drive.google.com/file/d/1x24ZYclfWW0EwBqotE8iMODm1GJUQJQf/view) · **Slide deck:** [PDF](https://drive.google.com/file/d/1D4Udb5SI5x8_4NOCgfBK1cxeqwLFD11J/view)
+> **Live demo:** https://fit-os-red.vercel.app · **Demo video:** [watch](https://drive.google.com/file/d/1mOQNKroImZhPgpkorIhhSkIEHnYP4H7x/view) · **Slide deck:** [PDF](https://drive.google.com/file/d/1H9xmBPIfCN_umDchfgHom3PTstB2Ixag/view)
 
 ## What's here
 
